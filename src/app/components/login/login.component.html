@@ -1,7 +1,36 @@
-<img id="backLogIn" src="/src/assets/img/fondoLogIn.jpg">
+<img id="backLogIn" src="/assets/img/fondoLogIn.png">
 <div id="ModalLogIn">
-    hola
-    <div id="Session" class="colorPosWhite">
-        <img id="Logo" src="/src/assets/img/meeting.svg">
+    <div class="LogInForm" *ngIf="log">
+        <h1>Nombre empresa</h1>
+        <img id="FB" src="/assets/img/facebook (1).svg">
+        <img id="GG" src="/assets/img/google-plus (1).svg">
+        <input class="inputLogIn" placeholder=" correo electrónico"><br>
+        <input class="inputLogIn" placeholder=" contraseña"><br>
+        <button class="buttonLogIn2 ing colorLog1">Ingresar</button>
+    </div>
+    <div class="RegisterForm" *ngIf="!log">
+        <button [class]="bot1" (click)="changePM()">Postulante</button>
+        <button [class]="bot2" (click)="changePM()">Empresa</button>
+
+        <input type="number" class="inputLogIn reg1" *ngIf="pos" placeholder="NIT de la empresa">
+        <input type="text" class="inputLogIn reg1" placeholder="Ingrese nombre">
+        <input type="email" class="inputLogIn reg1" placeholder="correo electrónico">
+        <input type="text" class="inputLogIn reg1" *ngIf="!pos" placeholder="Carrera o profesión">
+        <input type="password" class="inputLogIn reg1" *ngIf="!pos" placeholder="contraseña">
+        <input type="number" class="inputLogIn reg1" *ngIf="pos" placeholder="teléfono">
+
+        <button class="buttonLogIn2 reg colorLog1">Registrarse</button>
+    </div>
+    <div [class]="reg">
+        <img id="Logo" src="/assets/img/networking.svg">
+        <button class="buttonLogIn colorLog2" *ngIf="log" (click)="change()">Iniciar Sesión</button>
+        <button class="buttonLogIn colorLog2" *ngIf="!log" (click)="change()">Registrarse</button>
+    </div>
+
+    <div id="LogIn">
+
+    </div>
+    <div id="RegisterAll">
+
     </div>
 </div>
