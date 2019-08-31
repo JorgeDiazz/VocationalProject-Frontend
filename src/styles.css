@@ -143,6 +143,18 @@ body {
     background-color: #FF8333;
 }
 
+.colorLog5 {
+    background-color: #FDA93D;
+}
+
+.colorLog6 {
+    background-color: #FC341C;
+}
+
+.colorLog7 {
+    background-color: #8B041A;
+}
+
 
 /*Postulant*/
 
@@ -165,19 +177,6 @@ body {
 .colorPosBlack {
     background-color: #25272B
 }
-
-
-/*Recruiter-Manager*/
-
-.colorRecGe1 {}
-
-.colorRecGe2 {}
-
-.colorRecGe3 {}
-
-.colorRecGe4 {}
-
-.colorRecGe5 {}
 
 
 /* ---------------------BUTTONS------------------------------- */
@@ -254,6 +253,96 @@ body {
 
 
 /* ---------------------CARDS------------------------------- */
+
+.card-job {
+    background-color: #EBE8E3;
+    width: 180px;
+    height: 170px;
+    margin: 20px;
+    box-shadow: 2px 2px 8px #666;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.card-job img {
+    width: 25px;
+    bottom: 0;
+    margin-top: 10px;
+    margin-left: 130px;
+    cursor: pointer;
+}
+
+.card-job p {
+    margin-top: 30px;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+.card-job .plus {
+    width: 125px;
+    margin: 25px;
+}
+
+.card-job:hover {
+    background-color: rgb(243, 240, 234);
+    box-shadow: 3px 3px 10px #666;
+}
+
+.card-postulant {
+    width: 150px;
+    height: 140px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.col-sm-3 .col-sm-4 {
+    margin: 4px!important;
+    padding: 4px!important;
+}
+
+.green-card {
+    box-shadow: 5px 5px 10px rgb(34, 110, 59);
+}
+
+.red-card {
+    box-shadow: 5px 5px 10px rgb(189, 63, 63);
+}
+
+.yellow-card {
+    box-shadow: 5px 5px 10px rgb(218, 196, 71);
+}
+
+.card-recruiter {
+    background-color: #01879386;
+    width: 180px;
+    height: 210px;
+    margin: 20px;
+    box-shadow: 2px 2px 8px #666;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.card-recruiter img {
+    width: 180px;
+    height: 170px;
+}
+
+.card-recruiter p {
+    color: white;
+    margin-top: 10px;
+}
+
+.card-recruiter:hover {
+    background-color: #50b5be8e;
+}
+
+.card-recruiter .plus {
+    width: 125px;
+    margin: 25px;
+}
 
 
 /* ---------------------MODALS------------------------------- */
