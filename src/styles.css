@@ -127,55 +127,85 @@ body {
 
 /*LogIn*/
 
-.colorLog1 {
+.bg-colorGR-blue-light {
     background-color: #00CDC4;
 }
 
-.colorLog2 {
+.bg-colorGR-blue-medium {
     background-color: #018893;
 }
 
-.colorLog3 {
+.bg-colorGR-blue-dark {
     background-color: #002A38;
 }
 
-.colorLog4 {
+.bg-colorGR-orange-dark {
     background-color: #FF8333;
 }
 
-.colorLog5 {
+.bg-colorGR-orange-light {
     background-color: #FDA93D;
 }
 
-.colorLog6 {
+.bg-colorGR-red-light {
     background-color: #FC341C;
 }
 
-.colorLog7 {
+.bg-colorGR-red-dark {
     background-color: #8B041A;
 }
 
 
 /*Postulant*/
 
-.colorPosWhite {
+.bg-colorPos-white {
     background-color: #f3f0f0;
 }
 
-.colorPosBlue {
+.bg-colorPos-blue {
     background-color: #3AB6A6
 }
 
-.colorPosRed {
+.bg-colorPos-red {
     background-color: #B5454D
 }
 
-.colorPosOrange {
+.bg-colorPos-orange {
     background-color: #BB7354
 }
 
-.colorPosBlack {
+.bg-colorPos-black {
     background-color: #25272B
+}
+
+
+/*cards postulants*/
+
+.bg-green-card {
+    box-shadow: 5px 5px 10px rgb(34, 110, 59);
+}
+
+.bg-red-card {
+    box-shadow: 5px 5px 10px rgb(189, 63, 63);
+}
+
+.bg-yellow-card {
+    box-shadow: 5px 5px 10px rgb(218, 196, 71);
+}
+
+
+/*cards vacancy-postulant-process*/
+
+.bg-success-card {
+    background-color: rgb(34, 110, 59);
+}
+
+.bg-fail-card {
+    background-color: rgb(189, 63, 63);
+}
+
+.bg-process-card {
+    background-color: rgb(218, 196, 71);
 }
 
 
@@ -254,6 +284,9 @@ body {
 
 /* ---------------------CARDS------------------------------- */
 
+
+/*Cards jobs*/
+
 .card-job {
     background-color: #EBE8E3;
     width: 180px;
@@ -289,6 +322,9 @@ body {
     box-shadow: 3px 3px 10px #666;
 }
 
+
+/*Cards postulant*/
+
 .card-postulant {
     width: 150px;
     height: 140px;
@@ -302,17 +338,8 @@ body {
     padding: 4px!important;
 }
 
-.green-card {
-    box-shadow: 5px 5px 10px rgb(34, 110, 59);
-}
 
-.red-card {
-    box-shadow: 5px 5px 10px rgb(189, 63, 63);
-}
-
-.yellow-card {
-    box-shadow: 5px 5px 10px rgb(218, 196, 71);
-}
+/*Cards recruiter*/
 
 .card-recruiter {
     background-color: #01879386;
@@ -323,6 +350,7 @@ body {
     border-radius: 3px;
     text-align: center;
     cursor: pointer;
+    color: white;
 }
 
 .card-recruiter img {
@@ -331,7 +359,6 @@ body {
 }
 
 .card-recruiter p {
-    color: white;
     margin-top: 10px;
 }
 
@@ -342,6 +369,160 @@ body {
 .card-recruiter .plus {
     width: 125px;
     margin: 25px;
+}
+
+
+/*Cards global skills*/
+
+.skill-global {
+    background-color: rgba(216, 142, 93, 0.795);
+    width: 180px;
+    height: 210px;
+    margin: 20px;
+    box-shadow: 2px 2px 8px #666;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+}
+
+.skill-global:hover {
+    background-color: rgba(216, 142, 93, 0.95);
+}
+
+.skill-global img {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 130px;
+}
+
+.skill-global .plus {
+    margin-top: 30px;
+}
+
+
+/*Cards skills*/
+
+.skill {
+    background-color: rgba(253, 170, 61, 0.795);
+    width: 250px;
+    height: 60px;
+    margin: 20px;
+    box-shadow: 2px 2px 8px #666;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+}
+
+.skill img {
+    width: 40px;
+    margin-top: 8px;
+    margin-left: 15px;
+}
+
+.skill p {
+    margin-top: 20px;
+}
+
+.skill:hover {
+    background-color: rgba(253, 170, 61, 0.95);
+}
+
+
+/*Cards vacancy*/
+
+.vacancy {
+    background-color: #EBE8E3;
+    width: 180px;
+    height: 130px;
+    margin: 20px;
+    margin-bottom: 0px;
+    box-shadow: 2px 2px 8px #666;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.vacancy img {
+    width: 25px;
+    margin-top: 10px;
+    margin-left: 130px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.postulants {
+    width: 180px;
+    height: 40px;
+    margin: 20px;
+    margin-top: 5px;
+    color: white;
+    box-shadow: 2px 2px 8px #666;
+    border-radius: 3px;
+    font-size: 15px;
+}
+
+.postulants img {
+    width: 25px;
+    margin-top: 7px;
+    margin-left: 15px;
+    margin-right: 0;
+}
+
+.postulants p {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#number {
+    margin-left: -5px;
+}
+
+
+/*Cards vacancy postulant*/
+
+.vacancy1 {
+    background-color: #EBE8E3;
+    width: 190px;
+    height: 185px;
+    margin: 20px;
+    margin-bottom: 0px;
+    box-shadow: 2px 2px 8px #666;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.vacancy1 img {
+    width: 190px;
+    height: 130px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.postulants1 {
+    width: 190px;
+    height: 40px;
+    margin: 20px;
+    margin-top: 5px;
+    color: white;
+    box-shadow: 2px 2px 8px #666;
+    border-radius: 3px;
+    font-size: 15px;
+}
+
+.postulants1 img {
+    width: 25px;
+    margin-top: 7px;
+    margin-left: 15px;
+    margin-right: 0;
+}
+
+.postulants1 p {
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
 
