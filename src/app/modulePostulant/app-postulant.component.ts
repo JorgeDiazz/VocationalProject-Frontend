@@ -9,18 +9,14 @@ import { Modal1Component } from './components/modal1/modal1.component';
 })
 export class AppPostulantComponent implements OnInit {
 
-  constructor(public dialog:MatDialog) {
-
-   }
+  toggled=true;
+  constructor() { }
 
   ngOnInit() {
   }
 
-  verModal(){
-    const dialogRef = this.dialog.open( Modal1Component);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+  changeToggle(){
+    this.toggled=!this.toggled;
   }
+
 }

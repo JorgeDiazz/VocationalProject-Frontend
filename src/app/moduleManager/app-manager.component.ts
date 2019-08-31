@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppManagerComponent implements OnInit {
 
+  toggled=true;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  changeToggle(){
+    this.toggled=!this.toggled;
   }
 
 }

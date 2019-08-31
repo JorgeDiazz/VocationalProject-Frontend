@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppRecruiterComponent implements OnInit {
 
+  toggled=true;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  changeToggle(){
+    this.toggled=!this.toggled;
   }
 
 }
