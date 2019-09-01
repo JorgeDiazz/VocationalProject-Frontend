@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalVacantComponent } from '../vacant/modal-vacant/modal-vacant.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-vacant',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VacantComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
+  verModal() {
+      const dialogRef = this.dialog.open(ModalVacantComponent, {
+        width: '450px'
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }

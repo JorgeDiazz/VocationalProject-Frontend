@@ -20,6 +20,12 @@ import { AppliedVacantComponent } from './components/0Postulant/applied-vacant/a
 import { PendingVacanciesComponent } from './components/0Recruiter/pending-vacancies/pending-vacancies.component';
 import { SkillsComponent } from './components/0Recruiter/skills/skills.component';
 import { InProcessComponent } from './components/0Recruiter/in-process/in-process.component';
+import { ModalVacantComponent } from './components/0Postulant/vacant/modal-vacant/modal-vacant.component';
+import { ModalJobComponent } from './components/0Manager/charge/modal-job/modal-job.component';
+import { ModalRecComponent } from './components/0Manager/recruiter/modal-rec/modal-rec.component';
+import { ModalJob1Component } from './components/0Recruiter/pending-vacancies/modal-job1/modal-job1.component';
+import { ModalEditComponent } from './components/0Recruiter/skills/modal-edit/modal-edit.component';
+import { ModalCreateComponent } from './components/0Recruiter/skills/modal-create/modal-create.component';
  
 @NgModule({
   declarations: [
@@ -37,7 +43,13 @@ import { InProcessComponent } from './components/0Recruiter/in-process/in-proces
     AppliedVacantComponent,
     PendingVacanciesComponent,
     SkillsComponent,
-    InProcessComponent 
+    InProcessComponent,
+    ModalVacantComponent,
+    ModalJobComponent,
+    ModalRecComponent,
+    ModalJob1Component,
+    ModalEditComponent,
+    ModalCreateComponent 
   ],
   imports: [
     BrowserModule,  
@@ -45,6 +57,7 @@ import { InProcessComponent } from './components/0Recruiter/in-process/in-proces
     GeneralModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalVacantComponent,ModalJob1Component,ModalJobComponent,ModalEditComponent,ModalCreateComponent],
 })
 export class AppModule { }
