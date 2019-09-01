@@ -25,9 +25,9 @@ export class LoginComponent implements OnInit {
 
   constructor() {
     this.log= false;
-    this.reg="Register colorLog2";
-    this.bot1=" buttonLogIn3 pos colorLog1 buttonLogIn3Select";
-    this.bot2=" buttonLogIn3 colorLog1";
+    this.reg="Register bg-colorGR-blue-medium";
+    this.bot1=" buttonLogIn3 pos bg-colorGR-blue-light buttonLogIn3Select";
+    this.bot2=" buttonLogIn3 bg-colorGR-blue-light";
    }
 
   ngOnInit() {
@@ -37,21 +37,21 @@ export class LoginComponent implements OnInit {
   change(){
   if (this.log) {
     this.log=false;
-    this.reg="Register colorLog2 movLeft";
+    this.reg="Register bg-colorGR-blue-medium movLeft";
   } else {
     this.log=true;
-    this.reg="Register colorLog2 movRight";
+    this.reg="Register bg-colorGR-blue-medium movRight";
   }
   }
   changePM(){
     if (this.pos) {
       this.pos=false;
-      this.bot1=" buttonLogIn3 pos colorLog1 buttonLogIn3Select";
-      this.bot2=" buttonLogIn3 colorLog1";
+      this.bot1=" buttonLogIn3 pos bg-colorGR-blue-light buttonLogIn3Select";
+      this.bot2=" buttonLogIn3 bg-colorGR-blue-light";
     } else {
       this.pos=true;
-      this.bot1=" buttonLogIn3 pos colorLog1";
-      this.bot2=" buttonLogIn3 colorLog1  buttonLogIn3Select";
+      this.bot1=" buttonLogIn3 pos bg-colorGR-blue-light";
+      this.bot2=" buttonLogIn3 bg-colorGR-blue-light  buttonLogIn3Select";
     }
     }
 

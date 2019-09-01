@@ -1,0 +1,12 @@
+<h3>Nombre de la empresa</h3><br>
+<mat-dialog-content class="mat-typography">
+    <input type="text" class="inputLogIn" placeholder="Ingrese el cargo"><br>
+    <input type="text" class="inputLogIn" placeholder="Rango de salario"><br>
+    <input type="text" class="inputLogIn" placeholder="Descripción del cargo"><br>
+    <label>Habilidades fuertes:</label>
+    <input type="" class="inputLogIn" placeholder=""><br>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>
+    <button class="buttonModalAccept" mat-button [mat-dialog-close]="true" cdkFocusInitial>Aplicar</button>
+</mat-dialog-actions>

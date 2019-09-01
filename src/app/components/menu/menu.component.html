@@ -1,72 +1,71 @@
 <body [ngClass]="{'sidebar-toggled': toggled}">
 
-        <nav class="navbar navbar-expand-lg navbar-dark colornav">
-            <a class="navbar-brand mr-1"></a>
-          
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-colorPos-black">
+        <a class="navbar-brand mr-1"></a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
-                  <button class="btn btn-link btn-sm text-white order-1 order-sm-0">
+        <button class="btn btn-link btn-sm text-white order-1 order-sm-0">
                         <i class="fas fa-bars fa-2x" (click)="changeToggle()"></i>
                     </button>
-            <div class="collapse navbar-collapse"  id="navbarText" >
-                <ul class="navbar-nav mr-auto">
-                 </ul>
-                <!-- Navbar -->
-                <ul class="navbar-nav ml-auto ml-md-0">
-    
-                    <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-user-circle fa-2x"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" (click)="logOut()" data-toggle="modal" >
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <!-- Navbar -->
+            <ul class="navbar-nav ml-auto ml-md-0">
+
+                <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-circle fa-2x"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" (click)="logOut()" data-toggle="modal">
                                 Cerrar
                                 sesion </a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    
-     
-        <div id="wrapper">
-    
-            <!-- Sidebar -->
-            <ul class="sidebar  navbar-nav colorZapote" [class.toggled]="toggled">
-    
-                    <li *ngFor="let dt of data" class="nav-item" routerLinkActive='active'>
-                            <a class="nav-link" [routerLink]="dt.route">
-                                    <i [class]="dt.icon"></i>
-                                <span>{{dt.name}}</span>
-                            </a>
-                        </li>
-    
-                
-    
-            </ul>
-    
-            <div id="content-wrapper">
-    
-                <div class="container-fluid">
-    
-                    <router-outlet></router-outlet>
-    
-                </div>
-                <!-- /.container-fluid -->
-    
-                <!-- Sticky Footer -->
-                <footer class="sticky-footer bg-azulCeleste">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>COPYRIGHT</span>
-                        </div>
                     </div>
-                </footer>
-    
-            </div>
-            <!-- /.content-wrapper -->
-    
+                </li>
+            </ul>
         </div>
-    </body>
+    </nav>
+
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="sidebar  navbar-nav bg-colorPos-red" [class.toggled]="toggled">
+
+            <li *ngFor="let dt of data" class="nav-item" routerLinkActive='active'>
+                <a class="nav-link" [routerLink]="dt.route">
+                    <i [class]="dt.icon"></i>
+                    <span>{{dt.name}}</span>
+                </a>
+            </li>
+
+
+
+        </ul>
+
+        <div id="content-wrapper">
+
+            <div class="container-fluid">
+
+                <router-outlet></router-outlet>
+
+            </div>
+            <!-- /.container-fluid -->
+
+            <!-- Sticky Footer -->
+            <footer class="sticky-footer bg-colorPos-blue">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>COPYRIGHT</span>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+        <!-- /.content-wrapper -->
+
+    </div>
+</body>

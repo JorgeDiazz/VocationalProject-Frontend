@@ -128,66 +128,66 @@ body {
 /*LogIn*/
 
 .bg-colorGR-blue-light {
-    background-color: #00CDC4;
+    background-color: #00CDC4!important;
 }
 
 .bg-colorGR-blue-medium {
-    background-color: #018893;
+    background-color: #018893!important;
 }
 
 .bg-colorGR-blue-dark {
-    background-color: #002A38;
-    color:white;
+    color: white;
+    background-color: #002A38!important;
 }
 
 .bg-colorGR-orange-dark {
-    background-color: #FF8333;
+    background-color: #FF8333!important;
 }
 
 .bg-colorGR-orange-light {
-    background-color: #FDA93D;
+    background-color: #FDA93D!important;
 }
 
 .bg-colorGR-red-light {
-    background-color: #FC341C;
+    background-color: #FC341C!important;
 }
 
 .bg-colorGR-red-dark {
-    background-color: #8B041A;
+    background-color: #8B041A!important;
 }
 
 
 /*Postulant*/
 
 .bg-colorPos-white {
-    background-color: #f3f0f0;
+    background-color: #f3f0f0!important;
 }
 
 .bg-colorPos-blue {
-    background-color: #3AB6A6
+    background-color: #3AB6A6!important;
 }
 
 .bg-colorPos-red {
-    background-color: #B5454D
+    background-color: #B5454D!important;
 }
 
 .bg-colorPos-orange {
-    background-color: #BB7354
+    background-color: #BB7354!important;
 }
 
 .bg-colorPos-black {
-    background-color: #25272B
+    background-color: #25272B!important;
 }
 
 
 /*cards postulants*/
 
 .bg-green-card {
-    box-shadow: 5px 5px 10px rgb(34, 110, 59);
+    box-shadow: 5px 5px 10px rgb(86, 136, 103);
 }
 
 .bg-red-card {
-    box-shadow: 5px 5px 10px rgb(189, 63, 63);
+    box-shadow: 5px 5px 10px rgb(136, 53, 53);
 }
 
 .bg-yellow-card {
@@ -198,11 +198,11 @@ body {
 /*cards vacancy-postulant-process*/
 
 .bg-success-card {
-    background-color: rgb(34, 110, 59);
+    background-color: rgb(86, 136, 103);
 }
 
 .bg-fail-card {
-    background-color: rgb(189, 63, 63);
+    background-color: rgb(136, 53, 53);
 }
 
 .bg-process-card {
@@ -257,12 +257,12 @@ body {
 }
 
 .buttonLogIn3Select {
-    background-color: #018793ce;
+    background-color: #115d64da!important;
     box-shadow: 1px 2px 5px #666;
 }
 
 .buttonLogIn2:hover {
-    background-color: #10b5c4da;
+    background-color: #115d64da!important;
 }
 
 .buttonLogIn:hover {
@@ -280,6 +280,21 @@ body {
     100% {
         background-color: #018893;
     }
+}
+
+.buttonModalCancel:hover {
+    background-color: rgba(139, 4, 27, 0.712);
+    color: white;
+}
+
+.buttonModalAccept:focus {
+    background-color: #018793b2;
+    color: white;
+}
+
+.buttonModalAccept:hover {
+    background-color: #018793b2;
+    color: white;
 }
 
 
@@ -375,30 +390,46 @@ body {
 
 /*Cards global skills*/
 
-.skill-global {
-    background-color: rgba(216, 142, 93, 0.795);
+.card-skills {
+    background-color: rgb(255, 253, 250);
     width: 180px;
-    height: 210px;
+    height: 130px;
     margin: 20px;
+    margin-bottom: 0px;
     box-shadow: 2px 2px 8px #666;
     border-radius: 3px;
     text-align: center;
+}
+
+.card-skills img {
+    width: 25px;
+    margin-top: 10px;
+    margin-left: 130px;
+    margin-bottom: 10px;
     cursor: pointer;
+}
+
+.skillG {
+    width: 180px;
+    height: 40px;
+    margin: 20px;
+    margin-top: -6px;
     color: white;
+    box-shadow: 2px 2px 8px #666;
+    border-radius: 3px;
+    font-size: 15px;
+    text-align: center;
 }
 
-.skill-global:hover {
-    background-color: rgba(216, 142, 93, 0.95);
+.card-skills img {
+    width: 110px;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
-.skill-global img {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 130px;
-}
-
-.skill-global .plus {
-    margin-top: 30px;
+.skillG p {
+    margin-top: 10px;
+    padding-top: 10px;
 }
 
 
@@ -406,8 +437,8 @@ body {
 
 .skill {
     background-color: rgba(253, 170, 61, 0.795);
-    width: 250px;
-    height: 60px;
+    width: 220px;
+    height: 40px;
     margin: 20px;
     box-shadow: 2px 2px 8px #666;
     border-radius: 20px;
@@ -417,13 +448,13 @@ body {
 }
 
 .skill img {
-    width: 40px;
-    margin-top: 8px;
-    margin-left: 15px;
+    width: 30px;
+    margin-top: 5px;
+    margin-left: 16px;
 }
 
 .skill p {
-    margin-top: 20px;
+    margin-top: 8px;
 }
 
 .skill:hover {
@@ -527,6 +558,17 @@ body {
 }
 
 
+/* ---------------------GENERAL------------------------------- */
+
+.circle {
+    padding-right: 0px;
+    margin-right: 0px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+
 /* ---------------------MODALS------------------------------- */
 
 
@@ -552,7 +594,6 @@ body {
 }
 
 
-
 /*                  MENU                  */
 
 html {
@@ -562,7 +603,6 @@ html {
 
 body {
     height: 100%;
-    font-family: 'Lato', sans-serif;
     background-color: #e8e8e8;
 }
 
@@ -905,7 +945,7 @@ footer.sticky-footer {
     right: 0;
     bottom: 0;
     width: calc(100% - 90px);
-    height: 80px;
+    height: 40px;
     background-color: #e9ecef;
 }
 
