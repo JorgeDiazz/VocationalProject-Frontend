@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  data=[ 
+    {name:"Cargos", icon:"fas fa-tasks", route:"/manager/charge"},
+    {name:"Reclutadores", icon:"fas fa-address-book icons", route:"/manager/recruit"},
+    {name:"Empleado", icon:"far fa-building", route:"/manager/employee"}
+  ]
+
   constructor() { }
 
   ngOnInit() {

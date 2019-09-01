@@ -1,1 +1,16 @@
-<p>home works!</p>
+
+<div class="container animated bounce">
+        <div class="row"> 
+                <div class="col-12 col-md-4 col-lg-4 " *ngFor="let dt of data;let i=index" >
+                        <div  class="card " [routerLink]="dt.route"
+                        style="width:18rem;">
+                        <img class="card-img-top  sombra" src="assets/img/placeholder-img.jpg" alt="">
+                        <div class="card-body bg-colorGR-blue-dark  sombra" align="center">
+                            <h4 class="card-title"> {{dt.name}} </h4> 
+                        </div>
+                         </div>  
+                    <br>              
+                </div>
+                 
+            </div>
+</div>
