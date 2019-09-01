@@ -1,32 +1,55 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppManagerComponent } from './moduleManager/app-manager.component';
+import { AppManagerComponent } from './components/0Manager/app-manager.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthManagerGuard } from './guard/auth-manager.guard';
-import { AppPostulantComponent } from './modulePostulant/app-postulant.component';
+import { AppPostulantComponent } from './components/0Postulant/app-postulant.component';
 import { AuthPostulantGuard } from './guard/auth-postulant.guard';
-import { AppRecruiterComponent } from './moduleRecruiter/app-recruiter.component';
+import { AppRecruiterComponent } from './components/0Recruiter/app-recruiter.component';
 import { AuthRecruiterGuard } from './guard/auth-recruiter.guard';
 
+import { HomeComponent } from './components/0Manager/home/home.component';
+import { EmployeeComponent } from './components/0Manager/employee/employee.component';
+import { ChargeComponent } from './components/0Manager/charge/charge.component';
+import { RecruiterComponent } from './components/0Manager/recruiter/recruiter.component';
+import { VacantComponent } from './components/0Postulant/vacant/vacant.component'; 
+import { AppliedVacantComponent } from './components/0Postulant/applied-vacant/applied-vacant.component';
+import { PendingVacanciesComponent } from './components/0Recruiter/pending-vacancies/pending-vacancies.component';
+import { SkillsComponent } from './components/0Recruiter/skills/skills.component';
+import { InProcessComponent } from './components/0Recruiter/in-process/in-process.component';
 
 const routes: Routes = [
-  {path:'login',component:LoginComponent},
-  {path:'manager',component:AppManagerComponent, canActivate:[AuthManagerGuard],
-  children:[
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'manager', component: AppManagerComponent, canActivate: [AuthManagerGuard],
+    children: [
+      {path:'home',component:HomeComponent},
+      {path:'employee',component:EmployeeComponent},
+      {path:'charge',component:ChargeComponent},
+      {path:'recruit',component:RecruiterComponent},
+      {path:'**',redirectTo:'home'}
 
+    ]
+  },
+  {
+    path: 'postulant', component: AppPostulantComponent, canActivate: [AuthPostulantGuard],
+    children: [
+      {path:'vacant',component:VacantComponent},
+      {path:'apliedVacant',component:AppliedVacantComponent},
+      {path:'**',redirectTo:'vacant'}
 
-  ]},
-  {path:'postulant', component:AppPostulantComponent, canActivate:[AuthPostulantGuard],
-  children:[
+    ]
+  },
+  {
+    path: 'recruiter', component: AppRecruiterComponent, canActivate: [AuthRecruiterGuard],
+    children: [
+      {path:'vacant',component:PendingVacanciesComponent},
+      {path:'skills',component:SkillsComponent},
+      {path:'inProcess',component:InProcessComponent}
 
-
-  ]},
-  {path:'recruiter',component:AppRecruiterComponent, canActivate:[AuthRecruiterGuard],
-  children:[
-
-    
-  ]},
-  {path:'**',redirectTo:'login'}
+    ]
+  },
+  { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({
