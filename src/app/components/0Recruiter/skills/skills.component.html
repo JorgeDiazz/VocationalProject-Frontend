@@ -1,25 +1,52 @@
-<h1>tarjetas habilidades globales</h1>
+<h1>Habilidades globales</h1>
 
+<div class="row">
+    <div class="col-md-3">
+        <div>
+            <div class="card-skills">
+                <img src="assets/img/skills (1).svg">
 
-<div>
-    <div class="card-skills">
-        <img src="assets/img/skills (1).svg" (click)="verModal()">
-
+            </div>
+            <div class="skillG bg-colorGR-blue-medium">
+                <p>Habilidad</p>
+            </div>
+        </div>
     </div>
-    <div class="skillG bg-colorGR-blue-medium">
-        <p>Habilidad</p>
+
+    <div class="col-md-3">
+        <div>
+            <div class="card-skills" (click)="verModalC()">
+                <img src="assets/img/add (2).svg">
+
+            </div>
+            <div class="skillG bg-colorGR-blue-medium">
+                <p>Nueva habilidad</p>
+            </div>
+        </div>
     </div>
 </div>
 
 
 
-<h1>tarjetas habilidades</h1>
-<div class="skill ">
-    <div class="row">
-        <div class="col-3">
-            <img src="assets/img/training.svg">
-        </div>
-        <div class="col-9">
-            <p>Nombre reclutador</p>
+
+<h1>Habilidades generales</h1>
+<div class="row">
+    <div class="col-md-3">
+        <div class="skill ">
+            <div class="row">
+                <div class="col-3">
+                    <img src="assets/img/training.svg">
+                </div>
+                <div class="col-9">
+                    <p>Nombre reclutador</p>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div class="col-md-3">
+        <div class="skill plusS" (click)="verModalC()">
+            <img src="assets/img/add (3).svg">
+        </div>
+    </div>
+</div>

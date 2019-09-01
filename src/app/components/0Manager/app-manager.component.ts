@@ -10,8 +10,7 @@ export class AppManagerComponent implements OnInit {
   data=[
     {name:"Home",icon:"fas fa-home", route:"home"},
     {name:"Cargos", icon:"fas fa-tasks", route:"charge"},
-    {name:"Reclutadores", icon:"fas fa-address-book icons", route:"recruit"},
-    {name:"Empleado", icon:"far fa-building", route:"employee"}
+    {name:"Reclutadores", icon:"fas fa-address-book icons", route:"recruit"}
   ]
   constructor() { 
     console.log(JSON.stringify(this.data));

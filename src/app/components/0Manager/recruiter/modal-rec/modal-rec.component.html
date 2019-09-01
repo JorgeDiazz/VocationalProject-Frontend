@@ -1,1 +1,9 @@
-<p>modal-rec works!</p>
+<h3>Nuevo reclutador</h3>
+<mat-dialog-content class="mat-typography">
+    <p>Se enviará un correo con la contraseña al nuevo reclutador para que ingrese al sistema</p>
+    <input type="text" class="inputLogIn" placeholder="Ingrese el correo"><br>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>
+    <button class="buttonModalAccept" mat-button [mat-dialog-close]="true" cdkFocusInitial>Crear cuenta</button>
+</mat-dialog-actions>

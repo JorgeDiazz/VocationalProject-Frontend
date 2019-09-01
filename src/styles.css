@@ -365,7 +365,6 @@ body {
     box-shadow: 2px 2px 8px #666;
     border-radius: 3px;
     text-align: center;
-    cursor: pointer;
     color: white;
 }
 
@@ -385,6 +384,7 @@ body {
 .card-recruiter .plus {
     width: 125px;
     margin: 25px;
+    cursor: pointer;
 }
 
 

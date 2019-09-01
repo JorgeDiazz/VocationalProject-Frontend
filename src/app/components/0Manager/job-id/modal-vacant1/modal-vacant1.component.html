@@ -1,0 +1,9 @@
+<h3>Nombre del cargo</h3>
+<mat-dialog-content class="mat-typography">
+    <label>Número de personas para el cargo:</label>
+    <input type="number" class="inputLogIn" placeholder=""><br>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>
+    <button class="buttonModalAccept" mat-button [mat-dialog-close]="true" cdkFocusInitial>Pedir</button>
+</mat-dialog-actions>

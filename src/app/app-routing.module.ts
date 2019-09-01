@@ -17,6 +17,8 @@ import { AppliedVacantComponent } from './components/0Postulant/applied-vacant/a
 import { PendingVacanciesComponent } from './components/0Recruiter/pending-vacancies/pending-vacancies.component';
 import { SkillsComponent } from './components/0Recruiter/skills/skills.component';
 import { InProcessComponent } from './components/0Recruiter/in-process/in-process.component';
+import { JobIdComponent } from './components/0Manager/job-id/job-id.component';
+import { JobProcessComponent } from './components/0Recruiter/job-process/job-process.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -24,7 +26,7 @@ const routes: Routes = [
     path: 'manager', component: AppManagerComponent, canActivate: [AuthManagerGuard],
     children: [
       {path:'home',component:HomeComponent},
-      {path:'employee',component:EmployeeComponent},
+      {path:'job/:id',component:JobIdComponent},
       {path:'charge',component:ChargeComponent},
       {path:'recruit',component:RecruiterComponent},
       {path:'**',redirectTo:'home'}
@@ -45,7 +47,9 @@ const routes: Routes = [
     children: [
       {path:'vacant',component:PendingVacanciesComponent},
       {path:'skills',component:SkillsComponent},
-      {path:'inProcess',component:InProcessComponent}
+      {path:'job/:id',component:JobProcessComponent},
+      {path:'inProcess',component:InProcessComponent},
+      {path:'**',redirectTo:'vacant'}
 
     ]
   },

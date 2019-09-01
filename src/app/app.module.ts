@@ -26,6 +26,11 @@ import { ModalRecComponent } from './components/0Manager/recruiter/modal-rec/mod
 import { ModalJob1Component } from './components/0Recruiter/pending-vacancies/modal-job1/modal-job1.component';
 import { ModalEditComponent } from './components/0Recruiter/skills/modal-edit/modal-edit.component';
 import { ModalCreateComponent } from './components/0Recruiter/skills/modal-create/modal-create.component';
+import { JobIdComponent } from './components/0Manager/job-id/job-id.component';
+import { ModalVacant1Component } from './components/0Manager/job-id/modal-vacant1/modal-vacant1.component';
+import { ModalPostulantComponent } from './components/0Manager/job-id/modal-postulant/modal-postulant.component';
+import { ModalProcessComponent } from './components/0Recruiter/in-process/modal-process/modal-process.component';
+import { JobProcessComponent } from './components/0Recruiter/job-process/job-process.component';
  
 @NgModule({
   declarations: [
@@ -49,7 +54,12 @@ import { ModalCreateComponent } from './components/0Recruiter/skills/modal-creat
     ModalRecComponent,
     ModalJob1Component,
     ModalEditComponent,
-    ModalCreateComponent 
+    ModalCreateComponent,
+    JobIdComponent,
+    ModalVacant1Component,
+    ModalPostulantComponent,
+    ModalProcessComponent,
+    JobProcessComponent
   ],
   imports: [
     BrowserModule,  
@@ -58,6 +68,6 @@ import { ModalCreateComponent } from './components/0Recruiter/skills/modal-creat
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ModalVacantComponent,ModalJob1Component,ModalJobComponent,ModalEditComponent,ModalCreateComponent],
+  entryComponents: [ModalVacantComponent,ModalJob1Component,ModalJobComponent,ModalEditComponent,ModalCreateComponent,ModalRecComponent,ModalVacant1Component,ModalPostulantComponent],
 })
 export class AppModule { }

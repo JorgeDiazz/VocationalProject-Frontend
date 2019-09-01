@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalRecComponent } from './modal-rec/modal-rec.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-recruiter',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecruiterComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
   }
+  verModal() {
+    const dialogRef = this.dialog.open(ModalRecComponent, {
+      width: '350px'
+    });
 
+  dialogRef.afterClosed().subscribe(result => {
+    console.log(`Dialog result: ${result}`);
+  });
+}
 }
