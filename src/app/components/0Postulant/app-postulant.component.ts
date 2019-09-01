@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
-import { Modal1Component } from './components/modal1/modal1.component';
 
 @Component({
   selector: 'app-app-postulant',
@@ -8,15 +6,16 @@ import { Modal1Component } from './components/modal1/modal1.component';
   styleUrls: ['./app-postulant.component.css']
 })
 export class AppPostulantComponent implements OnInit {
+  
 
-  toggled=true;
+  data=[
+    {name:"Vacantes",icon:"fas fa-address-book", route:"vacant"},
+    {name:"Vacantes Aplicadas", icon:"fas fa-address-book", route:"apliedVacant"} 
+  ]
+
   constructor() { }
 
   ngOnInit() {
-  }
-
-  changeToggle(){
-    this.toggled=!this.toggled;
   }
 
 }
