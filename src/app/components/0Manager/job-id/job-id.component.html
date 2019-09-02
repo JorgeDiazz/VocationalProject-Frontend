@@ -1,23 +1,32 @@
-<h1>Nombre del cargo</h1><br>
+<ng-container *ngIf="charge">
+ 
+<div class="row">
+    <div class="col-4">
+        <i class="fas fa-arrow-left fa-3x colorGr-Blue_-medium" 
+        routerLink='/manager/charge' ></i>
+    </div>
+    <div class="col-4">
+        <h1> {{charge.name}} </h1><br>
+    </div>
+    <div class="col-4"></div>
+</div>
+
+
 <div class="row">
     <div class="col">
         <h2>Datos Generales</h2>
-        <p><b>Salario:</b>Rango del salario<br>
-            <b>Descripción:</b>Descripción del puesto<br>
+        <p><b>Salario:</b> {{charge.range}} <br>
+            <b>Descripción:</b> {{charge.desc}} <br>
         </p>
         <p> <b>Carreras:</b></p>
         <ul>
-            <li>Carrera1</li>
-            <li>Carrera2</li>
-            <li>Carrera3</li>
+            <li *ngFor="let dt of charge.carrer"> {{dt.name}} </li> 
         </ul>
         <div class="row">
             <div class="col">
                 <p> <b>Habilidades fuertes:</b></p>
                 <ul>
-                    <li>Habilidad1</li>
-                    <li>Habilidad2</li>
-                    <li>Habilidad3</li>
+                    <li *ngFor="let dt of charge.strongSkill"> {{dt.name}} </li> 
                 </ul>
 
             </div>
@@ -50,3 +59,4 @@
         </div>
     </div>
 </div>
+</ng-container>

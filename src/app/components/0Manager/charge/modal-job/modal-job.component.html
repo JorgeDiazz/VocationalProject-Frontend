@@ -1,14 +1,46 @@
-<h3>Nombre de la empresa</h3><br>
+<h3>name de la empresa </h3><br>
 <mat-dialog-content class="mat-typography">
-    <input type="text" class="inputLogIn" placeholder="Ingrese el cargo"><br>
-    <input type="text" class="inputLogIn" placeholder="Rango de salario"><br>
-    <input type="text" class="inputLogIn" placeholder="Descripción del cargo"><br>
-    <label>Carreras:</label>
-    <input type="" class="inputLogIn" placeholder=""><br>
+    <input type="text" class="inputLogIn" placeholder="Ingrese el charge" [(ngModel)]="charge.name"><br>
+    <input type="text" class="inputLogIn" placeholder="range de salario" [(ngModel)]="charge.range"><br>
+    <textarea class="inputLogIn" placeholder="Descripción del charge" [(ngModel)]="charge.desc"></textarea><br>
+    <label>carrers:</label>
+    <div class="row">
+        <ng-container *ngFor="let cr of charge.carrer;let i=index;">
+            <div class="col-7">
+                <input type="" [(ngModel)]="cr.name" class="form-control input1" placeholder="">
+            </div>
+
+            <div class="col-2" *ngIf="(i+1)== charge.carrer.length">
+                <i (click)="addCar()" class="far fa-plus-square"></i>
+            </div>
+            <div class="col-2" *ngIf="i!=0">
+                <i (click)="removeCar(i)" class="far fa-times-circle"></i>
+            </div>
+            <br>
+        </ng-container>
+
+    </div>
+
     <label>Habilidades fuertes:</label>
-    <input type="" class="inputLogIn" placeholder=""><br>
+    <div class="row">
+            <ng-container *ngFor="let cr of charge.strongSkill;let i=index;">
+                <div class="col-7">
+                    <input type="" [(ngModel)]="cr.name" class="form-control input1" placeholder="">
+                </div>
+    
+                <div class="col-2" *ngIf="(i+1)== charge.strongSkill.length">
+                    <i (click)="addSkill()" class="far fa-plus-square"></i>
+                </div>
+                <div class="col-2" *ngIf="i!=0">
+                    <i (click)="removeSkill(i)" class="far fa-times-circle"></i>
+                </div>
+                <br>
+            </ng-container>
+    
+        </div> 
+
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>
-    <button class="buttonModalAccept" mat-button [mat-dialog-close]="true" cdkFocusInitial>Crear cargo</button>
+    <button class="buttonModalAccept" mat-button  (click)="addCharge()" cdkFocusInitial>Crear charge</button>
 </mat-dialog-actions>
