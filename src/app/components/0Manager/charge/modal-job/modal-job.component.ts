@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material'
 
-import {FormGroup,FormControl,Validators,FormArray} from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-modal-job',
@@ -10,38 +10,36 @@ import {FormGroup,FormControl,Validators,FormArray} from '@angular/forms';
 })
 export class ModalJobComponent implements OnInit {
 
-  charge = {
-    name: "Junior Sistema",
-    range: "1500-3444",
-    desc: "hola hola hola",
-    carrer: [
-      { name: 'Ing. Sistemas' }
-    ],
-    strongSkill: [
-      { name: "1" }
-    ]
+  // charge = {
+  //   name: "Junior Sistema",
+  //   range: "1500-3444",
+  //   desc: "hola hola hola",
+  //   carrer: [
+  //     { name: 'Ing. Sistemas' }
+  //   ],
+  //   strongSkill: [
+  //     { name: "1" }
+  //   ]
 
-  }
+  // }
 
-  form:FormGroup;
-
-
-
+  form: FormGroup;
+ 
   constructor(public dialogRef: MatDialogRef<ModalJobComponent>) {
-    this.form=new FormGroup({
-      'name':new FormControl('',Validators.required),
-      'range':new FormControl('',Validators.required),
-      'desc':new FormControl('',Validators.required),
-      'carrer':new FormArray([
-       new FormGroup({
-         'name':new FormControl('',Validators.required)
-       })
-      ]),
-      'strongSkill':new FormArray([
+    this.form = new FormGroup({
+      'name': new FormControl('', Validators.required),
+      'range': new FormControl('', Validators.required),
+      'desc': new FormControl('', Validators.required),
+      'carrer': new FormArray([
         new FormGroup({
-          'name':new FormControl('',Validators.required)
+          'name': new FormControl('', Validators.required)
         })
-       ])
+      ]),
+      'strongSkill': new FormArray([
+        new FormGroup({
+          'name': new FormControl('', Validators.required)
+        })
+      ])
     })
   }
 
@@ -50,23 +48,42 @@ export class ModalJobComponent implements OnInit {
   ngOnInit() {
   }
 
+  save() {
+    this.form.markAllAsTouched();
+    console.log(this.form);
+    //console.log(JSON.stringify(this.form.value));
+
+    if (this.form.valid) {
+      this.dialogRef.close(this.form.value);
+
+    } else {
+      console.log("invalidoooo")
+    }
+  }
+
   addCar() {
-    this.charge.carrer.push({ name: "Other" });
+    (<FormArray>this.form.get('carrer')).push(
+      new FormGroup({
+        'name': new FormControl('', Validators.required)
+      })
+    )
   }
   removeCar(i: number) {
-    this.charge.carrer.splice(i, 1);
+    (<FormArray>this.form.get('carrer')).removeAt(i);
 
   }
 
   addSkill() {
-    this.charge.strongSkill.push({ name: "Other" });
+    //this.charge.strongSkill.push({ name: "Other" });
+    (<FormArray>this.form.get('strongSkill')).push(
+      new FormGroup({
+        'name': new FormControl('', Validators.required)
+      })
+    )
   }
   removeSkill(i: number) {
-    this.charge.strongSkill.splice(i, 1);
+    (<FormArray>this.form.get('strongSkill')).removeAt(i);
 
   }
 
-  addCharge() {
-    this.dialogRef.close(this.charge);
-  }
 }
