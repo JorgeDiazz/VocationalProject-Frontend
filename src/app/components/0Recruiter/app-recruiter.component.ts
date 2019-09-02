@@ -11,6 +11,7 @@ export class AppRecruiterComponent implements OnInit {
     {name:"Habilidades", icon:"fas fa-address-book", route:"skills"},
     {name:"En proceso", icon:"fas fa-address-book",route:"inProcess"} 
   ]
+
   constructor() { }
 
   ngOnInit() {

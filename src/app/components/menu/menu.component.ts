@@ -1,4 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalProfileMComponent } from '../0Manager/modal-profile-m/modal-profile-m.component';
+import { ModalProfileRComponent } from '../0Recruiter/modal-profile-r/modal-profile-r.component';
+import { ModalProfilePComponent } from '../0Postulant/modal-profile-p/modal-profile-p.component';
 
 @Component({
   selector: 'app-menu',
@@ -9,8 +13,9 @@ export class MenuComponent implements OnInit {
   toggled=true;
 
   @Input() data:[];
+  @Input() type:string="";
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     console.log(JSON.stringify(this.data));
    }
 
@@ -21,5 +26,36 @@ export class MenuComponent implements OnInit {
     this.toggled=!this.toggled;
   }
 
+  mostrarP(){
+    if(this.type=="manager"){
+      const dialogRef = this.dialog.open(ModalProfileMComponent, {
+        width: '450px'
+      });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+    }
+    if(this.type=="recruiter"){
+      const dialogRef = this.dialog.open(ModalProfileRComponent, {
+        width: '450px'
+      });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+    }
+
+    if(this.type=="postulant"){
+      const dialogRef = this.dialog.open(ModalProfilePComponent, {
+        width: '450px'
+      });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+    }
+
+  }
 
 }
