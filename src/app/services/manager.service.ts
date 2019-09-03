@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ChargeI } from '../models/charge.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class ManagerService {
 
   constructor() {
     // localStorage.removeItem('charges');
+
    }
 
   getAllCharges(){
