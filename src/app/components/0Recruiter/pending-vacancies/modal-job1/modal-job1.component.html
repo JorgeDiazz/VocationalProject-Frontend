@@ -1,18 +1,47 @@
-<h3>Nombre de la empresa</h3>
-<mat-dialog-content class="mat-typography">
-    <p><b>Cargo:</b> Nombre del cargo<br> <b>Salario:</b> Rango del salario<br> <b>Descripción: </b>Descripción breve del cargo<br><b>Nro. vacantes:</b>6</p>
-    <p> <b>Habilidades fuertes:</b></p>
-    <ul>
-        <li>Habilidad1</li>
-        <li>Habilidad2</li>
-        <li>Habilidad3</li>
-    </ul>
-    <label>Habilidades Blandas:</label>
-    <input type="" class="inputLogIn" placeholder=""><br>
-    <label>Procesos:</label><br>
-    <input type="text" class="inputLogIn" placeholder="" formControlName="process" [ngClass]=" {'is-invalid':  !form.get('process').valid && form.get('process').touched }"><br><br>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-    <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>
-    <button class="buttonModalAccept" mat-button [mat-dialog-close]="true" cdkFocusInitial>Difundir vacante</button>
-</mat-dialog-actions>
+<h3>Nombre de la empresa </h3>
+
+
+
+<form [formGroup]="form">
+    <mat-dialog-content class="mat-typography">
+        <p><b>Cargo:</b> {{data.charge.name}} <br> <b>Salario:</b> {{data.charge.range}} <br> <b>Descripción: </b>
+            {{data.charge.range}} <br><b>Nro. vacantes:</b> {{data.vacant.placeNumber}} </p>
+        <p> <b>Habilidades fuertes:</b></p>
+        <ul>
+            <li *ngFor="let hf of data.charge.strongSkill"> {{hf.name}} </li>
+
+        </ul>
+        <label>Habilidades Blandas:</label>
+        <ng-container *ngFor="let cr of form.controls['skills'].controls;let i=index;">
+            <div class="row">
+                <div class="col-8" [formGroup]="cr">
+                    <!-- <input type="" class="form-control input1" placeholder="" formControlName="id"
+                        [ngClass]=" {'is-invalid':  !cr.get('id').valid && cr.get('id').touched }"> -->
+                        <select class="form-control input1" (change)="changeCity($event,i)" formControlName="id">
+                                <option value="">Elija habilidad</option>
+                                <option *ngFor="let skill of skills" [ngValue]="skill.id_">{{skill.name}}</option>
+                             </select>
+                             <div  *ngIf=" (cr.get('id').status=='INVALID') && cr.get('id').touched">
+                                    <sup>*</sup>Por favor, elija una habilidad. 
+                                 </div>
+                </div>
+
+                <div class="col-2" *ngIf="(i+1)== form.controls['skills'].controls.length">
+                    <i (click)="addCar()" class="far fa-plus-square"></i>
+                </div>
+                <div class="col-2" *ngIf="i!=0">
+                    <i (click)="removeCar(i)" class="far fa-times-circle"></i>
+                </div>
+            </div>
+            <br>
+        </ng-container>
+
+        <label>Procesos:</label><br>
+        <input type="text" class="inputLogIn" placeholder="" formControlName="process"
+            [ngClass]=" {'is-invalid':  !form.get('process').valid && form.get('process').touched }"><br><br>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>
+        <button class="buttonModalAccept" mat-button (click)="difundir()" cdkFocusInitial>Difundir vacante</button>
+    </mat-dialog-actions>
+</form>

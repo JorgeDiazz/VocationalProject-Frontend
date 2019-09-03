@@ -1,8 +1,8 @@
-<h3>Nombre de la empresa </h3><br>
+<h3  >  {{nameEmpresa}} </h3><br>
 <mat-dialog-content class="mat-typography">
 
     <form [formGroup]="form" novalidate="novalidate">
-        <input type="text" class="inputLogIn" placeholder="Ingrese el charge" formControlName="name" [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched } "><br>
+        <input type="text" class="inputLogIn" placeholder="Ingrese el cargo" formControlName="name" [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched } "><br>
         <div *ngIf="form.get('name').errors?.required && form.get('name').touched ">
             <label class="invalid">Ingrese nombre válido</label>
         </div>

@@ -1,8 +1,14 @@
-<div class="row">
-    <div class="col-sm-4">
-        <div class="card-job ">
-            <img src="assets/img/edit.svg" (click)="verModal()">
-            <p>Nombre del cargo</p>
-        </div>
-    </div>
-</div>
+
+<ng-container *ngFor="let c of charges;let i=index">
+        <ng-container *ngFor="let vacant of c.vacant;let j=index">
+                <div class="row">
+                        <div class="col-sm-4">
+                            <div class="card-job ">
+                                <img src="assets/img/edit.svg" (click)="verModal(i,j)">
+                                <p> {{c.name}} - Vacante num {{j+1}}  </p>
+                            </div>
+                        </div>
+                    </div>
+        </ng-container>
+
+</ng-container> 

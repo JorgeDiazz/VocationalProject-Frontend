@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalVacantComponent } from '../vacant/modal-vacant/modal-vacant.component';
 import {MatDialog} from '@angular/material/dialog';
+import { ChargeI } from 'src/app/models/models.model';
+import { ServGlobalService } from 'src/app/services/serv-global.service';
 
 @Component({
   selector: 'app-vacant',
@@ -9,7 +11,10 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class VacantComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  charges:ChargeI[];
+  constructor(public dialog: MatDialog,public serv:ServGlobalService) {
+    this.charges=this.serv.getAllCharges();
+   }
 
   ngOnInit() {
   }

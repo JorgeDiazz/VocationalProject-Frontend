@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalJob1Component } from './modal-job1/modal-job1.component';
+import { ChargeI } from 'src/app/models/models.model';
+import { ServGlobalService } from 'src/app/services/serv-global.service';
 
 @Component({
   selector: 'app-pending-vacancies',
@@ -9,14 +11,19 @@ import { ModalJob1Component } from './modal-job1/modal-job1.component';
 })
 export class PendingVacanciesComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  charges:ChargeI[];
+  constructor(public dialog: MatDialog,
+    public serv:ServGlobalService) {
+      this.charges=this.serv.getAllCharges();
+     }
 
   ngOnInit() {
   }
 
-  verModal() {
+  verModal(i:number,j:number) {
       const dialogRef = this.dialog.open(ModalJob1Component, {
-        width: '350px'
+        width: '350px',
+        data:{ charge:this.charges[i], vacant:this.charges[i].vacant[j]}
       });
 
     dialogRef.afterClosed().subscribe(result => {

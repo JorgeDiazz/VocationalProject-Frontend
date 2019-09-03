@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material'
 @Component({
   selector: 'app-modal-vacant1',
   templateUrl: './modal-vacant1.component.html',
@@ -7,12 +8,18 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 })
 export class ModalVacant1Component implements OnInit {
   form: FormGroup;
-  constructor() { 
+  constructor(public dialogRef: MatDialogRef<ModalVacant1Component>) { 
     this.form = new FormGroup({
       'number': new FormControl('', Validators.required)
     });
   }
 
+  addVacant(){
+    this.form.markAllAsTouched();
+    if(this.form.valid){
+      this.dialogRef.close(this.form.value);
+    }
+  }
   ngOnInit() {
   }
 

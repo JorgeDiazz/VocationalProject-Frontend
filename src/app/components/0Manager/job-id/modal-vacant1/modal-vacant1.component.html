@@ -1,12 +1,15 @@
 <h3>Nombre del cargo</h3>
+
+<form [formGroup]="form">
 <mat-dialog-content class="mat-typography">
     <label>Número de personas para el cargo:</label>
     <input type="number" class="inputLogIn" placeholder="" formControlName="number" [ngClass]=" {'is-invalid':  !form.get('number').valid && form.get('number').touched }"><br>
-    <div *ngIf="form.get('number').errors?.pattern && form.get('number').touched ">
+    <div *ngIf="!form.get('number').valid && form.get('number').touched ">
         <label class="invalid">Por favor, ingrese un número da vacantes válido</label>
     </div><br>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>
-    <button class="buttonModalAccept" mat-button [mat-dialog-close]="true" cdkFocusInitial>Pedir</button>
+    <button class="buttonModalAccept" mat-button (click)="addVacant()" cdkFocusInitial>Pedir</button>
 </mat-dialog-actions>
+</form>
