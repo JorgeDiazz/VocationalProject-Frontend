@@ -10,7 +10,7 @@
     <label>Habilidades Blandas:</label>
     <input type="" class="inputLogIn" placeholder=""><br>
     <label>Procesos:</label><br>
-    <input type="" class="inputLogIn" placeholder=""><br><br>
+    <input type="text" class="inputLogIn" placeholder="" formControlName="process" [ngClass]=" {'is-invalid':  !form.get('process').valid && form.get('process').touched }"><br><br>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>

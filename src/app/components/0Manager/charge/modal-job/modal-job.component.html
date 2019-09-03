@@ -1,32 +1,26 @@
-<h3>name de la empresa </h3><br>
+<h3>Nombre de la empresa </h3><br>
 <mat-dialog-content class="mat-typography">
 
-    <form [formGroup]="form" novalidate="novalidate" >
-        <input type="text" class="inputLogIn" placeholder="Ingrese el charge" formControlName="name"
-        [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched } "><br>
-        <div  *ngIf="form.get('name').errors?.required && form.get('name').touched ">
-            <label class="invalid">Sorry, ingrese nombre</label>
+    <form [formGroup]="form" novalidate="novalidate">
+        <input type="text" class="inputLogIn" placeholder="Ingrese el charge" formControlName="name" [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched } "><br>
+        <div *ngIf="form.get('name').errors?.required && form.get('name').touched ">
+            <label class="invalid">Ingrese nombre válido</label>
         </div>
-        <input type="text" class="inputLogIn" placeholder="Rango de salario" formControlName="range"
-        [ngClass]=" {'is-invalid':  !form.get('range').valid && form.get('range').touched } "
-        >
-        <div  *ngIf="form.get('range').errors?.required && form.get('range').touched ">
-                <label class="invalid">Sorry, ingrese rango</label>
-            </div>
+        <input type="text" class="inputLogIn" placeholder="Rango de salario" formControlName="range" [ngClass]=" {'is-invalid':  !form.get('range').valid && form.get('range').touched } ">
+        <div *ngIf="form.get('range').errors?.required && form.get('range').touched ">
+            <label class="invalid">Ingrese rango válido</label>
+        </div>
         <br>
-        <textarea class="inputLogIn" placeholder="Descripción del Cargo" formControlName="desc"
-        [ngClass]=" {'is-invalid':  !form.get('desc').valid && form.get('desc').touched } "></textarea><br>
-        <div  *ngIf="form.get('desc').errors?.required && form.get('desc').touched ">
-                <label class="invalid">Sorry, ingrese descripción</label>
-            </div>
-        
+        <textarea class="inputLogIn" placeholder="Descripción del Cargo" formControlName="desc" [ngClass]=" {'is-invalid':  !form.get('desc').valid && form.get('desc').touched } "></textarea><br>
+        <div *ngIf="form.get('desc').errors?.required && form.get('desc').touched ">
+            <label class="invalid">Ingrese descripción del cargo</label>
+        </div>
+
         <label>carrers:</label>
         <div class="row">
             <ng-container *ngFor="let cr of form.controls['carrer'].controls;let i=index;">
                 <div class="col-7" [formGroup]="cr">
-                    <input type="" class="form-control input1" placeholder="" formControlName="name"
-                    [ngClass]=" {'is-invalid':  !cr.get('name').valid && cr.get('name').touched }" 
-                    >
+                    <input type="" class="form-control input1" placeholder="" formControlName="name" [ngClass]=" {'is-invalid':  !cr.get('name').valid && cr.get('name').touched }">
                 </div>
 
                 <div class="col-2" *ngIf="(i+1)== form.controls['carrer'].controls.length">
@@ -44,13 +38,11 @@
         <div class="row">
             <ng-container *ngFor="let cr of form.controls['strongSkill'].controls;let i=index;">
                 <div class="col-7" [formGroup]="cr">
-                    <input type="" class="form-control input1" placeholder="" formControlName="name"
-                    [ngClass]=" {'is-invalid':  !cr.get('name').valid && cr.get('name').touched }" 
-                     >
+                    <input type="" class="form-control input1" placeholder="" formControlName="name" [ngClass]=" {'is-invalid':  !cr.get('name').valid && cr.get('name').touched }">
                 </div>
 
                 <div class="col-2" *ngIf="(i+1)== form.controls['strongSkill'].controls.length">
-                    <i (click)="addSkill()"  class="far fa-plus-square"></i>
+                    <i (click)="addSkill()" class="far fa-plus-square"></i>
                 </div>
                 <div class="col-2" *ngIf="i!=0">
                     <i (click)="removeSkill(i)" class="far fa-times-circle"></i>
@@ -63,5 +55,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>
-    <button class="buttonModalAccept" mat-button (click)="save()" cdkFocusInitial>Crear charge</button>
+    <button class="buttonModalAccept" mat-button (click)="save()" cdkFocusInitial>Crear cargo</button>
 </mat-dialog-actions>

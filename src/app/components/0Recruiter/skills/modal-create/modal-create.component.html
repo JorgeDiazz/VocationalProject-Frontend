@@ -1,7 +1,7 @@
 <h3>Nueva habilidad</h3>
 <mat-dialog-content class="mat-typography">
     <label>Nombre de la habilidad:</label>
-    <input type="text" class="inputLogIn" placeholder=""><br>
+    <input type="text" class="inputLogIn" placeholder="" formControlName="name" [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched }"><br>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>

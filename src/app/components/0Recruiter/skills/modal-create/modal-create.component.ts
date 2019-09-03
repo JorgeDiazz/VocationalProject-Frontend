@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-modal-create',
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./modal-create.component.css']
 })
 export class ModalCreateComponent implements OnInit {
+  form: FormGroup;
+  constructor() { 
 
-  constructor() { }
+    this.form = new FormGroup({
+      'name': new FormControl('', Validators.required)
+    });
+  }
 
   ngOnInit() {
   }
