@@ -1,21 +1,24 @@
 <h1>Habilidades globales</h1>
 
 <div class="row">
-    <div class="col-md-3">
+
+    <ng-container *ngIf="softs!=null">
+    
+    <div class="col-md-3" *ngFor="let soft of softs" >
         <div>
             <div class="card-skills">
                 <img src="assets/img/skills (1).svg">
 
             </div>
             <div class="skillG bg-colorGR-blue-medium">
-                <p>Habilidad</p>
+                <p> {{soft.name}} </p>
             </div>
         </div>
     </div>
-
+</ng-container>
     <div class="col-md-3">
         <div>
-            <div class="card-skills" (click)="verModalC()">
+            <div class="card-skills" (click)="verModalC(1)">
                 <img src="assets/img/add (2).svg">
 
             </div>
@@ -45,7 +48,7 @@
     </div>
 
     <div class="col-md-3">
-        <div class="skill plusS" (click)="verModalC()">
+        <div class="skill plusS" (click)="verModalC(2)">
             <img src="assets/img/add (3).svg">
         </div>
     </div>

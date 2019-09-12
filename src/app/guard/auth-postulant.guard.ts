@@ -1,15 +1,22 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { Observable } from 'rxjs'; 
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthPostulantGuard implements CanActivate {
+  constructor(private serv:AuthService, private route:Router ){}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+      console.log(this.serv.getAuth());
+      if(this.serv.isAuth("POSTULANT")){
+        return true;
+      }
+      this.route.navigateByUrl("/login");
+      return false;
   }
   
 }

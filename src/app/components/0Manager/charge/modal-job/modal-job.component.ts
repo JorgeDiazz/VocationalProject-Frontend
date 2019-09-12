@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material'
+import { Component, OnInit,Inject } from '@angular/core';
+import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material'
 
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { ServGlobalService } from 'src/app/services/serv-global.service';
 
 @Component({
   selector: 'app-modal-job',
@@ -33,8 +34,11 @@ export class ModalJobComponent implements OnInit {
   // }
 
   form: FormGroup;
- 
-  constructor(public dialogRef: MatDialogRef<ModalJobComponent>) {
+ nameEmpresa:string;
+
+  constructor(public dialogRef: MatDialogRef<ModalJobComponent>,
+    public serv:ServGlobalService) {
+      this.nameEmpresa=this.serv.getCompanie().name;
     this.form = new FormGroup({
       'name': new FormControl('', Validators.required),
       'range': new FormControl('', Validators.required),

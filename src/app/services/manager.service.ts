@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ChargeI } from '../models/charge.model';
+import { ChargeI } from '../models/models.model';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -10,10 +10,17 @@ export class ManagerService {
   charges:ChargeI[]=[];
 
   constructor() {
-    // localStorage.removeItem('charges');
+    
 
    }
 
+   
+
+
+
+
+
+   /** De la MVP */
   getAllCharges(){
     this.load();
     return this.charges;
