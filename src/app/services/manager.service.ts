@@ -10,10 +10,17 @@ export class ManagerService {
   charges:ChargeI[]=[];
 
   constructor() {
-    // localStorage.removeItem('charges');
+    
 
    }
 
+   
+
+
+
+
+
+   /** De la MVP */
   getAllCharges(){
     this.load();
     return this.charges;

@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { UserI, AuthI } from 'src/app/models/models.model';
+import { ServService } from 'src/app/services/serv.service';
+import { ServiceService } from 'src/app/services/service.service';
+import { Router } from '@angular/router'; 
+import { RecruiterI } from 'src/app/models/models.model';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +20,6 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
  * Y dejo acceder al lugar correspondiente 
  */
 
-
 export class LoginComponent implements OnInit {
 
   private log: boolean;
@@ -24,7 +28,17 @@ export class LoginComponent implements OnInit {
   private bot1: string;
   private bot2: string;
   form: FormGroup;
-  constructor() {
+
+  constructor(public serv:ServiceService,private route:Router) {
+    let auth:AuthI=this.serv.auth.getAuth();
+    if(auth){
+      this.navigate(auth.type);
+    }
+
+  }
+ 
+
+  ngOnInit() {
     this.log = false;
     this.reg = "Register bg-colorGR-blue-medium";
     this.bot1 = " buttonLogIn3 pos bg-colorGR-blue-light buttonLogIn3Select";
@@ -40,13 +54,41 @@ export class LoginComponent implements OnInit {
       'name': new FormControl('', Validators.required),
       'career': new FormControl('', Validators.required)
     });
-
-  }
-
-  ngOnInit() {
-
   }
    
+  login(){     
+    this.form.get("userEmail").markAsTouched();
+    this.form.get("password").markAsTouched();
+    let valid1=this.form.get("userEmail").valid;
+    let valid2=this.form.get("password").valid;
+    if(valid2 && valid1){
+      let user:UserI={user:this.form.value.name,password:this.form.value.password}
+      console.log(JSON.stringify(user));
+      this.serv.login.login(user).subscribe( (d)=>{ 
+        let type:string=(<any> d.body).type;
+        this.navigate(type);
+        this.serv.auth.saveAuth(d.headers,type);      
+      });
+    }
+   
+
+
+  }
+
+
+ navigate(type:string){
+  switch(type){
+    case "RECRUITER":
+        this.route.navigateByUrl("/recruiter");
+      break;
+    case "COMPANY":
+        this.route.navigateByUrl("/manager");
+      break;
+    case "POSTULANT":
+        this.route.navigateByUrl("/postulant");
+      break;
+  }
+ }
 
   change() {
     if (this.log) {
@@ -68,5 +110,8 @@ export class LoginComponent implements OnInit {
       this.bot2 = " buttonLogIn3 bg-colorGR-blue-light  buttonLogIn3Select";
     }
   }
+
+
+
 
 }

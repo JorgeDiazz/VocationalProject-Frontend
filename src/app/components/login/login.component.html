@@ -8,14 +8,14 @@
         <img id="FB" src="/assets/img/facebook (1).svg">
         <img id="GG" src="/assets/img/google-plus (1).svg">
         <input class="inputLogIn" placeholder=" correo electrónico"
-        formControlName="name"
-        [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched } ">
+        formControlName="userEmail"
+        [ngClass]=" {'is-invalid':  !form.get('userEmail').valid && form.get('userEmail').touched } ">
         
         <br>
-        <input class="inputLogIn" placeholder=" contraseña"
+        <input type="password" class="inputLogIn" placeholder=" contraseña"
         formControlName="password"
         [ngClass]=" {'is-invalid':  !form.get('password').valid && form.get('password').touched } "><br>
-        <button class="buttonLogIn2 ing bg-colorGR-blue-light">Ingresar</button>
+        <button class="buttonLogIn2 ing bg-colorGR-blue-light" (click)="login()" >Ingresar</button>
     </div>
     <div class="RegisterForm" *ngIf="!log">
         <button [class]="bot1" (click)="changePM()">Postulante</button>
@@ -40,7 +40,7 @@
         formControlName="number"
         [ngClass]=" {'is-invalid':  !form.get('number').valid && form.get('number').touched }">
 
-        <button class="buttonLogIn2 reg bg-colorGR-blue-light">Registrarse</button>
+        <button class="buttonLogIn2 reg bg-colorGR-blue-light"   >Registrarse</button>
     </div>
     <div [class]="reg">
         <img id="Logo" src="/assets/img/networking.svg">

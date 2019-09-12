@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalProfileMComponent } from '../0Manager/modal-profile-m/modal-profile-m.component';
 import { ModalProfileRComponent } from '../0Recruiter/modal-profile-r/modal-profile-r.component';
 import { ModalProfilePComponent } from '../0Postulant/modal-profile-p/modal-profile-p.component';
+import { ServiceService } from 'src/app/services/service.service';
 
 @Component({
   selector: 'app-menu',
@@ -15,11 +16,15 @@ export class MenuComponent implements OnInit {
   @Input() data:[];
   @Input() type:string="";
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog,private serv:ServiceService) {
     console.log(JSON.stringify(this.data));
    }
 
   ngOnInit() {
+  }
+
+  logOut(){
+    this.serv.login.logOut();
   }
 
   changeToggle(){

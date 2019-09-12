@@ -33,6 +33,8 @@ import { JobProcessComponent } from './components/0Recruiter/job-process/job-pro
 import { ModalProfileMComponent } from './components/0Manager/modal-profile-m/modal-profile-m.component';
 import { ModalProfileRComponent } from './components/0Recruiter/modal-profile-r/modal-profile-r.component';
 import { ModalProfilePComponent } from './components/0Postulant/modal-profile-p/modal-profile-p.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpErrorInterceptor } from './errors/http-error.interceptor';
  
 @NgModule({
   declarations: [
@@ -70,7 +72,12 @@ import { ModalProfilePComponent } from './components/0Postulant/modal-profile-p/
     AppRoutingModule,
     GeneralModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent],
   entryComponents: [ModalVacantComponent,ModalJob1Component,ModalJobComponent,ModalEditComponent,ModalCreateComponent,ModalRecComponent,ModalVacant1Component,ModalPostulantComponent,
   ModalProfileMComponent,ModalProfileRComponent,ModalProfilePComponent],

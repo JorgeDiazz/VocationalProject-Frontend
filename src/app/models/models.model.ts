@@ -1,3 +1,40 @@
+/**     Para logearse             */
+export interface UserI{
+    user:string;
+    password:string;
+}
+
+/** Para crear Reclutador */
+export interface RecruiterI{
+    nit:string;
+    id:string;
+    email:string;
+}
+
+ 
+export interface AuthI{
+    token:string,
+    type:string
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Es de la MVP */
 export interface ChargeI{
     id_?:number;
     name:string;
