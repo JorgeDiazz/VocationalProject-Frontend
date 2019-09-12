@@ -9,6 +9,9 @@ import { ChargeI } from 'src/app/models/charge.model';
   styleUrls: ['./charge.component.css']
 })
 export class ChargeComponent implements OnInit {
+  
+  
+
   charges:ChargeI[]=[];
 
   constructor(public dialog: MatDialog, public serv:ManagerService ) {
@@ -21,7 +24,7 @@ export class ChargeComponent implements OnInit {
 
   verModal() {
     const dialogRef = this.dialog.open(ModalJobComponent, {
-      width: '350px'
+      width: '650px'
     });
 
   dialogRef.afterClosed().subscribe(result => {

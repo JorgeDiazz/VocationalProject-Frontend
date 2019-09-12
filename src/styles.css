@@ -79,6 +79,11 @@ body {
     animation-name: fadeIn;
 }
 
+.fadeInAnimated {
+    animation-duration: 1s;
+    animation-name: fadeIn;
+}
+
 .RegisterForm {
     position: absolute;
     z-index: 3;
@@ -131,8 +136,8 @@ body {
     background-color: #00CDC4!important;
 }
 
-.colorGr-Blue_-medium{
-    color:#018893;
+.colorGr-Blue_-medium {
+    color: #018893;
 }
 
 .bg-colorGR-blue-medium {
@@ -301,6 +306,38 @@ body {
     color: white;
 }
 
+.spacePlus {
+    position: fixed;
+    z-index: 5;
+    top: 80px;
+    border: none;
+    right: 30px;
+}
+
+.spacePlus p {
+    text-align: end;
+    margin-top: 12px;
+    margin-left: 5px;
+    margin-right: -15px;
+}
+
+.button-plus {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 2px 2px 5px #666;
+}
+
+.button-plus:hover {
+    box-shadow: 2px 2px 8px #666;
+}
+
+.button-plus img {
+    width: 25px;
+    cursor: pointer;
+}
+
 
 /* ---------------------CARDS------------------------------- */
 
@@ -310,7 +347,7 @@ body {
 .card-job {
     background-color: #EBE8E3;
     width: 180px;
-    height: 170px;
+    height: auto;
     margin: 20px;
     box-shadow: 2px 2px 8px #666;
     border-radius: 3px;
@@ -325,11 +362,8 @@ body {
     cursor: pointer;
 }
 
-.card-job p {
-    margin-top: 30px;
-    margin-left: 15px;
-    margin-right: 15px;
-    font-size: 20px;
+.card-job h6 {
+    margin-top: 8px;
 }
 
 .card-job .plus {
@@ -346,8 +380,8 @@ body {
 /*Cards postulant*/
 
 .card-postulant {
-    width: 150px;
-    height: 140px;
+    width: 140px;
+    height: 130px;
     border-radius: 50%;
     cursor: pointer;
     margin: 5px;
@@ -362,33 +396,39 @@ body {
 /*Cards recruiter*/
 
 .card-recruiter {
-    background-color: #01879386;
-    width: 180px;
-    height: 210px;
+    background-color: #c0dbdd86;
+    width: 170px;
+    height: auto;
     margin: 20px;
     box-shadow: 2px 2px 8px #666;
     border-radius: 3px;
     text-align: center;
-    color: white;
+    color: #053d42;
 }
 
 .card-recruiter img {
-    width: 180px;
-    height: 170px;
+    width: 170px;
+    height: 160px;
 }
 
 .card-recruiter p {
     margin-top: 10px;
+    margin-bottom: 1px;
 }
 
 .card-recruiter:hover {
-    background-color: #50b5be8e;
+    background-color: #6ab9c08e;
 }
 
 .card-recruiter .plus {
     width: 125px;
     margin: 25px;
     cursor: pointer;
+}
+
+.card-recruiter .icon {
+    width: 25px;
+    height: auto;
 }
 
 
@@ -520,9 +560,9 @@ body {
 .vacancy1 {
     background-color: #EBE8E3;
     width: 190px;
-    height: 185px;
+    height: auto;
     margin: 20px;
-    margin-bottom: 0px;
+    margin-bottom: -10px;
     box-shadow: 2px 2px 8px #666;
     border-radius: 3px;
     text-align: center;
@@ -541,8 +581,8 @@ body {
 .postulants1 {
     width: 190px;
     height: 40px;
-    margin: 20px;
-    margin-top: 5px;
+    margin-left: 20px;
+    margin-top: -2px;
     color: white;
     box-shadow: 2px 2px 8px #666;
     border-radius: 3px;
@@ -976,13 +1016,15 @@ body.sidebar-toggled footer.sticky-footer {
 
 
 /** VALIDATORS +/*/
-.is-invalid{
+
+.is-invalid {
     border-style: solid;
-    border-width:1px;
+    border-width: 1px;
     border-color: rgb(243, 36, 36) !important;
     background-color: rgba(255, 255, 255, 0);
 }
-.invalid{
-    color:red !important;
-    font-size:14px;
+
+.invalid {
+    color: red !important;
+    font-size: 14px;
 }

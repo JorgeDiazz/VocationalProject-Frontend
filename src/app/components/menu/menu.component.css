@@ -1,20 +1,25 @@
  .colornav {
-    background-color: #012a38;
-}
-
-.colorSide {
-    background-color: #012b39;
-}
-.colorNel{
-    color:#000000;
-}
-
-.bg-azulCeleste{
-    background-color:#00cdc4;
-    color:white;
-}
-
-.colorZapote{
-    background-color: #f12b03;
-    
-}
+     background-color: #012a38;
+ }
+ 
+ .colorSide {
+     background-color: #012b39;
+ }
+ 
+ .colorNel {
+     color: #000000;
+ }
+ 
+ .bg-azulCeleste {
+     background-color: #00cdc4;
+     color: white;
+ }
+ 
+ .colorZapote {
+     background-color: #f12b03;
+ }
+ 
+ h4 {
+     margin-top: 8px;
+     color: white;
+ }

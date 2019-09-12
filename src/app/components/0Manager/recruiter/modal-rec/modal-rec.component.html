@@ -1,7 +1,11 @@
 <h3>Nuevo reclutador</h3>
-<mat-dialog-content class="mat-typography">
+<mat-dialog-content class="mat-typography fadeInAnimated">
     <form [formGroup]="form">
         <p>Se enviará un correo con la contraseña al nuevo reclutador para que ingrese al sistema</p>
+        <input type="number" class="inputLogIn" placeholder="Ingrese cédula" formControlName="email" [ngClass]=" {'is-invalid':  !form.get('email').valid && form.get('email').touched }"><br>
+        <div *ngIf="form.get('email').errors?.pattern && form.get('email').touched ">
+            <label class="invalid">Por favor, ingrese un correo válido</label>
+        </div>
         <input type="text" class="inputLogIn" placeholder="Ingrese el correo" formControlName="email" [ngClass]=" {'is-invalid':  !form.get('email').valid && form.get('email').touched }"><br>
         <div *ngIf="form.get('email').errors?.pattern && form.get('email').touched ">
             <label class="invalid">Por favor, ingrese un correo válido</label>

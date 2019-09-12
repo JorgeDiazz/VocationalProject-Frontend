@@ -1,5 +1,11 @@
 <h3>Nombre del cargo</h3>
 <mat-dialog-content class="mat-typography">
+    <mat-form-field class="recruiters">
+        <mat-label>Reclutadores</mat-label>
+        <mat-select [formControl]="states" multiple>
+            <mat-option *ngFor="let state of statesList" [value]="state">{{state}}</mat-option>
+        </mat-select>
+    </mat-form-field>
     <label>Número de personas para el cargo:</label>
     <input type="number" class="inputLogIn" placeholder="" formControlName="number" [ngClass]=" {'is-invalid':  !form.get('number').valid && form.get('number').touched }"><br>
     <div *ngIf="form.get('number').errors?.pattern && form.get('number').touched ">

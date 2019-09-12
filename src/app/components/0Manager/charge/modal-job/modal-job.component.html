@@ -2,55 +2,130 @@
 <mat-dialog-content class="mat-typography">
 
     <form [formGroup]="form" novalidate="novalidate">
-        <input type="text" class="inputLogIn" placeholder="Ingrese el charge" formControlName="name" [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched } "><br>
-        <div *ngIf="form.get('name').errors?.required && form.get('name').touched ">
-            <label class="invalid">Ingrese nombre válido</label>
+        <div class="row fadeInAnimated">
+            <div class="col">
+                <mat-form-field class="areas">
+                    <mat-label>Área de la empresa</mat-label>
+                    <mat-select [(ngModel)]="selectedValue" FormControlName="state">
+                        <mat-option *ngFor="let state of statesList" [value]="state">
+                            {{state}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <input type="text" class="inputLogIn" placeholder="Ingrese el cargo" formControlName="name" [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched } "><br>
+                <div *ngIf="form.get('name').errors?.required && form.get('name').touched ">
+                    <label class="invalid">Ingrese nombre válido</label>
+                </div>
+            </div>
+            <div class="col">
+                <label>Rango de salario:</label><br>
+                <input type="number" class="inputLogIn salary1" placeholder="" formControlName="range" [ngClass]=" {'is-invalid':  !form.get('range').valid && form.get('range').touched } "> -
+                <input type="number" class="inputLogIn salary2" placeholder="" formControlName="range" [ngClass]=" {'is-invalid':  !form.get('range').valid && form.get('range').touched } ">
+                <div *ngIf="form.get('range').errors?.required && form.get('range').touched ">
+                    <label class="invalid">Ingrese rango válido</label>
+                </div>
+                <textarea class="inputLogIn" placeholder="Descripción del Cargo" formControlName="desc" [ngClass]=" {'is-invalid':  !form.get('desc').valid && form.get('desc').touched } "></textarea><br>
+                <div *ngIf="form.get('desc').errors?.required && form.get('desc').touched ">
+                    <label class="invalid">Ingrese descripción del cargo</label>
+                </div>
+            </div>
         </div>
-        <input type="text" class="inputLogIn" placeholder="Rango de salario" formControlName="range" [ngClass]=" {'is-invalid':  !form.get('range').valid && form.get('range').touched } ">
-        <div *ngIf="form.get('range').errors?.required && form.get('range').touched ">
-            <label class="invalid">Ingrese rango válido</label>
+        <div class="row">
+            <div class="col">
+                <label>Carreras:</label>
+                <mat-form-field class="recruiters">
+                    <mat-label>Carreras existentes</mat-label>
+                    <mat-select [formControl]="states" multiple>
+                        <mat-option *ngFor="let state of statesList" [value]="state">{{state}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div class="row">
+                    <ng-container *ngFor="let cr of form.controls['carrer'].controls;let i=index;">
+                        <div class="col-8" [formGroup]="cr">
+                            <input type="" class="form-control input1" placeholder="Nueva carrera" formControlName="name" [ngClass]=" {'is-invalid':  !cr.get('name').valid && cr.get('name').touched }">
+                        </div>
+
+                        <div class="col-2" *ngIf="(i+1)== form.controls['carrer'].controls.length">
+                            <i (click)="addCar()" class="fas fa-plus-circle"></i>
+                        </div>
+                        <div class="col-2" *ngIf="i!=0">
+                            <i (click)="removeCar(i)" class="fas fa-times-circle"></i>
+                        </div>
+                        <br>
+                    </ng-container>
+
+                </div>
+                <label>Procesos:</label>
+                <mat-form-field class="recruiters">
+                    <mat-label>Procesos existentes</mat-label>
+                    <mat-select [formControl]="states" multiple>
+                        <mat-option *ngFor="let state of statesList" [value]="state">{{state}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div class="row">
+                    <ng-container *ngFor="let cr of form.controls['carrer'].controls;let i=index;">
+                        <div class="col-8" [formGroup]="cr">
+                            <input type="" class="form-control input1" placeholder="Nuevo proceso" formControlName="name" [ngClass]=" {'is-invalid':  !cr.get('name').valid && cr.get('name').touched }">
+                        </div>
+
+                        <div class="col-2" *ngIf="(i+1)== form.controls['carrer'].controls.length">
+                            <i (click)="addCar()" class="fas fa-plus-circle"></i>
+                        </div>
+                        <div class="col-2" *ngIf="i!=0">
+                            <i (click)="removeCar(i)" class="fas fa-times-circle"></i>
+                        </div>
+                        <br>
+                    </ng-container>
+
+                </div>
+
+            </div>
+            <div class="col">
+                <label>Habilidades fuertes:</label>
+                <mat-form-field class="recruiters">
+                    <mat-label>Habilidades existentes</mat-label>
+                    <mat-select [formControl]="states" multiple>
+                        <mat-option *ngFor="let state of statesList" [value]="state">{{state}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div class="row">
+                    <ng-container *ngFor="let cr of form.controls['strongSkill'].controls;let i=index;">
+                        <div class="col-8" [formGroup]="cr">
+                            <input type="" class="form-control input1" placeholder="Nueva habilidad" formControlName="name" [ngClass]=" {'is-invalid':  !cr.get('name').valid && cr.get('name').touched }">
+                        </div>
+
+                        <div class="col-2" *ngIf="(i+1)== form.controls['strongSkill'].controls.length">
+                            <i (click)="addSkill()" class="fas fa-plus-circle"></i>
+                        </div>
+                        <div class="col-2" *ngIf="i!=0">
+                            <i (click)="removeSkill(i)" class="fas fa-times-circle"></i>
+                        </div>
+                        <br>
+                    </ng-container>
+
+                </div>
+            </div>
         </div>
         <br>
-        <textarea class="inputLogIn" placeholder="Descripción del Cargo" formControlName="desc" [ngClass]=" {'is-invalid':  !form.get('desc').valid && form.get('desc').touched } "></textarea><br>
-        <div *ngIf="form.get('desc').errors?.required && form.get('desc').touched ">
-            <label class="invalid">Ingrese descripción del cargo</label>
-        </div>
-
-        <label>carrers:</label>
+        <h2>Nueva vacante para el cargo</h2>
         <div class="row">
-            <ng-container *ngFor="let cr of form.controls['carrer'].controls;let i=index;">
-                <div class="col-7" [formGroup]="cr">
-                    <input type="" class="form-control input1" placeholder="" formControlName="name" [ngClass]=" {'is-invalid':  !cr.get('name').valid && cr.get('name').touched }">
+            <div class="col">
+                <mat-form-field class="recruiters">
+                    <mat-label>Reclutadores</mat-label>
+                    <mat-select [formControl]="states" multiple>
+                        <mat-option *ngFor="let state of statesList" [value]="state">{{state}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <input type="number" class="inputLogIn" placeholder="Puestos disponibles" formControlName="name" [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched } "><br>
+                <div *ngIf="form.get('name').errors?.required && form.get('name').touched ">
+                    <label class="invalid">Ingrese nombre válido</label>
                 </div>
-
-                <div class="col-2" *ngIf="(i+1)== form.controls['carrer'].controls.length">
-                    <i (click)="addCar()" class="far fa-plus-square"></i>
-                </div>
-                <div class="col-2" *ngIf="i!=0">
-                    <i (click)="removeCar(i)" class="far fa-times-circle"></i>
-                </div>
-                <br>
-            </ng-container>
-
+            </div>
         </div>
 
-        <label>Habilidades fuertes:</label>
-        <div class="row">
-            <ng-container *ngFor="let cr of form.controls['strongSkill'].controls;let i=index;">
-                <div class="col-7" [formGroup]="cr">
-                    <input type="" class="form-control input1" placeholder="" formControlName="name" [ngClass]=" {'is-invalid':  !cr.get('name').valid && cr.get('name').touched }">
-                </div>
 
-                <div class="col-2" *ngIf="(i+1)== form.controls['strongSkill'].controls.length">
-                    <i (click)="addSkill()" class="far fa-plus-square"></i>
-                </div>
-                <div class="col-2" *ngIf="i!=0">
-                    <i (click)="removeSkill(i)" class="far fa-times-circle"></i>
-                </div>
-                <br>
-            </ng-container>
-
-        </div>
     </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">

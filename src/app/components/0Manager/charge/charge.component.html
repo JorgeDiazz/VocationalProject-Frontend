@@ -1,13 +1,22 @@
 <div class="row">
     <div class="col-sm-4" *ngFor="let ch of charges;let i=index">
-        <div class="card-job ">
+        <div class="card-job fadeInAnimated">
             <img src="assets/img/edit.svg" [routerLink]="['/manager/job',ch.id_]">
-            <p> {{ch.name}} </p>
-        </div>
-    </div> 
-    <div class="col-sm-4">
-        <div class="card-job">
-            <img class="plus" src="assets/img/add (1).svg" (click)="verModal()">
+            <h6> <b>{{ch.name}}</b> </h6>
+            <p>30.000-40.000 <br> Vacantes activas: 5 <br></p>
         </div>
     </div>
+</div>
+
+<div class="spacePlus fadeInAnimated">
+    <div class="row">
+        <div class="col-9">
+            <p>Agregar nuevo cargo</p>
+        </div>
+        <div class="col-3">
+            <button class="button-plus bg-colorGR-orange-dark"> <img class="plus" src="assets/img/add (1).svg" (click)="verModal()"></button>
+        </div>
+    </div>
+
+
 </div>
