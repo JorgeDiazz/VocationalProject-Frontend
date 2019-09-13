@@ -1,0 +1,19 @@
+h3 {
+    text-align: center;
+}
+
+.card-postulant {
+    width: 80px;
+    height: 80px;
+}
+
+.buttonModalAccept {
+    border: none;
+    background-color: #508b919f;
+    border-radius: 6px;
+    color: white;
+}
+
+.buttonModalAccept:hover {
+    background-color: #1e6b749f;
+}

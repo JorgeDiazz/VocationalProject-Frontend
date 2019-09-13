@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalPostulantComponent } from '../../0Manager/job-id/modal-postulant/modal-postulant.component';
+import { ModalPostulantsComponent } from './modal-postulants/modal-postulants.component';
 
 @Component({
   selector: 'app-job-process',
@@ -22,5 +23,14 @@ export class JobProcessComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+  verPostulants(){
+    const dialogRef = this.dialog.open(ModalPostulantsComponent, {
+      width: '750px'
+    });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log(`Dialog result: ${result}`);
+  });
   }
 }
