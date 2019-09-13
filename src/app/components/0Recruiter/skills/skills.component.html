@@ -1,55 +1,36 @@
-<h1>Habilidades globales</h1>
+<div class="row fadeInAnimated">
+    <div class="col">
+        <h1>Habilidades globales</h1>
+        <h5>Habilidades blandas que todo colaborador dentro de la empresa debe tener sin importar el cargo</h5>
+        <mat-chip-list>
+            <mat-chip (click)="verModalE(1)" class="bg-colorGR-blue-medium">Papadum</mat-chip>
+            <mat-chip (click)="verModalE(2)" class="bg-colorGR-blue-medium">Naan</mat-chip>
+            <mat-chip (click)="verModalE(3)" class="bg-colorGR-blue-medium">Dal</mat-chip>
+        </mat-chip-list>
 
-<div class="row">
-
-    <ng-container *ngIf="softs!=null">
-    
-    <div class="col-md-3" *ngFor="let soft of softs" >
-        <div>
-            <div class="card-skills">
-                <img src="assets/img/skills (1).svg">
-
-            </div>
-            <div class="skillG bg-colorGR-blue-medium">
-                <p> {{soft.name}} </p>
-            </div>
-        </div>
     </div>
-</ng-container>
-    <div class="col-md-3">
-        <div>
-            <div class="card-skills" (click)="verModalC(1)">
-                <img src="assets/img/add (2).svg">
+    <div class="col">
+        <h1>Habilidades específicas</h1>
+        <h5>Habilidades blandas que debe tener el colaborador según el cargo que desempeñe</h5>
+        <mat-chip-list>
+            <mat-chip (click)="verModalE(1)" class="bg-colorGR-orange-light">Papadum</mat-chip>
+            <mat-chip (click)="verModalE(2)" class="bg-colorGR-orange-light">Naan</mat-chip>
+            <mat-chip (click)="verModalE(3)" class="bg-colorGR-orange-light">Dal</mat-chip>
+        </mat-chip-list>
 
-            </div>
-            <div class="skillG bg-colorGR-blue-medium">
-                <p>Nueva habilidad</p>
-            </div>
-        </div>
     </div>
 </div>
 
 
 
 
-<h1>Habilidades generales</h1>
-<div class="row">
-    <div class="col-md-3">
-        <div class="skill ">
-            <div class="row">
-                <div class="col-3">
-                    <img src="assets/img/training.svg">
-                </div>
-                <div class="col-9">
-                    <p>Nombre reclutador</p>
-                </div>
-            </div>
+<div class="spacePlus fadeInAnimated">
+    <div class="row">
+        <div class="col-9">
+            <p>Agregar nueva habilidad</p>
         </div>
-    </div>
-
-    <div class="col-md-3">
-        <div class="skill plusS" (click)="verModalC(2)">
-            <img src="assets/img/add (3).svg">
+        <div class="col-3">
+            <button (click)="verModalC()" class="button-plus bg-colorGR-orange-dark"> <img class="plus" src="assets/img/add (1).svg"  ></button>
         </div>
     </div>
 </div>

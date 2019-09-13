@@ -13,10 +13,9 @@ export class ServiceService  {
     public auth:AuthService ) {  
       let authPerson:AuthI={
         token:"sdfsdf",
-        type:"COMPANY",
-        //type:"COMPANY"
-        //type:"POSTULANT"
-        //type:"RECRUITER"
+        //type:"COMPANY",
+        //type:"POSTULANT",
+        type:"RECRUITER",
       }   
       localStorage.clear();
       localStorage.setItem("auth",JSON.stringify(authPerson));

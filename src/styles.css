@@ -480,15 +480,17 @@ body {
 /*Cards skills*/
 
 .skill {
-    background-color: rgba(253, 170, 61, 0.795);
-    width: 220px;
-    height: 40px;
+    background-color: rgba(252, 251, 250, 0.795);
+    width: auto;
+    height: auto;
     margin: 20px;
-    box-shadow: 2px 2px 8px #666;
-    border-radius: 20px;
+    border-radius: 15px;
     text-align: center;
     cursor: pointer;
     color: white;
+    border-color: rgba(253, 170, 61, 0.795);
+    border-style: solid;
+    color: #25272B;
 }
 
 .skill img {
@@ -1027,4 +1029,9 @@ body.sidebar-toggled footer.sticky-footer {
 .invalid {
     color: red !important;
     font-size: 14px;
+}
+
+.mat-chip {
+    color: white!important;
+    cursor: pointer!important;
 }

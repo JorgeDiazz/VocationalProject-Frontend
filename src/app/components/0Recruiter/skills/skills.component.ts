@@ -31,7 +31,8 @@ export class SkillsComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
-  verModalC(i:number) {
+
+  verModalC() {
     const dialogRef = this.dialog.open(ModalCreateComponent, {
       width: '350px'
     });
@@ -40,7 +41,7 @@ export class SkillsComponent implements OnInit {
     if(result){
       let soft:softSkillI={
         name:result.name,
-        type:i
+        type:1
       }
       this.serv.addSoft(soft);
       this.softs=this.serv.getSofts();
