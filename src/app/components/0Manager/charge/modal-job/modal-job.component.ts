@@ -3,6 +3,12 @@ import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material'
 
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { ServGlobalService } from 'src/app/services/serv-global.service';
+import {ThemePalette} from '@angular/material/core'; 
+
+export interface ChipColor {
+  name: string;
+  color: ThemePalette;
+} 
 
 @Component({
   selector: 'app-modal-job',
@@ -10,6 +16,12 @@ import { ServGlobalService } from 'src/app/services/serv-global.service';
   styleUrls: ['./modal-job.component.css']
 })
 export class ModalJobComponent implements OnInit {
+    availableColors: ChipColor[] = [
+    {name: 'none', color: undefined},
+    {name: 'Primary', color: 'primary'},
+    {name: 'Accent', color: 'accent'},
+    {name: 'Warn', color: 'warn'}
+  ];
   states = new FormControl();
   statesList: string[] = [
     'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',

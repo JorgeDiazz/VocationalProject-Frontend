@@ -39,6 +39,12 @@
                         <mat-option *ngFor="let state of statesList" [value]="state">{{state}}</mat-option>
                     </mat-select>
                 </mat-form-field>
+                <!--Mostrar las que va seleccionando-->
+                <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+                    <mat-chip class="selectChip" *ngFor="let chip of availableColors">
+                        {{chip.name}}
+                    </mat-chip>
+                </mat-chip-list><br>
                 <div class="row">
                     <ng-container *ngFor="let cr of form.controls['carrer'].controls;let i=index;">
                         <div class="col-8" [formGroup]="cr">
@@ -62,6 +68,12 @@
                         <mat-option *ngFor="let state of statesList" [value]="state">{{state}}</mat-option>
                     </mat-select>
                 </mat-form-field>
+                <!--Mostrar las que va seleccionando-->
+                <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+                    <mat-chip class="selectChip" *ngFor="let chip of availableColors">
+                        {{chip.name}}
+                    </mat-chip>
+                </mat-chip-list><br>
                 <div class="row">
                     <ng-container *ngFor="let cr of form.controls['carrer'].controls;let i=index;">
                         <div class="col-8" [formGroup]="cr">
@@ -88,6 +100,12 @@
                         <mat-option *ngFor="let state of statesList" [value]="state">{{state}}</mat-option>
                     </mat-select>
                 </mat-form-field>
+                <!--Mostrar las que va seleccionando-->
+                <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+                    <mat-chip class="selectChip" *ngFor="let chip of availableColors">
+                        {{chip.name}}
+                    </mat-chip>
+                </mat-chip-list><br>
                 <div class="row">
                     <ng-container *ngFor="let cr of form.controls['strongSkill'].controls;let i=index;">
                         <div class="col-8" [formGroup]="cr">
@@ -116,6 +134,12 @@
                         <mat-option *ngFor="let state of statesList" [value]="state">{{state}}</mat-option>
                     </mat-select>
                 </mat-form-field>
+                <!--Mostrar las que va seleccionando-->
+                <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+                    <mat-chip class="selectChip" *ngFor="let chip of availableColors">
+                        {{chip.name}}
+                    </mat-chip>
+                </mat-chip-list><br>
             </div>
             <div class="col">
                 <input type="number" class="inputLogIn" placeholder="Puestos disponibles" formControlName="name" [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched } "><br>
