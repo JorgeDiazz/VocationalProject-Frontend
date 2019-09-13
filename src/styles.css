@@ -513,9 +513,9 @@ body {
 .vacancy {
     background-color: #EBE8E3;
     width: 180px;
-    height: 130px;
+    height: auto;
     margin: 20px;
-    margin-bottom: 0px;
+    margin-bottom: -10px;
     box-shadow: 2px 2px 8px #666;
     border-radius: 3px;
     text-align: center;
@@ -532,8 +532,8 @@ body {
 .postulants {
     width: 180px;
     height: 40px;
-    margin: 20px;
-    margin-top: 5px;
+    margin-left: 20px;
+    margin-top: -2px;
     color: white;
     box-shadow: 2px 2px 8px #666;
     border-radius: 3px;

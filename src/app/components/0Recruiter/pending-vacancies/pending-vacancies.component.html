@@ -1,14 +1,27 @@
-
 <ng-container *ngFor="let c of charges;let i=index">
-        <ng-container *ngFor="let vacant of c.vacant;let j=index">
-                <div class="row">
-                        <div class="col-sm-4">
-                            <div class="card-job ">
-                                <img src="assets/img/edit.svg" (click)="verModal(i,j)">
-                                <p> {{c.name}} - Vacante num {{j+1}}  </p>
-                            </div>
+    <ng-container *ngFor="let vacant of c.vacant;let j=index">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="vacancy1 fadeInAnimated">
+                    <img src="assets/img/placeholder-img.jpg" (click)="verModal(1,1)">
+                    <p>Nombre del cargo<br> Reclutadores a cargo: 3
+                    </p>
+                </div>
+                <div class="postulants1 bg-colorGR-orange-dark fadeInAnimated">
+                    <div class="row">
+                        <div class="col-6">
+                            <p>01/06/2018</p>
+                        </div>
+                        <div class="col-3">
+                            <img src="assets/img/employee.svg">
+                        </div>
+                        <div class="col-3">
+                            <P id="number">6</P>
                         </div>
                     </div>
-        </ng-container>
+                </div>
+            </div>
+        </div>
+    </ng-container>
 
-</ng-container> 
+</ng-container>
