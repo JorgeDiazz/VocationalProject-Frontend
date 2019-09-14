@@ -14,7 +14,8 @@ export interface RecruiterI{
  
 export interface AuthI{
     token:string,
-    type:string
+    type:string,
+    user?:any
 }
 
 /**  */

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ChargeI, AreaI } from '../models/models.model';
 import { HttpClient } from '@angular/common/http';
 import { ServService } from './serv.service';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +18,13 @@ export class ManagerService {
    }
 
    /** AREAS */
-   PostArea(area:AreaI){
+   postArea(area:AreaI){
      return this.serv.POST(area,`${this.areaURL}${area.nit_company}`);
    }
 
-   GetAreas(nitCompany:String){
+   getAreas(){
+     let nitCompany=<any> this.serv.servAuth.getAuth().nit;
+     console.log(`${this.areaURL}${nitCompany}`) 
      return this.serv.GET(`${this.areaURL}${nitCompany}`);
    }
 

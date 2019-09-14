@@ -19,12 +19,11 @@ export class AuthService {
  
   }
 
-  saveAuth(header:HttpHeaders,type:string){
+  saveAuth(header:HttpHeaders,user:any){
     let token=header.get("token");
-    let ob:AuthI={
-      token:token,
-      type:type
-    }
+    let ob:AuthI={token:"",type:""}
+    ob=Object.assign(user);
+    ob.token=token;
     localStorage.clear();
     localStorage.setItem("auth",JSON.stringify(ob));
   }

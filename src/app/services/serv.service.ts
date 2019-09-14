@@ -3,6 +3,7 @@ import { LoginService } from './login.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { retry, catchError } from 'rxjs/operators';
 export class ServService {
 
   apiURL = "http://localhost:8080/"
-  constructor(private httpCliente: HttpClient) {
+  constructor(private httpCliente: HttpClient,public servAuth:AuthService) {
 
   }
 
@@ -29,6 +30,7 @@ export class ServService {
   }
 
   GET(url) {
+    
     return this.httpCliente.get(this.apiURL + url,{ observe: 'response' });
   }
 

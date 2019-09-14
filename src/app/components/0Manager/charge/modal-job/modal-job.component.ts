@@ -4,6 +4,8 @@ import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material'
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { ServGlobalService } from 'src/app/services/serv-global.service';
 import {ThemePalette} from '@angular/material/core'; 
+import { ServiceService } from 'src/app/services/service.service';
+import { AreaI } from 'src/app/models/models.model';
 
 export interface ChipColor {
   name: string;
@@ -32,28 +34,19 @@ export class ModalJobComponent implements OnInit {
     'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
     'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
   ];
-  // charge = {
-  //   name: "Junior Sistema",
-  //   range: "1500-3444",
-  //   desc: "hola hola hola",
-  //   carrer: [
-  //     { name: 'Ing. Sistemas' }
-  //   ],
-  //   strongSkill: [
-  //     { name: "1" }
-  //   ]
+ 
 
-  // }
-
-  form: FormGroup;
+ form: FormGroup;
  nameEmpresa:string;
+ areas:AreaI[];
 
   constructor(public dialogRef: MatDialogRef<ModalJobComponent>,
-    public serv:ServGlobalService) {
-      this.nameEmpresa=this.serv.getCompanie().name;
+    public serv:ServiceService) {
+       
     this.form = new FormGroup({
       'name': new FormControl('', Validators.required),
       'range': new FormControl('', Validators.required),
+      'area':new FormControl('',Validators.required),
       'desc': new FormControl('', Validators.required),
       'carrer': new FormArray([
         new FormGroup({
@@ -71,11 +64,16 @@ export class ModalJobComponent implements OnInit {
 
 
   ngOnInit() {
+    this.serv.company.getAreas().subscribe(dat=>{
+      this.areas=<AreaI[]> dat.body;
+      console.log(this.areas);
+    });
   }
 
   save() {
     this.form.markAllAsTouched();
-    console.log(this.form);
+  
+    console.log(this.form.value);
     //console.log(JSON.stringify(this.form.value));
 
     if (this.form.valid) {

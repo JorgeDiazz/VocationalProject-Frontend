@@ -22,10 +22,11 @@ import {
               console.log("ERROR DEL CLIENTE"+errorMessage)
             } else {
               // server-side error
+              console.log(error.error);
               errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
               console.log("Servidor"+errorMessage)
             }
-            window.alert(errorMessage);
+           // window.alert(errorMessage);
             return throwError(errorMessage);
           })
         )

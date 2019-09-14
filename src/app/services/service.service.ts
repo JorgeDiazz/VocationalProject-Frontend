@@ -4,13 +4,14 @@ import { ServService } from './serv.service';
 import { UserI, AuthI } from '../models/models.model';
 import { RecruiterService } from './recruiter.service';
 import { AuthService } from './auth.service';
+import { ManagerService } from './manager.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceService  {
   constructor(public login:LoginService,public recruiter:RecruiterService,
-    public auth:AuthService ) {  
+    public auth:AuthService, public company:ManagerService ) {  
  
       // let authPerson:AuthI={
       //   token:"sdfsdf",
