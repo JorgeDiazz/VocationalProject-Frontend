@@ -24,5 +24,4 @@ export class  RecruiterService {
   /** END Queries */
 
 
-
 }

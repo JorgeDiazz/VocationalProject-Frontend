@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       'number': new FormControl('', Validators.required),
       'email': new FormControl('', [Validators.required,Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]),
       'name': new FormControl('', Validators.required),
-      'career': new FormControl('', Validators.required)
+      'id': new FormControl('', Validators.required)
     });
   }
    

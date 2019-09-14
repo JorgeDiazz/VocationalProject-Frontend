@@ -3,51 +3,35 @@
 
     <form [formGroup]="form">
 
-    <div class="LogInForm" *ngIf="log">
-        <h1>Nombre empresa</h1>
-        <img id="FB" src="/assets/img/facebook (1).svg">
-        <img id="GG" src="/assets/img/google-plus (1).svg">
-        <input class="inputLogIn" placeholder=" correo electrónico"
-        formControlName="userEmail"
-        [ngClass]=" {'is-invalid':  !form.get('userEmail').valid && form.get('userEmail').touched } ">
-        
-        <br>
-        <input type="password" class="inputLogIn" placeholder=" contraseña"
-        formControlName="password"
-        [ngClass]=" {'is-invalid':  !form.get('password').valid && form.get('password').touched } "><br>
-        <button class="buttonLogIn2 ing bg-colorGR-blue-light" (click)="login()" >Ingresar</button>
-    </div>
-    <div class="RegisterForm" *ngIf="!log">
-        <button [class]="bot1" (click)="changePM()">Postulante</button>
-        <button [class]="bot2" (click)="changePM()">Empresa</button>
+        <div class="LogInForm" *ngIf="log">
+            <h1>Nombre empresa</h1>
+            <img id="FB" src="/assets/img/facebook (1).svg">
+            <img id="GG" src="/assets/img/google-plus (1).svg">
+            <input class="inputLogIn" placeholder=" correo electrónico" formControlName="userEmail" [ngClass]=" {'is-invalid':  !form.get('userEmail').valid && form.get('userEmail').touched } ">
 
-        <input type="number" class="inputLogIn reg1" *ngIf="pos" placeholder="NIT de la empresa"
-        formControlName="nit"
-        [ngClass]=" {'is-invalid':  !form.get('nit').valid && form.get('nit').touched }">
-        <input type="text" class="inputLogIn reg1" placeholder="Ingrese nombre"
-        formControlName="name"
-        [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched }">
-        <input type="email" class="inputLogIn reg1" placeholder="correo electrónico"
-        formControlName="email"
-        [ngClass]=" {'is-invalid':  !form.get('email').valid && form.get('email').touched }">
-        <input type="text" class="inputLogIn reg1" *ngIf="!pos" placeholder="Carrera o profesión"
-        formControlName="career"
-        [ngClass]=" {'is-invalid':  !form.get('career').valid && form.get('career').touched }">
-        <input type="password" class="inputLogIn reg1" *ngIf="!pos" placeholder="contraseña"
-        formControlName="newPassword"
-        [ngClass]=" {'is-invalid':  !form.get('newPassword').valid && form.get('newPassword').touched }">
-        <input type="number" class="inputLogIn reg1" *ngIf="pos" placeholder="teléfono"
-        formControlName="number"
-        [ngClass]=" {'is-invalid':  !form.get('number').valid && form.get('number').touched }">
+            <br>
+            <input type="password" class="inputLogIn" placeholder=" contraseña" formControlName="password" [ngClass]=" {'is-invalid':  !form.get('password').valid && form.get('password').touched } "><br>
+            <button class="buttonLogIn2 ing bg-colorGR-blue-light" (click)="login()">Ingresar</button>
+        </div>
+        <div class="RegisterForm" *ngIf="!log">
+            <button [class]="bot1" (click)="changePM()">Postulante</button>
+            <button [class]="bot2" (click)="changePM()">Empresa</button>
 
-        <button class="buttonLogIn2 reg bg-colorGR-blue-light"   >Registrarse</button>
-    </div>
-    <div [class]="reg">
-        <img id="Logo" src="/assets/img/networking.svg">
-        <button class="buttonLogIn bg-colorGR-blue-medium" *ngIf="log" (click)="change()">Registrarse </button>
-        <button class="buttonLogIn bg-colorGR-blue-medium" *ngIf="!log" (click)="change()">Iniciar Sesión</button>
-    </div>
-</form>
+            <input type="number" class="inputLogIn reg1" *ngIf="pos" placeholder="NIT de la empresa" formControlName="nit" [ngClass]=" {'is-invalid':  !form.get('nit').valid && form.get('nit').touched }">
+            <input type="text" class="inputLogIn reg1" placeholder="Ingrese nombre" formControlName="name" [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched }">
+            <input type="email" class="inputLogIn reg1" placeholder="correo electrónico" formControlName="email" [ngClass]=" {'is-invalid':  !form.get('email').valid && form.get('email').touched }">
+            <input type="number" class="inputLogIn reg1" *ngIf="!pos" placeholder="Cédula" formControlName="id" [ngClass]=" {'is-invalid':  !form.get('id').valid && form.get('id').touched }">
+            <input type="password" class="inputLogIn reg1" *ngIf="!pos" placeholder="contraseña" formControlName="newPassword" [ngClass]=" {'is-invalid':  !form.get('newPassword').valid && form.get('newPassword').touched }">
+            <input type="number" class="inputLogIn reg1" *ngIf="pos" placeholder="teléfono" formControlName="number" [ngClass]=" {'is-invalid':  !form.get('number').valid && form.get('number').touched }">
+
+            <button class="buttonLogIn2 reg bg-colorGR-blue-light">Registrarse</button>
+        </div>
+        <div [class]="reg">
+            <img id="Logo" src="/assets/img/networking.svg">
+            <button class="buttonLogIn bg-colorGR-blue-medium" *ngIf="log" (click)="change()">Registrarse </button>
+            <button class="buttonLogIn bg-colorGR-blue-medium" *ngIf="!log" (click)="change()">Iniciar Sesión</button>
+        </div>
+    </form>
 
     <div id="LogIn">
 
