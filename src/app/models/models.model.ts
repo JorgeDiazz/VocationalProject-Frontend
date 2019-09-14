@@ -17,6 +17,17 @@ export interface AuthI{
     type:string
 }
 
+/**  */
+export interface AreaI{
+id:string;
+name:string;
+nit_company?:string;
+}
+
+export interface JobPositionI{
+    
+}
+
 
 
 

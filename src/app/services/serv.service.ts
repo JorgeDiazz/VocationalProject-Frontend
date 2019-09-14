@@ -9,7 +9,7 @@ import { retry, catchError } from 'rxjs/operators';
 })
 export class ServService {
 
-  apiURL = "http://192.168.137.97:8080/"
+  apiURL = "http://localhost:8080/"
   constructor(private httpCliente: HttpClient) {
 
   }

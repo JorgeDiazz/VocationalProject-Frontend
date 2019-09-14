@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
     let valid1=this.form.get("userEmail").valid;
     let valid2=this.form.get("password").valid;
     if(valid2 && valid1){
-      let user:UserI={user:this.form.value.name,password:this.form.value.password}
+      let user:UserI={user:this.form.value.userEmail,password:this.form.value.password}
       console.log(JSON.stringify(user));
       this.serv.login.login(user).subscribe( (d)=>{ 
         let type:string=(<any> d.body).type;

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ChargeI } from '../models/models.model';
+import { ChargeI, AreaI } from '../models/models.model';
 import { HttpClient } from '@angular/common/http';
+import { ServService } from './serv.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +10,22 @@ export class ManagerService {
 
   charges:ChargeI[]=[];
 
-  constructor() {
-    
+  areaURL="area/"; // "area/id:" 
 
+  constructor(public serv:ServService) {
+    
    }
 
-   
+   /** AREAS */
+   PostArea(area:AreaI){
+     return this.serv.POST(area,`${this.areaURL}${area.nit_company}`);
+   }
 
+   GetAreas(nitCompany:String){
+     return this.serv.GET(`${this.areaURL}${nitCompany}`);
+   }
 
+   /**   */
 
 
 

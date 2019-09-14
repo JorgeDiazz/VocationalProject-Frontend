@@ -11,15 +11,15 @@ import { AuthService } from './auth.service';
 export class ServiceService  {
   constructor(public login:LoginService,public recruiter:RecruiterService,
     public auth:AuthService ) {  
-      let authPerson:AuthI={
-        token:"sdfsdf",
-        type:"COMPANY",
-        //type:"COMPANY"
-        //type:"POSTULANT"
-        //type:"RECRUITER"
-      }   
-      localStorage.clear();
-      localStorage.setItem("auth",JSON.stringify(authPerson));
+      // let authPerson:AuthI={
+      //   token:"sdfsdf",
+      //   type:"COMPANY",
+      //   //type:"COMPANY"
+      //   //type:"POSTULANT"
+      //   //type:"RECRUITER"
+      // }   
+      // localStorage.clear();
+      // localStorage.setItem("auth",JSON.stringify(authPerson));
   }
  
 }
