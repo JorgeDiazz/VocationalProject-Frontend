@@ -32,7 +32,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="sidebar  navbar-nav bg-colorPos-red" [class.toggled]="toggled">
+        <ul [class]=colorSide [class.toggled]="toggled">
 
             <li *ngFor="let dt of data" class="nav-item" routerLinkActive='active'>
                 <a class="nav-link" [routerLink]="dt.route">
@@ -55,7 +55,7 @@
             <!-- /.container-fluid -->
 
             <!-- Sticky Footer -->
-            <footer class="sticky-footer bg-colorPos-blue">
+            <footer [class]=colorFoot>
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>COPYRIGHT</span>

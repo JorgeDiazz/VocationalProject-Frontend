@@ -1,1 +1,13 @@
-<p>modal-edit works!</p>
+<h3>Nombre habilidad</h3>
+<form [formGroup]="form">
+    <mat-dialog-content class="mat-typography">
+        <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Global</mat-radio-button>
+            <mat-radio-button value="2">Específica</mat-radio-button>
+        </mat-radio-group>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>
+        <button class="buttonModalAccept" mat-button (click)="crear()" cdkFocusInitial>Editar</button>
+    </mat-dialog-actions>
+</form>

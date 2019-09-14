@@ -11,6 +11,7 @@ import { AuthService } from './auth.service';
 export class ServiceService  {
   constructor(public login:LoginService,public recruiter:RecruiterService,
     public auth:AuthService ) {  
+ 
       // let authPerson:AuthI={
       //   token:"sdfsdf",
       //   type:"COMPANY",
@@ -20,6 +21,7 @@ export class ServiceService  {
       // }   
       // localStorage.clear();
       // localStorage.setItem("auth",JSON.stringify(authPerson));
+ 
   }
  
 }

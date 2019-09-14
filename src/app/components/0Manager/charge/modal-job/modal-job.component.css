@@ -73,3 +73,9 @@ input,
 textarea {
     font-size: 14px;
 }
+
+.selectChip {
+    margin-left: 32px!important;
+    width: 240px!important;
+    background-color: #01879357;
+}

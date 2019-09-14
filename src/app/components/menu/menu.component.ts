@@ -15,7 +15,9 @@ export class MenuComponent implements OnInit {
 
   @Input() data:[];
   @Input() type:string="";
-
+  @Input() colorSide:string="";
+  @Input() colorFoot:string="";
+  
   constructor(public dialog: MatDialog,private serv:ServiceService) {
     console.log(JSON.stringify(this.data));
    }

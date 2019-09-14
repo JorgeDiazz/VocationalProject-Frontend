@@ -1,14 +1,26 @@
 <h3>Nueva habilidad</h3>
 <form [formGroup]="form">
-<mat-dialog-content class="mat-typography">
-    <label>Nombre de la habilidad:</label>
-    <input type="text" class="inputLogIn" placeholder="" formControlName="name" [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched }"><br>
-    <div *ngIf="form.get('name').errors?.required && form.get('name').touched ">
+    <mat-dialog-content class="mat-typography">
+        <mat-form-field class="areas">
+            <mat-label>Habilidad existente</mat-label>
+            <mat-select [(ngModel)]="selectedValue" FormControlName="state">
+                <mat-option *ngFor="let state of statesList" [value]="state">
+                    {{state}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <input type="text" class="inputLogIn" placeholder="Habilidad nueva" formControlName="name" [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched }"><br>
+        <div *ngIf="form.get('name').errors?.required && form.get('name').touched ">
             <label class="invalid">Ingrese nombre de habilidad</label>
         </div>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-    <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>
-    <button class="buttonModalAccept" mat-button (click)="crear()"cdkFocusInitial>Crear</button>
-</mat-dialog-actions>
+        <br>
+        <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Global</mat-radio-button>
+            <mat-radio-button value="2">Específica</mat-radio-button>
+        </mat-radio-group>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>
+        <button class="buttonModalAccept" mat-button (click)="crear()" cdkFocusInitial>Crear</button>
+    </mat-dialog-actions>
 </form>
