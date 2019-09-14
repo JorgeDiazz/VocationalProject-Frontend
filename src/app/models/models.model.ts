@@ -10,16 +10,21 @@ export interface RecruiterI{
     id:string;
     email:string;
 }
-
+/** Carreras */
 export interface CarrerI{
     id:number,
     name:string;
 }
- 
+ /** Autenticacion */
 export interface AuthI{
     token:string,
     type:string,
     user?:any
+}
+
+export interface CompanyI{
+    nit:string,
+    name:string
 }
 
 /**  */
@@ -29,7 +34,7 @@ name:string;
 nit_company?:string;
 }
 
-
+/** Skills HARD and SOFT */
 export interface SkillI{
 id:number,
 name:string,
