@@ -11,6 +11,10 @@ export interface RecruiterI{
     email:string;
 }
 
+export interface CarrerI{
+    id:number,
+    name:string;
+}
  
 export interface AuthI{
     token:string,
@@ -20,11 +24,17 @@ export interface AuthI{
 
 /**  */
 export interface AreaI{
-id:string;
+id?:string;
 name:string;
 nit_company?:string;
 }
 
+
+export interface SkillI{
+id:number,
+name:string,
+type:string
+}
 export interface JobPositionI{
     
 }

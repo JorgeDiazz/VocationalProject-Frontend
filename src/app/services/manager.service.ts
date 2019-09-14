@@ -11,8 +11,7 @@ export class ManagerService {
 
   charges:ChargeI[]=[];
 
-  areaURL="area/"; // "area/id:" 
-
+  private areaURL="area/"; // "area/id:" 
   constructor(public serv:ServService) {
     
    }
@@ -28,10 +27,21 @@ export class ManagerService {
      return this.serv.GET(`${this.areaURL}${nitCompany}`);
    }
 
+   /** SKILLS */
+  private skillHardURL="skill/Hard";
+   getSkillsHard(){
+     return this.serv.GET( `${this.skillHardURL}` );
+   } 
+
+   private careerURL="career/";
+   /** CAREERS */
+
+   getCareers(){
+    return this.serv.GET( `${this.careerURL}` );
+   }
+
    /**   */
-
-
-
+ 
    /** De la MVP */
   getAllCharges(){
     this.load();
