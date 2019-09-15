@@ -15,18 +15,26 @@ export class ManagerService {
   private skillHardURL="skill/Hard";
   private careerURL="career/";
   private nitCompany="";
+  /**
+   * Cualquier petición que requiera nitCompany, se debe utilizar el método gitNitCompany()
+   */
+
 
   constructor(public serv:ServService) {
     if(this.serv.servAuth.getAuth()){
-    this.nitCompany=<any> this.serv.servAuth.getAuth().nit;}
+    }
    }
 
+
+ 
    /** AREAS */
    postArea(area:AreaI){
+     this.getNitCompany();
      return this.serv.POST(area,`${this.areaURL}${area.nit_company}`);
    }
 
    getAreas(){ 
+     this.getNitCompany();
      return this.serv.GET(`${this.areaURL}${this.nitCompany}`);
    }
 
@@ -52,11 +60,13 @@ export class ManagerService {
    /** Recruiter */
 
    postRecruiter(recruiter:RecruiterI){
-     recruiter.nitCompany=this.nitCompany;
+     this.getNitCompany();
+     recruiter.nitCompany=this.nitCompany; 
      return this.serv.POST(recruiter,'recruiter/');
    }
 
    getRecruiters(){
+     this.getNitCompany();
      return  this.serv.GET(`recruiter/${this.nitCompany}`);
    }
    
@@ -95,4 +105,9 @@ export class ManagerService {
     localStorage.setItem('charges',JSON.stringify(this.charges));
   }
   /** De la MVP */
+
+  private  getNitCompany(){    
+    this.nitCompany=this.serv.getCompany().nit;
+   }
+
 }

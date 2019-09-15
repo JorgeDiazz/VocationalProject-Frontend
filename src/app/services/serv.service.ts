@@ -12,11 +12,7 @@ import { CompanyI } from '../models/models.model';
 export class ServService {
 
   private apiURL = "http://localhost:8080/"
-  private token="";
-  private header=new HttpHeaders({ 
-    "Content-Type":"application/json",
-    "Authorization":""
-  });
+  
   constructor(private httpCliente: HttpClient,public servAuth:AuthService) {
    
      
@@ -29,25 +25,21 @@ export class ServService {
     
     if (login) {
       return this.httpCliente.post(this.apiURL + url, ob, { observe: 'response' });
-    } else {
-      this.newToken();
-      return this.httpCliente.post(this.apiURL + url, ob, { headers:this.header ,observe: 'response' });
+    } else { 
+      return this.httpCliente.post(this.apiURL + url, ob, {observe: 'response' });
     }
 
   }
 
-  GET(url) {
-    this.newToken();
-    return this.httpCliente.get(this.apiURL + url,{ headers:this.header , observe: 'response' });
+  GET(url) {  
+    return this.httpCliente.get(this.apiURL + url,{  observe: 'response' });
   }
 
   PUT(ob,url:string) {
-    this.newToken();
-    return this.httpCliente.put(this.apiURL+url,ob, {headers:this.header , observe: 'response' });
+    return this.httpCliente.put(this.apiURL+url,ob, {observe: 'response' });
   }
-  DELETE(id:string,url:string) {
-    this.newToken();
-    return this.httpCliente.delete(this.apiURL+url+id, { headers:this.header , observe: 'response' });
+  DELETE(id:string,url:string) {    
+    return this.httpCliente.delete(this.apiURL+url+id, { observe: 'response' });
   }
   getCompany():CompanyI {
     let dat: any = this.servAuth.getAuth();
@@ -67,12 +59,5 @@ export class ServService {
     return company;
   }
 
-  private newToken(){
-    if(this.servAuth.getAuth()!=null){
-      this.token=this.servAuth.getAuth().token; 
-      this.header.set('Authorization',this.token); 
-    }
-    
-     
-  }
+ 
 }
