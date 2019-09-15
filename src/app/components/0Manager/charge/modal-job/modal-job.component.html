@@ -35,7 +35,7 @@
                 <label>Carreras:</label>
                 <mat-form-field class="recruiters">
                     <mat-label>Carreras existentes</mat-label>
-                    <mat-select formControlName="carrer" multiple (selectionChange)="selectCarrer($event.value)" >
+                    <mat-select formControlName="carrer" multiple (selectionChange)="selectChange($event.value,1)" >
                         <mat-option *ngFor="let carrer of carrers" [value]="carrer">{{carrer.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -52,10 +52,10 @@
                         </div>
 
                         <div class="col-2" *ngIf="(i+1)== form.controls['newCarrer'].controls.length">
-                            <i (click)="addCar()" class="fas fa-plus-circle"></i>
+                            <i (click)="addOption(1)" class="fas fa-plus-circle"></i>
                         </div>
                         <div class="col-2" *ngIf="i!=0">
-                            <i (click)="removeCar(i)" class="fas fa-times-circle"></i>
+                            <i (click)="removeOption(1,i)" class="fas fa-times-circle"></i>
                         </div>
                         <br>
                     </ng-container>
@@ -69,10 +69,10 @@
                         </div>
 
                         <div class="col-2" *ngIf="(i+1)== form.controls['newProcess'].controls.length">
-                            <i (click)="addProcess()" class="fas fa-plus-circle"></i>
+                            <i (click)="addOption(4)" class="fas fa-plus-circle"></i>
                         </div>
                         <div class="col-2" *ngIf="i!=0">
-                            <i (click)="removeProcess(i)" class="fas fa-times-circle"></i>
+                            <i (click)="removeOption(4,i)" class="fas fa-times-circle"></i>
                         </div>
                         <br>
                     </ng-container>
@@ -84,7 +84,7 @@
                 <label>Habilidades fuertes:</label>
                 <mat-form-field class="recruiters">
                     <mat-label>Habilidades existentes</mat-label>
-                    <mat-select formControlName="hardSkill" multiple (selectionChange)="selectSkill($event.value)">
+                    <mat-select formControlName="hardSkill" multiple (selectionChange)="selectChange($event.value,2)">
                         <mat-option *ngFor="let hard of skillsHard" [value]="hard">{{hard.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -101,10 +101,10 @@
                         </div>
 
                         <div class="col-2" *ngIf="(i+1)== form.controls['newHardSkill'].controls.length">
-                            <i (click)="addSkill()" class="fas fa-plus-circle"></i>
+                            <i (click)="addOption(2)" class="fas fa-plus-circle"></i>
                         </div>
                         <div class="col-2" *ngIf="i!=0">
-                            <i (click)="removeSkill(i)" class="fas fa-times-circle"></i>
+                            <i (click)="removeOption(2,i)" class="fas fa-times-circle"></i>
                         </div>
                         <br>
                     </ng-container>
@@ -118,20 +118,20 @@
             <div class="col">
                 <mat-form-field class="recruiters">
                     <mat-label>Reclutadores</mat-label>
-                    <mat-select [formControl]="states" multiple>
-                        <mat-option *ngFor="let state of statesList" [value]="state">{{state}}</mat-option>
+                    <mat-select [formControl]="states" multiple (selectionChange)="selectChange($event.value,3)" >
+                        <mat-option *ngFor="let re of recruiters" [value]="re">{{re.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <!--Mostrar las que va seleccionando-->
                 <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
-                    <mat-chip class="selectChip" *ngFor="let chip of availableColors">
-                        {{chip.name}}
+                    <mat-chip class="selectChip" *ngFor="let selRecruiter of recruitersSelected">
+                        {{selRecruiter.name}}
                     </mat-chip>
                 </mat-chip-list><br>
             </div>
             <div class="col">
-                <input type="number" class="inputLogIn" placeholder="Puestos disponibles" formControlName="name" [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched } "><br>
-                <div *ngIf="form.get('name').errors?.required && form.get('name').touched ">
+                <input type="number" class="inputLogIn" placeholder="Puestos disponibles" formControlName="available" [ngClass]=" {'is-invalid':  !form.get('available').valid && form.get('available').touched } "><br>
+                <div *ngIf="form.get('available').errors?.required && form.get('available').touched ">
                     <label class="invalid">Ingrese nombre válido</label>
                 </div>
             </div>

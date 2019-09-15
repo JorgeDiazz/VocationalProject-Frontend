@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ChargeI, AreaI } from '../models/models.model';
+import { ChargeI, AreaI, RecruiterI } from '../models/models.model';
 import { HttpClient } from '@angular/common/http';
 import { ServService } from './serv.service';
 import { AuthService } from './auth.service';
@@ -12,8 +12,13 @@ export class ManagerService {
   charges:ChargeI[]=[];
 
   private areaURL="area/"; // "area/id:" 
+  private skillHardURL="skill/Hard";
+  private careerURL="career/";
+  private nitCompany="";
+
   constructor(public serv:ServService) {
-    
+    if(this.serv.servAuth.getAuth()){
+    this.nitCompany=<any> this.serv.servAuth.getAuth().nit;}
    }
 
    /** AREAS */
@@ -21,26 +26,43 @@ export class ManagerService {
      return this.serv.POST(area,`${this.areaURL}${area.nit_company}`);
    }
 
-   getAreas(){
-     let nitCompany=<any> this.serv.servAuth.getAuth().nit;
-     console.log(`${this.areaURL}${nitCompany}`) 
-     return this.serv.GET(`${this.areaURL}${nitCompany}`);
+   getAreas(){ 
+     return this.serv.GET(`${this.areaURL}${this.nitCompany}`);
    }
 
+   /** END AREAS */
+
    /** SKILLS */
-  private skillHardURL="skill/Hard";
+ 
    getSkillsHard(){
      return this.serv.GET( `${this.skillHardURL}` );
    } 
 
-   private careerURL="career/";
+   /** END SKILLS */
+
+   
    /** CAREERS */
 
    getCareers(){
     return this.serv.GET( `${this.careerURL}` );
    }
 
-   /**   */
+    /** END CAREERS */
+
+   /** Recruiter */
+
+   postRecruiter(recruiter:RecruiterI){
+     recruiter.nitCompany=this.nitCompany;
+     return this.serv.POST(recruiter,'recruiter/');
+   }
+
+   getRecruiters(){
+     return  this.serv.GET(`recruiter/${this.nitCompany}`);
+   }
+   
+   /** END Recruiter */
+
+
  
    /** De la MVP */
   getAllCharges(){
@@ -72,5 +94,5 @@ export class ManagerService {
   save(){
     localStorage.setItem('charges',JSON.stringify(this.charges));
   }
-
+  /** De la MVP */
 }

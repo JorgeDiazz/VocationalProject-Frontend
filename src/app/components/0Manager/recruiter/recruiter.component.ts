@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalRecComponent } from './modal-rec/modal-rec.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog'; 
 
 @Component({
   selector: 'app-recruiter',
@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class RecruiterComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog ) { }
 
   ngOnInit() {
   }
@@ -19,6 +19,7 @@ export class RecruiterComponent implements OnInit {
     });
 
   dialogRef.afterClosed().subscribe(result => {
+    
     console.log(`Dialog result: ${JSON.stringify(result)}`);
   });
 }
