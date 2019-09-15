@@ -4,7 +4,7 @@
     <form [formGroup]="form">
 
         <div class="LogInForm" *ngIf="log">
-            <h1>Nombre empresa</h1>
+            <h1>HataJob</h1>
             <img id="FB" src="/assets/img/facebook (1).svg">
             <img id="GG" src="/assets/img/google-plus (1).svg">
             <input class="inputLogIn" placeholder=" correo electrónico" formControlName="userEmail" [ngClass]=" {'is-invalid':  !form.get('userEmail').valid && form.get('userEmail').touched } ">

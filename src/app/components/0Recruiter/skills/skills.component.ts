@@ -3,7 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalEditComponent } from './modal-edit/modal-edit.component';
 import { ModalCreateComponent } from './modal-create/modal-create.component';
 import { softSkillI } from 'src/app/models/models.model';
-import { ServGlobalService } from 'src/app/services/serv-global.service';
+import { ServiceService } from '../../../services/service.service';
+import { SkillI } from '../../../models/models.model';
 
 @Component({
   selector: 'app-skills',
@@ -12,14 +13,19 @@ import { ServGlobalService } from 'src/app/services/serv-global.service';
 })
 export class SkillsComponent implements OnInit {
 
-  softs:softSkillI[]=[];
+
+  softs:SkillI[];
+  Globalsofts:SkillI[];
 
   constructor(public dialog: MatDialog,
-    public serv:ServGlobalService) {
-      this.softs=this.serv.getSofts();
+    public serv:ServiceService) {
      }
 
   ngOnInit() {
+
+    this.serv.company.getSkillsSoft().subscribe(dat=>{
+      this.softs=<SkillI[]>dat.body;
+    });
   }
 
   verModalE() {
@@ -37,7 +43,7 @@ export class SkillsComponent implements OnInit {
       width: '350px'
     });
 
-  dialogRef.afterClosed().subscribe(result => {
+ /* dialogRef.afterClosed().subscribe(result => {
     if(result){
       let soft:softSkillI={
         name:result.name,
@@ -48,6 +54,6 @@ export class SkillsComponent implements OnInit {
     }
     console.log(`Dialog result: ${result}`);
     
-  });
+  });*/
 }
 }

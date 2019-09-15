@@ -38,7 +38,7 @@ nit_company?:string;
 export interface SkillI{
 id:number,
 name:string,
-type:string
+type?:string
 }
 export interface JobPositionI{
     

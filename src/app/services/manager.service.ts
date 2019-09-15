@@ -33,6 +33,11 @@ export class ManagerService {
      return this.serv.GET( `${this.skillHardURL}` );
    } 
 
+   private skillSoftURL="skill/Soft";
+   getSkillsSoft(){
+     return this.serv.GET( `${this.skillSoftURL}` );
+   } 
+
    private careerURL="career/";
    /** CAREERS */
 

@@ -1,4 +1,4 @@
-<h3> {{nameEmpresa}} </h3><br>
+<h3> {{nameEmpresa.name}} </h3><br>
 <mat-dialog-content class="mat-typography">
 
     <form [formGroup]="form" novalidate="novalidate">
@@ -6,7 +6,7 @@
             <div class="col">
                 <mat-form-field class="areas">
                     <mat-label>Área de la empresa</mat-label>
-                    <mat-select   formControlName="area">
+                    <mat-select formControlName="area">
                         <mat-option *ngFor="let area of areas" [value]="area.id">
                             {{area.name}}
                         </mat-option>
@@ -19,10 +19,13 @@
             </div>
             <div class="col">
                 <label>Rango de salario:</label><br>
-                <input type="number" class="inputLogIn salary1" placeholder="" formControlName="range1" [ngClass]=" {'is-invalid':  !form.get('range1').valid && form.get('range1').touched } "> -
-                <input type="number" class="inputLogIn salary2" placeholder="" formControlName="range2" [ngClass]=" {'is-invalid':  !form.get('range2').valid && form.get('range2').touched } ">
-                <div *ngIf="(form.get('range1').errors?.required && form.get('range1').touched ) || ( form.get('range2').errors?.required && form.get('range2').touched  ) ">
+                <input type="number" class="inputLogIn salary1" placeholder="" formControlName="range1" required PositiveNumber [ngClass]=" {'is-invalid':  !form.get('range1').valid && form.get('range1').touched } "> -
+                <input type="number" class="inputLogIn salary2" placeholder="" formControlName="range2" required PositiveNumber [ngClass]=" {'is-invalid':  !form.get('range2').valid && form.get('range2').touched } ">
+                <div *ngIf="(form.get('range1').badError && form.get('range1').touched && form.get('range1').errors?.is) || ( form.get('range2').errors?.required && form.get('range2').touched  ) ">
                     <label class="invalid">Ingrese rango válido</label>
+                </div>
+                <div *ngIf="(form.get('range1').errors?.required && form.get('range1').errors?.nonPositive && form.get('range1').touched && form.get('range1').errors?.is) || ( form.get('range2').errors?.required && form.get('range2').touched  ) ">
+                    <label class="invalid">Ingrese rango válido holi</label>
                 </div>
                 <textarea class="inputLogIn" placeholder="Descripción del Cargo" formControlName="desc" [ngClass]=" {'is-invalid':  !form.get('desc').valid && form.get('desc').touched } "></textarea><br>
                 <div *ngIf="form.get('desc').errors?.required && form.get('desc').touched ">
@@ -35,7 +38,7 @@
                 <label>Carreras:</label>
                 <mat-form-field class="recruiters">
                     <mat-label>Carreras existentes</mat-label>
-                    <mat-select formControlName="carrer" multiple (selectionChange)="selectCarrer($event.value)" >
+                    <mat-select formControlName="carrer" multiple (selectionChange)="selectCarrer($event.value)">
                         <mat-option *ngFor="let carrer of carrers" [value]="carrer">{{carrer.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -130,9 +133,9 @@
                 </mat-chip-list><br>
             </div>
             <div class="col">
-                <input type="number" class="inputLogIn" placeholder="Puestos disponibles" formControlName="name" [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched } "><br>
-                <div *ngIf="form.get('name').errors?.required && form.get('name').touched ">
-                    <label class="invalid">Ingrese nombre válido</label>
+                <input type="number" class="inputLogIn" placeholder="Puestos disponibles" formControlName="name" required PositiveNumber [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched } "><br>
+                <div *ngIf="form.get('name').errors?.required && form.get('name').touched Positive">
+                    <label class="invalid">Ingrese número válido</label>
                 </div>
             </div>
         </div>
