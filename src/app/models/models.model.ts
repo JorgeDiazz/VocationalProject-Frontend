@@ -6,9 +6,13 @@ export interface UserI{
 
 /** Para crear Reclutador */
 export interface RecruiterI{
-    nit:string;
+   
     id:string;
-    email:string;
+    name?:string,
+    email:string,
+    image?:string,
+    type?:string, 
+    nitCompany:string;
 }
 /** Carreras */
 export interface CarrerI{

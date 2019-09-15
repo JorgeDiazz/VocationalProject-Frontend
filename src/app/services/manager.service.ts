@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ChargeI, AreaI } from '../models/models.model';
+import { ChargeI, AreaI, RecruiterI } from '../models/models.model';
 import { HttpClient } from '@angular/common/http';
 import { ServService } from './serv.service';
 import { AuthService } from './auth.service';
@@ -12,23 +12,36 @@ export class ManagerService {
   charges:ChargeI[]=[];
 
   private areaURL="area/"; // "area/id:" 
+  private skillHardURL="skill/Hard";
+  private careerURL="career/";
+  private nitCompany="";
+  /**
+   * Cualquier petición que requiera nitCompany, se debe utilizar el método gitNitCompany()
+   */
+
+
   constructor(public serv:ServService) {
-    
+    if(this.serv.servAuth.getAuth()){
+    }
    }
 
+
+ 
    /** AREAS */
    postArea(area:AreaI){
+     this.getNitCompany();
      return this.serv.POST(area,`${this.areaURL}${area.nit_company}`);
    }
 
-   getAreas(){
-     let nitCompany=<any> this.serv.servAuth.getAuth().nit;
-     console.log(`${this.areaURL}${nitCompany}`) 
-     return this.serv.GET(`${this.areaURL}${nitCompany}`);
+   getAreas(){ 
+     this.getNitCompany();
+     return this.serv.GET(`${this.areaURL}${this.nitCompany}`);
    }
 
+   /** END AREAS */
+
    /** SKILLS */
-  private skillHardURL="skill/Hard";
+ 
    getSkillsHard(){
      return this.serv.GET( `${this.skillHardURL}` );
    } 
@@ -38,14 +51,30 @@ export class ManagerService {
      return this.serv.GET( `${this.skillSoftURL}` );
    } 
 
-   private careerURL="career/";
    /** CAREERS */
 
    getCareers(){
     return this.serv.GET( `${this.careerURL}` );
    }
 
-   /**   */
+    /** END CAREERS */
+
+   /** Recruiter */
+
+   postRecruiter(recruiter:RecruiterI){
+     this.getNitCompany();
+     recruiter.nitCompany=this.nitCompany; 
+     return this.serv.POST(recruiter,'recruiter/');
+   }
+
+   getRecruiters(){
+     this.getNitCompany();
+     return  this.serv.GET(`recruiter/${this.nitCompany}`);
+   }
+   
+   /** END Recruiter */
+
+
  
    /** De la MVP */
   getAllCharges(){
@@ -77,5 +106,10 @@ export class ManagerService {
   save(){
     localStorage.setItem('charges',JSON.stringify(this.charges));
   }
+  /** De la MVP */
+
+  private  getNitCompany(){    
+    this.nitCompany=this.serv.getCompany().nit;
+   }
 
 }

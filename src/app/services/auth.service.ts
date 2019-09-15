@@ -20,7 +20,8 @@ export class AuthService {
   }
 
   saveAuth(header:HttpHeaders,user:any){
-    let token=header.get("token");
+     
+    let token=header.get("Authorization");
     let ob:AuthI={token:"",type:""}
     ob=Object.assign(user);
     ob.token=token;
@@ -30,5 +31,15 @@ export class AuthService {
 
   getAuth(){
     return JSON.parse(localStorage.getItem("auth"));
+  }
+
+  getToken(){
+    let auth:AuthI=JSON.parse(localStorage.getItem("auth"));
+    if(auth!=null){
+      return auth.token;
+    }else{
+      return "";
+    }
+   
   }
 }

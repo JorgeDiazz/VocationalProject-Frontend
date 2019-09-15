@@ -36,7 +36,11 @@ import { ModalProfilePComponent } from './components/0Postulant/modal-profile-p/
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpErrorInterceptor } from './errors/http-error.interceptor';
 import { ModalPostulantsComponent } from './components/0Recruiter/job-process/modal-postulants/modal-postulants.component';
+<<<<<<< HEAD
 import { PositiveNumberDirective } from './components/Validator/positive-number.directive';
+=======
+import { AuthInterceptorService } from './services/auth-interceptor.service';
+>>>>>>> Development
  
 @NgModule({
   declarations: [
@@ -81,7 +85,13 @@ import { PositiveNumberDirective } from './components/Validator/positive-number.
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
       multi: true
-    }],
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent],
   entryComponents: [ModalVacantComponent,ModalJob1Component,ModalJobComponent,ModalEditComponent,ModalCreateComponent,ModalRecComponent,ModalVacant1Component,ModalPostulantComponent,ModalPostulantsComponent,
   ModalProfileMComponent,ModalProfileRComponent,ModalProfilePComponent],
