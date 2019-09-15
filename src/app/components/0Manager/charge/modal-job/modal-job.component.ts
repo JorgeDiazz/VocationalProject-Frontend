@@ -1,14 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
 
-<<<<<<< HEAD
-import { FormGroup, FormControl, Validators, FormArray, ValidatorFn } from '@angular/forms';
-import {ThemePalette} from '@angular/material/core'; 
-=======
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { ServGlobalService } from 'src/app/services/serv-global.service';
 import { ThemePalette } from '@angular/material/core';
->>>>>>> Development
 import { ServiceService } from 'src/app/services/service.service';
 import { AreaI, CarrerI, SkillI, RecruiterI } from 'src/app/models/models.model';
 import { ChartRenderProps } from 'chart.js';
@@ -43,38 +38,6 @@ export class ModalJobComponent implements OnInit {
     'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
   ];
 
-<<<<<<< HEAD
- 
- 
-
- form: FormGroup;
- nameEmpresa:CompanyI;
- areas:AreaI[];
- carrers:CarrerI[]=[{
-  id:1,
-  name:"Ing. Sistemas"
-},
- {
-   id:2,
-   name:"Abogado"
- }];
-
- skillsHard:SkillI[]=[ 
-   {
-     id:3,
-     name:"other",
-     type:"hard"
-
-   },
-   {
-     id:4,
-     name:"other 2",
-     type:"hard"
-   }
-   ]
- skillsHardSelected:SkillI[];  
- carrersSelected:CarrerI[];
-=======
 
 
 
@@ -107,7 +70,6 @@ export class ModalJobComponent implements OnInit {
   carrersSelected: CarrerI[];
   recruiters: RecruiterI[];
   recruitersSelected: RecruiterI[];
->>>>>>> Development
 
   constructor(public dialogRef: MatDialogRef<ModalJobComponent>,
     public serv: ServiceService) {
@@ -128,7 +90,6 @@ export class ModalJobComponent implements OnInit {
     }
 */
     this.form = new FormGroup({
-<<<<<<< HEAD
       'name': new FormControl('',[Validators.required,positiveNumberValidator]),
       'range1': new FormControl('',[Validators.required,positiveNumberValidator]),
       'range2': new FormControl('',[Validators.required,positiveNumberValidator]),
@@ -136,15 +97,6 @@ export class ModalJobComponent implements OnInit {
       'desc': new FormControl('', Validators.required),      
       'carrer':new FormControl(''),
       'newCarrer':new FormArray([
-=======
-      'name': new FormControl('', Validators.required),
-      'range1': new FormControl('', Validators.required),
-      'range2': new FormControl('', Validators.required),
-      'area': new FormControl('', Validators.required),
-      'desc': new FormControl('', Validators.required),
-      'carrer': new FormControl(''),
-      'newCarrer': new FormArray([
->>>>>>> Development
         new FormGroup({
           'name': new FormControl('')
         })
@@ -182,10 +134,6 @@ export class ModalJobComponent implements OnInit {
     this.serv.company.getRecruiters().subscribe(dat => {
       this.recruiters = <RecruiterI[]>dat.body;
     })
-<<<<<<< HEAD
-      this.nameEmpresa= this.serv.getCompany();
-=======
->>>>>>> Development
   }
 
   save() {
