@@ -3,20 +3,17 @@
     <mat-dialog-content class="mat-typography">
         <mat-form-field class="areas">
             <mat-label>Habilidad existente</mat-label>
-            <mat-select [(ngModel)]="selectedValue" FormControlName="state">
-                <mat-option *ngFor="let state of statesList" [value]="state">
-                    {{state}}
+            <mat-select formControlName="Skill">
+                <mat-option *ngFor="let skill1 of softs" [value]="skill1.id">
+                    {{skill1.name}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
-        <input type="text" class="inputLogIn" placeholder="Habilidad nueva" formControlName="name" [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched }"><br>
-        <div *ngIf="form.get('name').errors?.required && form.get('name').touched ">
-            <label class="invalid">Ingrese nombre de habilidad</label>
-        </div>
+        <input type="text" class="inputLogIn" placeholder="Habilidad nueva" formControlName="newSkill"><br>
         <br>
-        <mat-radio-group aria-label="Select an option">
-            <mat-radio-button value="1">Global</mat-radio-button>
-            <mat-radio-button value="2">Específica</mat-radio-button>
+        <mat-radio-group formControlName="GorE">
+            <mat-radio-button value="Global">Global</mat-radio-button>
+            <mat-radio-button value="Especific">Específica</mat-radio-button>
         </mat-radio-group>
     </mat-dialog-content>
     <mat-dialog-actions align="end">

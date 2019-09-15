@@ -1,39 +1,57 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { MatDialogRef} from '@angular/material'
+import { ServiceService } from 'src/app/services/service.service';
+import { SkillI } from 'src/app/models/models.model';
+import swal, { SweetAlertType } from 'sweetalert2';
 @Component({
   selector: 'app-modal-create',
   templateUrl: './modal-create.component.html',
   styleUrls: ['./modal-create.component.css']
 })
 export class ModalCreateComponent implements OnInit {
-  states = new FormControl();
-  statesList: string[] = [
-    'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
-    'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
-    'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
-    'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico',
-    'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania',
-    'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-    'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-  ];
-  
+  softs:SkillI[];  
   form: FormGroup;
-  constructor(public dialogRef: MatDialogRef<ModalCreateComponent>) { 
+  titularAlerta:string="";
+  constructor(public dialogRef: MatDialogRef<ModalCreateComponent>,public serv:ServiceService,private fb:FormBuilder) { 
+
+    this.serv.company.getSkillsSoft().subscribe(dat=>{
+      this.softs=<SkillI[]>dat.body;
+    });
 
     this.form = new FormGroup({
-      'name': new FormControl('', Validators.required)
+      'newSkill': new FormControl(),
+      'Skill': new FormControl(),
+      'GorE':  new FormControl()
     });
+
+
   }
 
-
-  
 crear(){
   this.form.markAsTouched();
   if(this.form.valid){
-    this.dialogRef.close(this.form.value);
+    console.log(this.form.get('newSkill').value);
+    if(this.form.get('GorE').value!=null){
+      if(this.form.get('newSkill').value!=null && this.form.get('Skill').value==null){
+        this.dialogRef.close(this.form.value);
+      }else
+      if(this.form.get('newSkill').value==null && this.form.get('Skill').value!=null){
+        this.dialogRef.close(this.form.value);
+      }else if(this.form.get('newSkill').value!=null && this.form.get('Skill').value!=null){
+        swal.fire('Datos incompletos',"Puede ingresar solo una habilidad", 'error');
+      }else{
+        swal.fire('Datos erroneos',"Puede ingresar  una habilidad", 'error');
+      }
+    }else{
+      swal.fire('Datos incompletos',"Tiene que ingresar el tipo de habilidad (Global o Específica)", 'error');
 
+
+    }
+    
+    
   }
+  
 }
 
   ngOnInit() {

@@ -19,13 +19,11 @@ export class SkillsComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
     public serv:ServiceService) {
+      this.verSkills();
      }
 
   ngOnInit() {
 
-    this.serv.company.getSkillsSoft().subscribe(dat=>{
-      this.softs=<SkillI[]>dat.body;
-    });
   }
 
   verModalE() {
@@ -35,6 +33,8 @@ export class SkillsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+      this.verSkills();
+      
     });
   }
 
@@ -42,6 +42,8 @@ export class SkillsComponent implements OnInit {
     const dialogRef = this.dialog.open(ModalCreateComponent, {
       width: '350px'
     });
+
+   
 
  /* dialogRef.afterClosed().subscribe(result => {
     if(result){
@@ -56,4 +58,10 @@ export class SkillsComponent implements OnInit {
     
   });*/
 }
+
+verSkills(){
+  this.serv.company.getSkillsSoft().subscribe(dat=>{
+    this.softs=<SkillI[]>dat.body;
+  });
+ }
 }

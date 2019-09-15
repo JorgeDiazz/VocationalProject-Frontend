@@ -38,11 +38,7 @@
                 <label>Carreras:</label>
                 <mat-form-field class="recruiters">
                     <mat-label>Carreras existentes</mat-label>
-<<<<<<< HEAD
-                    <mat-select formControlName="carrer" multiple (selectionChange)="selectCarrer($event.value)">
-=======
-                    <mat-select formControlName="carrer" multiple (selectionChange)="selectChange($event.value,1)" >
->>>>>>> Development
+                    <mat-select formControlName="carrer" multiple (selectionChange)="selectChange($event.value,1)">
                         <mat-option *ngFor="let carrer of carrers" [value]="carrer">{{carrer.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -125,7 +121,7 @@
             <div class="col">
                 <mat-form-field class="recruiters">
                     <mat-label>Reclutadores</mat-label>
-                    <mat-select [formControl]="states" multiple (selectionChange)="selectChange($event.value,3)" >
+                    <mat-select [formControl]="states" multiple (selectionChange)="selectChange($event.value,3)">
                         <mat-option *ngFor="let re of recruiters" [value]="re">{{re.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -137,19 +133,13 @@
                 </mat-chip-list><br>
             </div>
             <div class="col">
-<<<<<<< HEAD
-                <input type="number" class="inputLogIn" placeholder="Puestos disponibles" formControlName="name" required PositiveNumber [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched } "><br>
-                <div *ngIf="form.get('name').errors?.required && form.get('name').touched Positive">
-                    <label class="invalid">Ingrese número válido</label>
-=======
                 <input type="number" class="inputLogIn" placeholder="Puestos disponibles" formControlName="available" [ngClass]=" {'is-invalid':  !form.get('available').valid && form.get('available').touched } "><br>
+
                 <div *ngIf="form.get('available').errors?.required && form.get('available').touched ">
                     <label class="invalid">Ingrese nombre válido</label>
->>>>>>> Development
                 </div>
             </div>
         </div>
-
 
     </form>
 </mat-dialog-content>

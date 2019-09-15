@@ -8,7 +8,6 @@ import { ServiceService } from 'src/app/services/service.service';
 import { AreaI, CarrerI, SkillI, RecruiterI } from 'src/app/models/models.model';
 import { ChartRenderProps } from 'chart.js';
 import { CompanyI } from '../../../../models/models.model';
-import { positiveNumberValidator } from '../../../Validator/positive-number.directive';
 
 export interface ChipColor {
   name: string;
@@ -42,7 +41,7 @@ export class ModalJobComponent implements OnInit {
 
 
   form: FormGroup;
-  nameEmpresa: string;
+  nameEmpresa:CompanyI;
   areas: AreaI[];
   carrers: CarrerI[] = [{
     id: 1,
@@ -90,13 +89,13 @@ export class ModalJobComponent implements OnInit {
     }
 */
     this.form = new FormGroup({
-      'name': new FormControl('',[Validators.required,positiveNumberValidator]),
-      'range1': new FormControl('',[Validators.required,positiveNumberValidator]),
-      'range2': new FormControl('',[Validators.required,positiveNumberValidator]),
-      'area':new FormControl('',Validators.required),
-      'desc': new FormControl('', Validators.required),      
-      'carrer':new FormControl(''),
-      'newCarrer':new FormArray([
+      'name': new FormControl('', Validators.required),
+      'range1': new FormControl('', Validators.required),
+      'range2': new FormControl('', Validators.required),
+      'area': new FormControl('', Validators.required),
+      'desc': new FormControl('', Validators.required),
+      'carrer': new FormControl(''),
+      'newCarrer': new FormArray([
         new FormGroup({
           'name': new FormControl('')
         })
@@ -134,6 +133,8 @@ export class ModalJobComponent implements OnInit {
     this.serv.company.getRecruiters().subscribe(dat => {
       this.recruiters = <RecruiterI[]>dat.body;
     })
+
+    this.nameEmpresa= this.serv.getCompany();
   }
 
   save() {
