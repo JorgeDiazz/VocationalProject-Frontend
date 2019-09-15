@@ -1,21 +1,17 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { ServGlobalService } from 'src/app/services/serv-global.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
-import { ChargeI, softSkillI } from 'src/app/models/models.model';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms'; 
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material' 
 @Component({
   selector: 'app-modal-job1',
   templateUrl: './modal-job1.component.html',
   styleUrls: ['./modal-job1.component.css']
 })
 export class ModalJob1Component implements OnInit {
-  form: FormGroup;
-  skills: softSkillI[];
+  form: FormGroup; 
 
   constructor(public dialogRef: MatDialogRef<ModalJob1Component>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public serv: ServGlobalService) {
-    this.skills = this.serv.getSofts();
+    @Inject(MAT_DIALOG_DATA) public data: any, ) {
+    
 
     this.form = new FormGroup({
       'skills' :new FormArray([

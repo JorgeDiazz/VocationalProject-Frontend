@@ -1,8 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
 
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { ServGlobalService } from 'src/app/services/serv-global.service';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms'; 
 import { ThemePalette } from '@angular/material/core';
 import { ServiceService } from 'src/app/services/service.service';
 import { AreaI, CarrerI, SkillI, RecruiterI } from 'src/app/models/models.model';

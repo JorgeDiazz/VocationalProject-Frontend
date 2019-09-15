@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalVacant1Component } from './modal-vacant1/modal-vacant1.component';
 import { ModalPostulantComponent } from './modal-postulant/modal-postulant.component';
-import { ActivatedRoute } from '@angular/router';
-import { ChargeI, VacantI } from 'src/app/models/models.model';
-import { ManagerService } from 'src/app/services/manager.service';
-import { ServGlobalService } from 'src/app/services/serv-global.service';
+import { ActivatedRoute } from '@angular/router'; 
+import { ManagerService } from 'src/app/services/manager.service'; 
 
 @Component({
   selector: 'app-job-id',
@@ -13,15 +11,12 @@ import { ServGlobalService } from 'src/app/services/serv-global.service';
   styleUrls: ['./job-id.component.css']
 })
 export class JobIdComponent implements OnInit {
-
-  charge:ChargeI;
+ 
 
   constructor(public dialog: MatDialog,
-    public routerA:ActivatedRoute,
-    public serv:ServGlobalService) { 
+    public routerA:ActivatedRoute, ) { 
       this.routerA.params.subscribe(r=>{
-        this.charge=serv.getCharge( r['id'] );
-        console.log(JSON.stringify(this.charge));
+         
 
       })
     }
@@ -36,14 +31,7 @@ export class JobIdComponent implements OnInit {
     });
 
   dialogRef.afterClosed().subscribe(result => {
-    if(result.number){
-     let vacant:VacantI={
-       startDate:(Date.now())+"",
-       extender:false,
-       placeNumber:result.number,
-
-     }
-      this.serv.addVacant(this.charge.id_,vacant);
+    if(result.number){ 
     } 
   });
 }
