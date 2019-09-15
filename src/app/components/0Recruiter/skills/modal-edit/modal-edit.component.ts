@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material';
+import { SkillI } from 'src/app/models/models.model';
 
 @Component({
   selector: 'app-modal-edit',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalEditComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: SkillI) { }
 
   ngOnInit() {
   }

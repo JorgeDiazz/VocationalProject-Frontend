@@ -31,5 +31,41 @@ export class ServiceService {
     }
     return company;
   }
+
+  getRecruiter():CompanyI {
+    let dat: any = this.auth.getAuth();
+    let nit: string = "Sin NIT";
+    let name: string = "Sin NOMBRE se DEBE al reclutador";
+    if (dat.nit) {
+      nit = dat.nit;
+      name = dat.name;
+    }
+    if (dat.nitCompany) {
+      nit = dat.nitCompany;
+    }
+    let company: CompanyI = {
+      nit: nit,
+      name: name
+    }
+    return company;
+  }
+
+  getPostulant():CompanyI {
+    let dat: any = this.auth.getAuth();
+    let nit: string = "Sin NIT";
+    let name: string = "Sin NOMBRE se DEBE al reclutador";
+    if (dat.nit) {
+      nit = dat.nit;
+      name = dat.name;
+    }
+    if (dat.nitCompany) {
+      nit = dat.nitCompany;
+    }
+    let company: CompanyI = {
+      nit: nit,
+      name: name
+    }
+    return company;
+  }
  
 }

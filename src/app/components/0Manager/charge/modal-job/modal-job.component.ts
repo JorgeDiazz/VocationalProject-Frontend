@@ -95,8 +95,8 @@ export class ModalJobComponent implements OnInit {
       'range2': new FormControl('', Validators.required),
       'area': new FormControl('', Validators.required),
       'desc': new FormControl('', Validators.required),
-      'carrer': new FormControl(''),
-      'newCarrer': new FormArray([
+      'career': new FormControl(''),
+      'newCareer': new FormArray([
         new FormGroup({
           'name': new FormControl('')
         })
@@ -146,7 +146,7 @@ export class ModalJobComponent implements OnInit {
       if(parseInt(this.form.get('range1').value)>=parseInt(this.form.get('range2').value)){
         swal.fire('Datos erroneos',"El rango de salario es incorrecto", 'error');
       }else{
-        if(this.form.get('carrer').value.length==0 && this.form.get('newCarrer').value.length==0){
+        if(this.form.get('career').value.length==0 && this.form.get('newCareer').value.length==0){
           swal.fire('Datos imcompletos',"Debe ingresar carreras", 'error');
         }else if(this.form.get('hardSkill').value.length==0 && this.form.get('newHardSkill').value.length==0){
           swal.fire('Datos imcompletos',"Debe ingresar habilidades", 'error');

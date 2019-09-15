@@ -38,8 +38,8 @@
                 <label>Carreras:</label>
                 <mat-form-field class="recruiters">
                     <mat-label>Carreras existentes</mat-label>
-                    <mat-select formControlName="carrer" multiple (selectionChange)="selectChange($event.value,1)">
-                        <mat-option *ngFor="let carrer of carrers" [value]="carrer">{{carrer.name}}</mat-option>
+                    <mat-select formControlName="career" multiple (selectionChange)="selectChange($event.value,1)">
+                        <mat-option *ngFor="let career of careers" [value]="carrer">{{career.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <!--Mostrar las que va seleccionando-->

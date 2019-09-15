@@ -26,9 +26,10 @@ export class SkillsComponent implements OnInit {
 
   }
 
-  verModalE() {
+  verModalE(soft:SkillI) {
       const dialogRef = this.dialog.open(ModalEditComponent, {
-        width: '350px'
+        width: '350px',
+        data: {id: soft.id, name:soft.name}
       });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -40,9 +41,14 @@ export class SkillsComponent implements OnInit {
 
   verModalC() {
     const dialogRef = this.dialog.open(ModalCreateComponent, {
-      width: '350px'
+      width: '350px',
+      
     });
-
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.verSkills();
+      
+    });
    
 
  /* dialogRef.afterClosed().subscribe(result => {
