@@ -8,6 +8,7 @@ import { ServiceService } from 'src/app/services/service.service';
 import { AreaI, CarrerI, SkillI, RecruiterI } from 'src/app/models/models.model';
 import { ChartRenderProps } from 'chart.js';
 import { CompanyI } from '../../../../models/models.model';
+import swal, { SweetAlertType } from 'sweetalert2';
 
 export interface ChipColor {
   name: string;
@@ -140,12 +141,30 @@ export class ModalJobComponent implements OnInit {
   save() {
     this.form.markAllAsTouched();
 
-
-    console.log(this.form.value);
-    //console.log(JSON.stringify(this.form.value));
-
     if (this.form.valid) {
-      this.dialogRef.close(this.form.value);
+      alert(parseInt(this.form.get('range1').value)<=parseInt(this.form.get('range2').value));
+      if(parseInt(this.form.get('range1').value)>=parseInt(this.form.get('range2').value)){
+        swal.fire('Datos erroneos',"El rango de salario es incorrecto", 'error');
+      }else{
+        if(this.form.get('carrer').value.length==0 && this.form.get('newCarrer').value.length==0){
+          swal.fire('Datos imcompletos',"Debe ingresar carreras", 'error');
+        }else if(this.form.get('hardSkill').value.length==0 && this.form.get('newHardSkill').value.length==0){
+          swal.fire('Datos imcompletos',"Debe ingresar habilidades", 'error');
+        }else{
+          if(this.form.get('recruiter').value.length!=0 && this.form.get('available').value==null){
+            swal.fire('Datos imcompletos',"Debe ingresar los puestos disponibles", 'error');
+          }else if(this.form.get('recruiter').value.length==0 && this.form.get('available').value!=null){
+            swal.fire('Datos imcompletos',"Debe ingresar al menos un reclutador", 'error');
+          }else{
+            this.dialogRef.close(this.form.value);
+          }
+        }
+
+
+        
+        
+      }
+      
 
     } else {
       console.log("invalidoooo")

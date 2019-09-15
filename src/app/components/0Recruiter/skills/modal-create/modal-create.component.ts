@@ -31,7 +31,6 @@ export class ModalCreateComponent implements OnInit {
 crear(){
   this.form.markAsTouched();
   if(this.form.valid){
-    console.log(this.form.get('newSkill').value);
     if(this.form.get('GorE').value!=null){
       if(this.form.get('newSkill').value!=null && this.form.get('Skill').value==null){
         this.dialogRef.close(this.form.value);
