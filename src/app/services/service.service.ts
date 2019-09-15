@@ -5,13 +5,15 @@ import { UserI, AuthI, CompanyI } from '../models/models.model';
 import { RecruiterService } from './recruiter.service';
 import { AuthService } from './auth.service';
 import { ManagerService } from './manager.service';
+import { PostulantService } from './postulant.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceService {
   constructor(public login: LoginService, public recruiter: RecruiterService,
-    public auth: AuthService, public company: ManagerService) { 
+    public auth: AuthService, public company: ManagerService,
+    public postulant:PostulantService) { 
   }
 
   getCompany():CompanyI {

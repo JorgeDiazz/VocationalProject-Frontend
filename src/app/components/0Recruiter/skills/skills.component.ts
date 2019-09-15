@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalEditComponent } from './modal-edit/modal-edit.component';
-import { ModalCreateComponent } from './modal-create/modal-create.component';
-import { softSkillI } from 'src/app/models/models.model';
+import { ModalCreateComponent } from './modal-create/modal-create.component'; 
 import { ServiceService } from '../../../services/service.service';
 import { SkillI } from '../../../models/models.model';
 
