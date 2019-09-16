@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CompanyI } from '../../../models/models.model';
+import { ServiceService } from 'src/app/services/service.service';
 
 @Component({
   selector: 'app-modal-profile-m',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalProfileMComponent implements OnInit {
 
-  constructor() { }
+  companyProfile:CompanyI;
+  constructor(private serv:ServiceService) { 
+    this.companyProfile=this.serv.getCompany();
+    console.log(this.companyProfile);
+  }
 
   ngOnInit() {
   }

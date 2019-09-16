@@ -24,7 +24,7 @@
             <input type="password" class="inputLogIn reg1" *ngIf="!pos" placeholder="contraseña" formControlName="newPassword" [ngClass]=" {'is-invalid':  !form.get('newPassword').valid && form.get('newPassword').touched }">
             <input type="number" class="inputLogIn reg1" *ngIf="pos" placeholder="teléfono" formControlName="number" [ngClass]=" {'is-invalid':  !form.get('number').valid && form.get('number').touched }">
 
-            <button class="buttonLogIn2 reg bg-colorGR-blue-light">Registrarse</button>
+            <button (click)="register()" class="buttonLogIn2 reg bg-colorGR-blue-light">Registrarse</button>
         </div>
         <div [class]="reg">
             <img id="Logo" src="/assets/img/networking.svg">

@@ -28,7 +28,10 @@ export interface AuthI{
 
 export interface CompanyI{
     nit:string,
-    name:string
+    name:string,
+    phone?:number,
+    email?:string,
+    address?:string
 }
 
 /**  */

@@ -6,6 +6,7 @@ import { ServService } from 'src/app/services/serv.service';
 import { ServiceService } from 'src/app/services/service.service';
 import { Router } from '@angular/router'; 
 import { RecruiterI } from 'src/app/models/models.model';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
   private bot2: string;
   form: FormGroup;
 
-  constructor(public serv:ServiceService,private route:Router) {
+  constructor(public serv:ServiceService,private route:Router,private _snackBar: MatSnackBar) {
     let auth:AuthI=this.serv.auth.getAuth();
     if(auth){
       this.navigate(auth.type);
@@ -57,8 +58,8 @@ export class LoginComponent implements OnInit {
   }
    
   login(){     
-    this.form.get("userEmail").markAsTouched();
-    this.form.get("password").markAsTouched();
+    //this.form.get("userEmail").markAsTouched();
+    //this.form.get("password").markAsTouched();
     let valid1=this.form.get("userEmail").valid;
     let valid2=this.form.get("password").valid;
     if(valid2 && valid1){
@@ -70,10 +71,34 @@ export class LoginComponent implements OnInit {
         this.navigate(type);
         this.serv.auth.saveAuth(d.headers,<any>d.body);      
       });
+    }else{
+      this.openSnackBar("Datos incompletos o erróneos", "Undo");
     }
-   
+  }
 
+  register(){
 
+    if(this.pos){
+      let validEmail=this.form.get("email").valid;
+      let validName=this.form.get("name").valid;
+      let validNit=this.form.get("nit").valid;
+      let validNumber=this.form.get("number").valid;
+      if(validEmail && validName && validNit && validNumber){
+        //ENVIAR EMPRESA A SERVIDOR
+      }else{
+        this.openSnackBar("Datos incompletos o erróneos", "Undo");
+      }
+    }else{
+      let validEmail=this.form.get("email").valid;
+      let validName=this.form.get("name").valid;
+      let validId=this.form.get("id").valid;
+      let validPassword=this.form.get("newPassword").valid;
+      if(validEmail && validName && validId && validPassword){
+        //ENVIAR POSTULANTE A SERVIDOR
+      }else{
+        this.openSnackBar("Datos incompletos o erróneos", "Undo");
+      }
+    }
   }
 
 
@@ -93,26 +118,42 @@ export class LoginComponent implements OnInit {
 
   change() {
     if (this.log) {
+      this.form.get("userEmail").markAsUntouched();
+      this.form.get("password").markAsUntouched();
       this.log = false;
       this.reg = "Register bg-colorGR-blue-medium movLeft";
     } else {
+      this.form.get("userEmail").markAsUntouched();
+      this.form.get("password").markAsUntouched();
       this.log = true;
       this.reg = "Register bg-colorGR-blue-medium movRight";
     }
   }
   changePM() {
     if (this.pos) {
+      this.form.get("email").markAsUntouched();
+      this.form.get("name").markAsUntouched();
+      this.form.get("nit").markAsUntouched();
+      this.form.get("number").markAsUntouched();
       this.pos = false;
       this.bot1 = " buttonLogIn3 pos bg-colorGR-blue-light buttonLogIn3Select";
       this.bot2 = " buttonLogIn3 bg-colorGR-blue-light";
     } else {
+      this.form.get("email").markAsUntouched();
+      this.form.get("name").markAsUntouched();
+      this.form.get("id").markAsUntouched();
+      this.form.get("newPassword").markAsUntouched();
       this.pos = true;
       this.bot1 = " buttonLogIn3 pos bg-colorGR-blue-light";
       this.bot2 = " buttonLogIn3 bg-colorGR-blue-light  buttonLogIn3Select";
     }
   }
 
-
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 4000,
+    });
+  }
 
 
 }
