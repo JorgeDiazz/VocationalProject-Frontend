@@ -15,10 +15,12 @@ export class SkillsComponent implements OnInit {
 
   softs:SkillI[];
   Globalsofts:SkillI[];
-
+  nit:string;
   constructor(public dialog: MatDialog,
     public serv:ServiceService) {
+      this.nit=this.serv.getRecruiter().nitCompany;
       this.verSkills();
+      this.verGlobalSkills(this.nit);
      }
 
   ngOnInit() {
@@ -34,7 +36,7 @@ export class SkillsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       this.verSkills();
-      
+      this.verGlobalSkills(this.nit);
     });
   }
 
@@ -46,7 +48,7 @@ export class SkillsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       this.verSkills();
-      
+      this.verGlobalSkills(this.nit);
     });
    
 
@@ -68,5 +70,9 @@ verSkills(){
   this.serv.company.getSkillsSoft().subscribe(dat=>{
     this.softs=<SkillI[]>dat.body;
   });
+ }
+
+ verGlobalSkills(nit:string){
+  //SERVICIO VER HABILIDADES GOBLALES DE LA EMPRESA
  }
 }

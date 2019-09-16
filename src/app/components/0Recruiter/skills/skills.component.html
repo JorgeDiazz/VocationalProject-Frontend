@@ -3,9 +3,7 @@
         <h1>Habilidades globales</h1>
         <h5>Habilidades blandas que todo colaborador dentro de la empresa debe tener sin importar el cargo</h5>
         <mat-chip-list>
-            <mat-chip class="bg-colorGR-blue-medium">Papadum</mat-chip>
-            <mat-chip class="bg-colorGR-blue-medium">Naan</mat-chip>
-            <mat-chip class="bg-colorGR-blue-medium">Dal</mat-chip>
+            <mat-chip *ngFor="let soft of Globalsofts" class="bg-colorGR-blue-medium" (click)="verModalE(soft)">{{soft.name}}</mat-chip>
         </mat-chip-list>
 
     </div>

@@ -68,6 +68,19 @@ export interface JobsI{
 
 }
 
+export interface VacantI{
+    id:number,
+    places_number:number,
+    start_date:Date,
+    id_job_position?:number,
+    nameJob?:string,
+    recruiters_number:string,
+    postulants_number:number,
+    min_salary?:number,
+    max_salary?:number
+}
+
+
 
 
 

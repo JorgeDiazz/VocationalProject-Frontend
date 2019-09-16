@@ -1,23 +1,24 @@
-<div>
-    <div class="vacancy">
-        <img src="assets/img/see.svg" [routerLink]="['/recruiter/job',5]">
-        <h5>Nombre del cargo</h5>
-        <p><b>Puestos disponibles:</b>3<br>
-            <b>Reclutadores a cargo:</b>1</p>
-
-    </div>
-    <div class="postulants bg-colorGR-blue-medium">
-        <div class="row">
-            <div class="col-6">
-                <p>01/06/2018</p>
-            </div>
-            <div class="col-3">
-                <img src="assets/img/employee.svg">
-            </div>
-            <div class="col-3">
-                <P id="number">6</P>
-            </div>
+<div class="row">
+    <div class="col-md-4" *ngFor="let vacant of processVacant">
+        <div class="vacancy">
+            <img src="assets/img/see.svg" [routerLink]="['/recruiter/job',vacant.id]">
+            <h5>{{vacant.nameJob}}</h5>
+            <p><b>Puestos disponibles:</b>{{vacant.places_number}}<br>
+                <b>Reclutadores a cargo:</b>{{vacant.recruiters_number}}</p>
         </div>
+        <div class="postulants bg-colorGR-blue-medium">
+            <div class="row">
+                <div class="col-6">
+                    <p>{{vacant.start_date}}</p>
+                </div>
+                <div class="col-3">
+                    <img src="assets/img/employee.svg">
+                </div>
+                <div class="col-3">
+                    <P id="number">{{vacant.postulants_number}}</P>
+                </div>
+            </div>
 
+        </div>
     </div>
 </div>
