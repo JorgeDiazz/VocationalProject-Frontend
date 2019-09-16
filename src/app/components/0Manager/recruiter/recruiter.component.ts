@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalRecComponent } from './modal-rec/modal-rec.component';
 import { MatDialog } from '@angular/material/dialog'; 
+import { RecruiterI } from '../../../models/models.model';
+import { ServiceService } from 'src/app/services/service.service';
 
 @Component({
   selector: 'app-recruiter',
@@ -9,7 +11,12 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class RecruiterComponent implements OnInit {
 
-  constructor(public dialog: MatDialog ) { }
+  recruiters:RecruiterI[];
+  nitCompany:string;
+  constructor(public dialog: MatDialog,private serv:ServiceService ) { 
+    this.nitCompany=this.serv.getCompany().nit;
+    this.getRecruiters(this.nitCompany);
+  }
 
   ngOnInit() {
   }
@@ -19,8 +26,11 @@ export class RecruiterComponent implements OnInit {
     });
 
   dialogRef.afterClosed().subscribe(result => {
-    
-    console.log(`Dialog result: ${JSON.stringify(result)}`);
+    this.getRecruiters(this.nitCompany);
   });
+}
+
+getRecruiters(nit:string){
+//servicio para traer reclutadores por empresa
 }
 }

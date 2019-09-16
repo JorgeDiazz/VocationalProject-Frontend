@@ -39,22 +39,22 @@
                 <mat-form-field class="recruiters">
                     <mat-label>Carreras existentes</mat-label>
                     <mat-select formControlName="career" multiple (selectionChange)="selectChange($event.value,1)">
-                        <mat-option *ngFor="let career of careers" [value]="carrer">{{career.name}}</mat-option>
+                        <mat-option *ngFor="let career of careers" [value]="career">{{career.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <!--Mostrar las que va seleccionando-->
                 <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
-                    <mat-chip class="selectChip" *ngFor="let carrerSelec of carrersSelected">
-                        {{carrerSelec.name}}
+                    <mat-chip class="selectChip" *ngFor="let careerSelec of careersSelected">
+                        {{careerSelec.name}}
                     </mat-chip>
                 </mat-chip-list><br>
                 <div class="row">
-                    <ng-container *ngFor="let cr of form.controls['newCarrer'].controls;let i=index;">
+                    <ng-container *ngFor="let cr of form.controls['newCareer'].controls;let i=index;">
                         <div class="col-8" [formGroup]="cr">
                             <input type="" class="form-control input1" placeholder="Nueva carrera" formControlName="name" [ngClass]=" {'is-invalid':  !cr.get('name').valid && cr.get('name').touched }">
                         </div>
 
-                        <div class="col-2" *ngIf="(i+1)== form.controls['newCarrer'].controls.length">
+                        <div class="col-2" *ngIf="(i+1)== form.controls['newCareer'].controls.length">
                             <i (click)="addOption(1)" class="fas fa-plus-circle"></i>
                         </div>
                         <div class="col-2" *ngIf="i!=0">

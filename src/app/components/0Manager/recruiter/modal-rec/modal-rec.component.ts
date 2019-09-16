@@ -37,6 +37,7 @@ export class ModalRecComponent implements OnInit {
       this.serv.company.postRecruiter(recruiter).subscribe((dat)=>{
         console.log(dat); 
         this.dialogRef.close(recruiter);
+        //MANEJAR ERRORES
       });
      
       //Do something

@@ -1,14 +1,14 @@
 <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-4" *ngFor="let recruiter of recruiters">
         <div class="card-recruiter fadeInAnimated">
             <img src="assets/img/perfil.jpeg">
-            <p><b>Nombre reclutador</b></p>
+            <p><b>{{recruiter.name}}</b></p>
             <div class="row">
                 <div class="col-6">
-                    <p class="vacPos"><img class="icon" src="assets/img/portfolio.svg"> 6</p>
+                    <p class="vacPos"><img class="icon" src="assets/img/portfolio.svg"> {{recruiter.vacants_number_to_care}}</p>
                 </div>
                 <div class="col-6">
-                    <p class="vacPos"><img class="icon" src="assets/img/employee.1.svg"> 10</p>
+                    <p class="vacPos"><img class="icon" src="assets/img/employee.1.svg"> {{recruiter.postulants_number_to_care}}</p>
                 </div>
             </div>
         </div>
@@ -16,7 +16,7 @@
 
 </div>
 
-<div class="spacePlus ">
+<div class="spacePlus fadeInAnimated">
     <div class="row">
         <div class="col-9">
             <p>Agregar nuevo reclutador</p>

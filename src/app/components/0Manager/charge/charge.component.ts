@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { ModalJobComponent } from './modal-job/modal-job.component';
 import { ManagerService } from 'src/app/services/manager.service'; 
+import { JobsI } from '../../../models/models.model';
+import { ServiceService } from 'src/app/services/service.service';
 @Component({
   selector: 'app-charge',
   templateUrl: './charge.component.html',
@@ -10,9 +12,11 @@ import { ManagerService } from 'src/app/services/manager.service';
 export class ChargeComponent implements OnInit {
   
    
-
-  constructor(public dialog: MatDialog,  ) {
-    
+  jobs:JobsI[];
+  nitCompany:string;
+  constructor(public dialog: MatDialog,private serv:ServiceService) {
+    this.nitCompany=this.serv.getCompany().nit;
+    this.getJobs(this.nitCompany);
    }
 
   ngOnInit() {
@@ -26,10 +30,11 @@ export class ChargeComponent implements OnInit {
     });
 
   dialogRef.afterClosed().subscribe(result => {
-    if(result){
-     
-    }
-   
+    this.getJobs(this.nitCompany);
   });
+}
+
+getJobs(nit:string){
+//SERVICIO PARA TRAER CARGOS DE UNA EMPRESA
 }
 }

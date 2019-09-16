@@ -1,9 +1,9 @@
 <div class="row">
-    <div class="col-sm-4" *ngFor="let ch of charges;let i=index">
+    <div class="col-sm-4" *ngFor="let job of jobs;let i=index">
         <div class="card-job fadeInAnimated">
-            <img src="assets/img/edit.svg" [routerLink]="['/manager/job',ch.id_]">
-            <h6> <b>{{ch.name}}</b> </h6>
-            <p>30.000-40.000 <br> Vacantes activas: 5 <br></p>
+            <img src="assets/img/edit.svg" [routerLink]="['/manager/job',job.id]">
+            <h6> <b>{{job.name}}</b> </h6>
+            <p>{{job.salary_min}}-{{job.salary_max}} <br> Vacantes activas: {{job.vacants_number}} <br></p>
         </div>
     </div>
 </div>

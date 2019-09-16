@@ -2,9 +2,9 @@
 <mat-dialog-content class="mat-typography fadeInAnimated">
     <form [formGroup]="form">
         <p>Se enviará un correo con la contraseña al nuevo reclutador para que ingrese al sistema</p>
-        <input type="number" class="inputLogIn" placeholder="Ingrese cédula" formControlName="id" [ngClass]=" {'is-invalid':  !form.get('id').valid && form.get('id').touched }"><br>
+        <input type="number" class="inputLogIn" placeholder="Ingrese cédula" formControlName="id" required PositiveNumber [ngClass]=" {'is-invalid':  !form.get('id').valid && form.get('id').touched }"><br>
         <div *ngIf="(form.get('id').errors?.pattern  || form.get('id').errors?.required )&& form.get('id').touched">
-            <label class="invalid">Por favor, número positivo</label>
+            <label class="invalid">Por favor, número válido</label>
         </div>
         <input type="text" class="inputLogIn" placeholder="Ingrese el correo" formControlName="email" [ngClass]=" {'is-invalid':  !form.get('email').valid && form.get('email').touched && form.get('email').errors?.required }"><br>
         <div *ngIf="(form.get('email').errors?.pattern || form.get('email').errors?.required ) && form.get('email').touched ">

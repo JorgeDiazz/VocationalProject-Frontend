@@ -13,9 +13,11 @@ export interface RecruiterI{
     image?:string,
     type?:string, 
     nitCompany:string;
+    vacants_number_to_care?:number;
+    postulants_number_to_care?:number;
 }
 /** Carreras */
-export interface CarrerI{
+export interface CareerI{
     id:number,
     name:string;
 }
@@ -55,9 +57,18 @@ export interface PostulantI{
     password?:string
 }
 
-export interface JobPositionI{
-    
+export interface JobsI{
+    id:number,
+    name:string,
+    salary_min:number,
+    salary_max:number,
+    description?:string,
+    id_area?:number,
+    vacants_number?:number,
+
 }
+
+
 
 
 

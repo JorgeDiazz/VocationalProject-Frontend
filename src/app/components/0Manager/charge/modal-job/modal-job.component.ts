@@ -20,53 +20,14 @@ export interface ChipColor {
   styleUrls: ['./modal-job.component.css']
 })
 export class ModalJobComponent implements OnInit {
-  availableColors: ChipColor[] = [
-    { name: 'none', color: undefined },
-    { name: 'Primary', color: 'primary' },
-    { name: 'Accent', color: 'accent' },
-    { name: 'Warn', color: 'warn' }
-  ];
-  states = new FormControl();
-  statesList: string[] = [
-    'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
-    'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
-    'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
-    'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico',
-    'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania',
-    'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-    'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-  ];
-
-
-
 
   form: FormGroup;
   nameEmpresa:CompanyI;
   areas: AreaI[];
-  carrers: CarrerI[] = [{
-    id: 1,
-    name: "Ing. Sistemas"
-  },
-  {
-    id: 2,
-    name: "Abogado"
-  }];
-
-  skillsHard: SkillI[] = [
-    {
-      id: 3,
-      name: "other",
-      type: "hard"
-
-    },
-    {
-      id: 4,
-      name: "other 2",
-      type: "hard"
-    }
-  ]
+  careers: CareerI[];
+  skillsHard: SkillI[];
   skillsHardSelected: SkillI[];
-  carrersSelected: CarrerI[];
+  careersSelected: CareerI[];
   recruiters: RecruiterI[];
   recruitersSelected: RecruiterI[];
 
@@ -128,7 +89,7 @@ export class ModalJobComponent implements OnInit {
       this.skillsHard = <SkillI[]>dat.body;
     });
     this.serv.company.getCareers().subscribe(dat => {
-      this.carrers = <CarrerI[]>dat.body;
+      this.careers = <CareerI[]>dat.body;
     })
     this.serv.company.getRecruiters().subscribe(dat => {
       this.recruiters = <RecruiterI[]>dat.body;
@@ -173,7 +134,7 @@ export class ModalJobComponent implements OnInit {
   selectChange(e, type: number) {
     switch (type) {
       case 1:
-        this.carrersSelected = e;
+        this.careersSelected = e;
         break;
       case 2:
         this.skillsHardSelected = e;
@@ -188,7 +149,7 @@ export class ModalJobComponent implements OnInit {
   addOption(type: number) {
     switch (type) {
       case 1:
-        (<FormArray>this.form.get('newCarrer')).push(
+        (<FormArray>this.form.get('newCareer')).push(
           new FormGroup({
             'name': new FormControl('', Validators.required)
           })
@@ -213,7 +174,7 @@ export class ModalJobComponent implements OnInit {
   removeOption(type: number, i: number) {
     switch (type) {
       case 1:
-        (<FormArray>this.form.get('newCarrer')).removeAt(i);
+        (<FormArray>this.form.get('newCareer')).removeAt(i);
         break;
       case 2:
         (<FormArray>this.form.get('newHardSkill')).removeAt(i);
