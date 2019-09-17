@@ -4,10 +4,12 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms'; 
 import { ThemePalette } from '@angular/material/core';
 import { ServiceService } from 'src/app/services/service.service';
-import { AreaI, CareerI, SkillI, RecruiterI } from 'src/app/models/models.model';
+import { AreaI, CareerI, SkillI, RecruiterI, JobsI } from 'src/app/models/models.model';
 import { ChartRenderProps } from 'chart.js';
 import { CompanyI } from '../../../../models/models.model';
 import swal, { SweetAlertType } from 'sweetalert2';
+import { ConsoleReporter } from 'jasmine';
+//import { ConsoleReporter } from 'jasmine';
 
 export interface ChipColor {
   name: string;
@@ -36,25 +38,25 @@ export class ModalJobComponent implements OnInit {
 /*
     let dt = {
       'name': "xxx",
-      'range1': 10,
-      'range2': 20,
-      'area': 1, //ID Area
-      'desc': "descripcion",
+      'salaryMin': 10,
+      'salaryMax': 20,
+      'idArea': 1, //ID Area
+      'description': "descripcion",
       'carrer': [{ id: 2, name: 's' }],          //Se puede enviar vacio => se envia carrer o new carrer
       'newCarrer': [{ name: 'nuevaCarrera' }],   //Se puede enviar vacio => se envia carrer o new carre
       'hardSkill': [{id:1, name:'xx'}],          //Se puede enviar vacio => se envia hardSkill o newHardSkill
       'newHardSkill':[{name:'xx'}],              //Se puede enviar vacio => se envia hardSkill o newHardSkill
-      'newProcess': [{name:'sd'}],
+      'process': [{name:'sd'}],
       'recruiter':[{id:'xx'}],   //Es opcional, se puede enviar vacio
-      'available':40             //Es opcional, sepuede enviar vacio  
+      'placeNumber':40             //Es opcional, sepuede enviar vacio  
     }
 */
     this.form = new FormGroup({
       'name': new FormControl('', Validators.required),
-      'range1': new FormControl('', Validators.required),
-      'range2': new FormControl('', Validators.required),
-      'area': new FormControl('', Validators.required),
-      'desc': new FormControl('', Validators.required),
+      'salaryMin': new FormControl('', Validators.required),
+      'salaryMax': new FormControl('', Validators.required),
+      'idArea': new FormControl('', Validators.required),
+      'description': new FormControl('', Validators.required),
       'career': new FormControl(''),
       'newCareer': new FormArray([
         new FormGroup({
@@ -67,61 +69,63 @@ export class ModalJobComponent implements OnInit {
           'name': new FormControl('')
         })
       ]),
-      'newProcess': new FormArray([
+      'process': new FormArray([
         new FormGroup({
           'name': new FormControl('', Validators.required)
         })
       ]),
       'recruiter': new FormControl(''),
-      'available': new FormControl('')
+      'placeNumber': new FormControl('')
 
     })
   }
 
 
 
-  ngOnInit() {
+  ngOnInit() { 
     this.serv.company.getAreas().subscribe(dat => {
-      this.areas = <AreaI[]>dat.body;
-      console.log(this.areas);
+      this.areas = <AreaI[]>dat.body;     
+      this.serv.company.getSkillsHard().subscribe(dat => {
+        this.skillsHard = <SkillI[]>dat.body;
+        this.serv.company.getCareers().subscribe(dat => {
+          this.careers = <CareerI[]>dat.body;
+          this.serv.company.getRecruiters().subscribe(dat => {
+            this.recruiters = <RecruiterI[]>dat.body;
+          })
+        })
+      });
     });
-    this.serv.company.getSkillsHard().subscribe(dat => {
-      this.skillsHard = <SkillI[]>dat.body;
-    });
-    this.serv.company.getCareers().subscribe(dat => {
-      this.careers = <CareerI[]>dat.body;
-    })
-    this.serv.company.getRecruiters().subscribe(dat => {
-      this.recruiters = <RecruiterI[]>dat.body;
-    })
-
     this.nameEmpresa= this.serv.getCompany();
   }
 
   save() {
     this.form.markAllAsTouched();
-
-    if (this.form.valid) {
-      alert(parseInt(this.form.get('range1').value)<=parseInt(this.form.get('range2').value));
-      if(parseInt(this.form.get('range1').value)>=parseInt(this.form.get('range2').value)){
+   console.log(this.form);
+   console.log(this.form.value); 
+    if (this.form.valid) {      
+      //alert(parseInt(this.form.get('salaryMin').value)<=parseInt(this.form.get('salaryMax').value));
+      if(parseInt(this.form.get('salaryMin').value)>=parseInt(this.form.get('salaryMax').value)){
         swal.fire('Datos erroneos',"El rango de salario es incorrecto", 'error');
       }else{
-        if(this.form.get('career').value.length==0 && this.form.get('newCareer').value.length==0){
+        if( (this.form.get('career').value=="" || this.form.get('career').value.length==0 ) &&  this.form.get('newCareer').value[0].name==""){
           swal.fire('Datos imcompletos',"Debe ingresar carreras", 'error');
-        }else if(this.form.get('hardSkill').value.length==0 && this.form.get('newHardSkill').value.length==0){
+        }else if( (this.form.get('hardSkill').value=="" || this.form.get('hardSkill').value.length==0)   && this.form.get('newHardSkill').value[0].name==""){
           swal.fire('Datos imcompletos',"Debe ingresar habilidades", 'error');
         }else{
-          if(this.form.get('recruiter').value.length!=0 && this.form.get('available').value==null){
+          if( (this.form.get('recruiter').value!="" || this.form.get('recruiter').value.length!=0) && this.form.get('placeNumber').value==""){
             swal.fire('Datos imcompletos',"Debe ingresar los puestos disponibles", 'error');
-          }else if(this.form.get('recruiter').value.length==0 && this.form.get('available').value!=null){
+         }else if( (this.form.get('recruiter').value=="" || this.form.get('recruiter').value.length==0 ) && this.form.get('placeNumber').value!=""){
             swal.fire('Datos imcompletos',"Debe ingresar al menos un reclutador", 'error');
           }else{
-            this.dialogRef.close(this.form.value);
+            let jobPosition:JobsI=this.obJobI(this.form.value);
+       
+            this.serv.company.postJobPosition(jobPosition).subscribe(dat=>{
+
+            })
+             //this.dialogRef.close(this.form.value);
           }
         }
-
-
-        
+      
         
       }
       
@@ -129,6 +133,22 @@ export class ModalJobComponent implements OnInit {
     } else {
       console.log("invalidoooo")
     }
+  }
+
+  obJobI(value:any){
+      if(value.career=="")
+        value.career=[];
+      if(value.hardSkill=="")
+        value.hardSkill=[]
+      if(value.recruiter=="")
+        value.recruiter=[];
+      if(value.newCareer[0].name=="")
+        value.newCareer.splice(0,1);
+      if(value.newHardSkill[0].name=="")
+        value.newHardSkill.splice(0,1);
+      let pos:JobsI=value;
+      
+     return  pos;
   }
 
   selectChange(e, type: number) {
@@ -163,7 +183,7 @@ export class ModalJobComponent implements OnInit {
         )
         break;
       case 4:
-        (<FormArray>this.form.get('newProcess')).push(
+        (<FormArray>this.form.get('process')).push(
           new FormGroup({
             'name': new FormControl('', Validators.required)
           })
@@ -180,7 +200,7 @@ export class ModalJobComponent implements OnInit {
         (<FormArray>this.form.get('newHardSkill')).removeAt(i);
         break;
       case 4:
-        (<FormArray>this.form.get('newProcess')).removeAt(i);
+        (<FormArray>this.form.get('process')).removeAt(i);
         break;
     }
   }

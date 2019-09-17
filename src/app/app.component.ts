@@ -8,4 +8,7 @@ import 'hammerjs';
 })
 export class AppComponent {
   title = 'ProyectSFT2';
+  constructor(){
+   
+  }
 }

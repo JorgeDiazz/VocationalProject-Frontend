@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AreaI, RecruiterI } from '../models/models.model';
+import { AreaI, RecruiterI, JobsI } from '../models/models.model';
 import { HttpClient } from '@angular/common/http';
 import { ServService } from './serv.service';
 import { AuthService } from './auth.service';
@@ -13,7 +13,7 @@ export class ManagerService {
   private areaURL="area/"; // "area/id:" 
   private skillHardURL="skill/Hard";
   private careerURL="career/";
-  private nitCompany="";
+  
   /**
    * Cualquier petición que requiera nitCompany, se debe utilizar el método gitNitCompany()
    */
@@ -25,16 +25,25 @@ export class ManagerService {
    }
 
 
+   postJobPosition(job:JobsI){
+      
+     job.nitCompany=this.getNitCompany();
+     console.log(JSON.stringify(job));
+     return this.serv.POST(job,'jobPosition/');
+   }
+   getJobPosition(){
+     return this.serv.GET('jobPosition/'+this.getNitCompany());
+   }
  
    /** AREAS */
    postArea(area:AreaI){
-     this.getNitCompany();
+      
      return this.serv.POST(area,`${this.areaURL}${area.nit_company}`);
    }
 
    getAreas(){ 
-     this.getNitCompany();
-     return this.serv.GET(`${this.areaURL}${this.nitCompany}`);
+     
+     return this.serv.GET(`${this.areaURL}${this.getNitCompany()}`);
    }
 
    /** END AREAS */
@@ -61,14 +70,14 @@ export class ManagerService {
    /** Recruiter */
 
    postRecruiter(recruiter:RecruiterI){
-     this.getNitCompany();
-     recruiter.nitCompany=this.nitCompany; 
+     
+     recruiter.nitCompany=this.getNitCompany();
      return this.serv.POST(recruiter,'recruiter/');
    }
 
    getRecruiters(){
-     this.getNitCompany();
-     return  this.serv.GET(`recruiter/${this.nitCompany}`);
+      
+     return  this.serv.GET(`recruiter/${this.getNitCompany()}`);
    }
    
    /** END Recruiter */
@@ -76,7 +85,7 @@ export class ManagerService {
 
   
   private  getNitCompany(){    
-    this.nitCompany=this.serv.getCompany().nit;
+    return this.serv.getCompany().nit;
    }
 
 }

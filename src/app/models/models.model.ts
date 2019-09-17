@@ -58,14 +58,26 @@ export interface PostulantI{
 }
 
 export interface JobsI{
-    id:number,
+    id?:number,
     name:string,
-    salary_min:number,
-    salary_max:number,
+    nitCompany?:string,    
+    salaryMin:number,
+    salaryMax:number,
     description?:string,
-    id_area?:number,
-    vacants_number?:number,
+    idArea?:number,
+    career?:CareerI[]
+    newCareer?:CareerI[],
+    hardSkill?:SkillI[],
+    newHardSkill?:SkillI[],
+    process?:ProcessI[],
+    recruiter?:RecruiterI[],
+    placeNumber?:number 
 
+}
+
+export interface ProcessI{
+    id?:string,
+    name:string,
 }
 
 export interface VacantI{

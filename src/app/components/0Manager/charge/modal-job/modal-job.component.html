@@ -6,7 +6,7 @@
             <div class="col">
                 <mat-form-field class="areas">
                     <mat-label>Área de la empresa</mat-label>
-                    <mat-select formControlName="area">
+                    <mat-select formControlName="idArea">
                         <mat-option *ngFor="let area of areas" [value]="area.id">
                             {{area.name}}
                         </mat-option>
@@ -19,16 +19,16 @@
             </div>
             <div class="col">
                 <label>Rango de salario:</label><br>
-                <input type="number" class="inputLogIn salary1" placeholder="" formControlName="range1" required PositiveNumber [ngClass]=" {'is-invalid':  !form.get('range1').valid && form.get('range1').touched } "> -
-                <input type="number" class="inputLogIn salary2" placeholder="" formControlName="range2" required PositiveNumber [ngClass]=" {'is-invalid':  !form.get('range2').valid && form.get('range2').touched } ">
-                <div *ngIf="(form.get('range1').badError && form.get('range1').touched && form.get('range1').errors?.is) || ( form.get('range2').errors?.required && form.get('range2').touched  ) ">
+                <input type="number" class="inputLogIn salary1" placeholder="" formControlName="salaryMin" required PositiveNumber [ngClass]=" {'is-invalid':  !form.get('salaryMin').valid && form.get('salaryMin').touched } "> -
+                <input type="number" class="inputLogIn salary2" placeholder="" formControlName="salaryMax" required PositiveNumber [ngClass]=" {'is-invalid':  !form.get('salaryMax').valid && form.get('salaryMax').touched } ">
+                <div *ngIf="(form.get('salaryMin').badError && form.get('salaryMin').touched && form.get('salaryMin').errors?.is) || ( form.get('salaryMax').errors?.required && form.get('salaryMax').touched  ) ">
                     <label class="invalid">Ingrese rango válido</label>
                 </div>
-                <div *ngIf="(form.get('range1').errors?.nonPositive || form.get('range2').errors?.nonPositive) ">
+                <div *ngIf="(form.get('salaryMin').errors?.nonPositive || form.get('salaryMax').errors?.nonPositive) ">
                     <label class="invalid">Ingrese valores positivos</label>
                 </div>
-                <textarea class="inputLogIn" placeholder="Descripción del Cargo" formControlName="desc" [ngClass]=" {'is-invalid':  !form.get('desc').valid && form.get('desc').touched } "></textarea><br>
-                <div *ngIf="form.get('desc').errors?.required && form.get('desc').touched ">
+                <textarea class="inputLogIn" placeholder="Descripción del Cargo" formControlName="description" [ngClass]=" {'is-invalid':  !form.get('description').valid && form.get('description').touched } "></textarea><br>
+                <div *ngIf="form.get('description').errors?.required && form.get('description').touched ">
                     <label class="invalid">Ingrese descripción del cargo</label>
                 </div>
             </div>
@@ -66,12 +66,12 @@
                 </div>
                 <label>Procesos:</label>
                 <div class="row">
-                    <ng-container *ngFor="let cr of form.controls['newProcess'].controls;let i=index;">
+                    <ng-container *ngFor="let cr of form.controls['process'].controls;let i=index;">
                         <div class="col-8" [formGroup]="cr">
                             <input type="" class="form-control input1" placeholder="Nuevo proceso" formControlName="name" [ngClass]=" {'is-invalid':  !cr.get('name').valid && cr.get('name').touched }">
                         </div>
 
-                        <div class="col-2" *ngIf="(i+1)== form.controls['newProcess'].controls.length">
+                        <div class="col-2" *ngIf="(i+1)== form.controls['process'].controls.length">
                             <i (click)="addOption(4)" class="fas fa-plus-circle"></i>
                         </div>
                         <div class="col-2" *ngIf="i!=0">
@@ -133,8 +133,8 @@
                 </mat-chip-list><br>
             </div>
             <div class="col">
-                <input type="number" class="inputLogIn" placeholder="Puestos disponibles" required PositiveNumber formControlName="available"><br>
-                <div *ngIf="(form.get('available').errors?.nonPositive)">
+                <input type="number" class="inputLogIn" placeholder="Puestos disponibles" PositiveNumber formControlName="placeNumber"><br>
+                <div *ngIf="(form.get('placeNumber').errors?.nonPositive)">
                     <label class="invalid">Ingrese valores positivos</label>
                 </div>
             </div>

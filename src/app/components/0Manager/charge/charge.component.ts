@@ -12,14 +12,15 @@ import { ServiceService } from 'src/app/services/service.service';
 export class ChargeComponent implements OnInit {
   
    
-  jobs:JobsI[];
+  jobs:JobsI[]=[];
   nitCompany:string;
   constructor(public dialog: MatDialog,private serv:ServiceService) {
     this.nitCompany=this.serv.getCompany().nit;
-    this.getJobs(this.nitCompany);
+   
    }
 
   ngOnInit() {
+    this.getJobs();
   }
  
 
@@ -30,11 +31,14 @@ export class ChargeComponent implements OnInit {
     });
 
   dialogRef.afterClosed().subscribe(result => {
-    this.getJobs(this.nitCompany);
+    this.getJobs();
   });
 }
 
-getJobs(nit:string){
-//SERVICIO PARA TRAER CARGOS DE UNA EMPRESA
+getJobs(){
+this.serv.company.getJobPosition().subscribe(dat=>{
+  
+  this.jobs=<any>dat.body;
+})
 }
 }
