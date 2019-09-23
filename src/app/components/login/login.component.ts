@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { UserI, AuthI } from 'src/app/models/models.model';
+import { UserI, AuthI, PostulantI } from 'src/app/models/models.model';
 import { ServService } from 'src/app/services/serv.service';
 import { ServiceService } from 'src/app/services/service.service';
 import { Router } from '@angular/router'; 
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   constructor(public serv:ServiceService,private route:Router,private _snackBar: MatSnackBar) {
-    let auth:AuthI=this.serv.auth.getAuth();
+    let auth:AuthI=this.serv.Auth.getAuth();
     if(auth){
       this.navigate(auth.type);
     }
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
          
         let type:string=(<any> d.body).type;
         this.navigate(type);
-        this.serv.auth.saveAuth(d.headers,<any>d.body);      
+        this.serv.Auth.saveAuth(d.headers,<any>d.body);      
       });
     }else{
       this.openSnackBar("Datos incompletos o erróneos", "Undo");
@@ -95,6 +95,11 @@ export class LoginComponent implements OnInit {
       let validPassword=this.form.get("newPassword").valid;
       if(validEmail && validName && validId && validPassword){
         //ENVIAR POSTULANTE A SERVIDOR
+        let post:PostulantI={email:this.form.get("email").value,
+            name:this.form.get("name").value, id:this.form.get("id").value,  password:this.form.get("newPassword").value}
+        this.serv.Postulant.Post(post).subscribe(dat=>{
+          console.log(dat);
+        })
       }else{
         this.openSnackBar("Datos incompletos o erróneos", "Undo");
       }

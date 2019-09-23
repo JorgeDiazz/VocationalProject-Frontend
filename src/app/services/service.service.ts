@@ -1,68 +1,34 @@
-import { Injectable } from '@angular/core';
-import { LoginService } from './login.service';
-import { ServService } from './serv.service';
-import { UserI, AuthI, CompanyI, PostulantI } from '../models/models.model';
-import { RecruiterService } from './recruiter.service';
-import { AuthService } from './auth.service';
-import { ManagerService } from './manager.service';
-import { PostulantService } from './postulant.service';
-import { RecruiterI } from 'src/app/models/models.model';
+import { Injectable } from '@angular/core'; 
+import { AuthService } from './session/auth.service';  
+import { PostulantService } from './data/postulant.service';
+import { AreaService } from './data/area.service';
+import { CareerService } from './data/career.service';
+import { JobPositionService } from './data/job-position.service';
+import { ProcessService } from './data/process.service';
+import { SkillService } from './data/skill.service';
+import { VacantService } from './data/vacant.service';
+import { RecruiterService } from './data/recruiter.service';
+import { CompanyService } from './data/company.service';
+import { LoginService } from './session/login.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceService {
-  constructor(public login: LoginService, public recruiter: RecruiterService,
-    public auth: AuthService, public company: ManagerService,
-    public postulant:PostulantService) { 
-  }
-
-  getCompany():CompanyI {
-    let dat: any = this.auth.getAuth();
-    console.log(dat);
-    let nit:string=dat.nit;
-    let name:string=dat.name;
-    let email:string=dat.email;
-    let phone:number=parseInt(dat.phone);
-    let address:string=dat.address;
-      let company: CompanyI = {
-        nit: nit,
-        name: name,
-        address:address,
-        phone:phone,
-        email:email
-      }
+  constructor(public login: LoginService, 
+    public Auth: AuthService, 
+    public Company:CompanyService,
+    public Postulant:PostulantService,
+    public Area:AreaService,
+    public Career:CareerService,
+    public JobPosition: JobPositionService,
+    public Process:ProcessService,
+    public Skill:SkillService,
+    public Vacant:VacantService,
+    public Recruiter:RecruiterService
     
-    return company;
+    ) { 
   }
-
-  getRecruiter():RecruiterI {
-    let dat: any = this.auth.getAuth();
-    let id:string=dat.id;
-    let name:string=dat.name;
-    let nitCompany:string=dat.nitCompany;
-    let email:string=dat.email;
-    let recruiter: RecruiterI = {
-      id: id,
-      name: name,
-      nitCompany:nitCompany,
-      email:email
-    }
-    
-    return recruiter;
-  }
-
-  getPostulant():PostulantI {
-    let dat: any = this.auth.getAuth();
-    let id:string=dat.id;
-    let name:string=dat.name;
-    let email:string=dat.email;
-    let postulant:PostulantI={
-      id: id,
-      name: name,
-      email:email
-    }
-    return postulant;
-  }
+  
  
 }

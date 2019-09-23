@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
-import { LoginService } from './login.service';
+import { Injectable } from '@angular/core'; 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { AuthService } from './auth.service';
+import { AuthService } from './session/auth.service';
 import { CompanyI } from '../models/models.model';
 
 @Injectable({
@@ -14,12 +13,7 @@ export class ServService {
   private apiURL = "http://localhost:8080/"
   
   constructor(private httpCliente: HttpClient,public servAuth:AuthService) {
-   
-     
   }
-
-
- 
  
   POST(ob, url: string, login?: boolean) {
     
@@ -41,6 +35,7 @@ export class ServService {
   DELETE(id:string,url:string) {    
     return this.httpCliente.delete(this.apiURL+url+id, { observe: 'response' });
   }
+  
   getCompany():CompanyI {
     let dat: any = this.servAuth.getAuth();
     let nit: string = "Sin NIT";

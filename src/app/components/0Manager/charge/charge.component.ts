@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import { ModalJobComponent } from './modal-job/modal-job.component';
-import { ManagerService } from 'src/app/services/manager.service'; 
+import { ModalJobComponent } from './modal-job/modal-job.component'; 
 import { JobsI } from '../../../models/models.model';
 import { ServiceService } from 'src/app/services/service.service';
 @Component({
@@ -15,7 +14,7 @@ export class ChargeComponent implements OnInit {
   jobs:JobsI[]=[];
   nitCompany:string;
   constructor(public dialog: MatDialog,private serv:ServiceService) {
-    this.nitCompany=this.serv.getCompany().nit;
+    this.nitCompany=this.serv.Company.GetLocal().nit;
    
    }
 
@@ -36,7 +35,7 @@ export class ChargeComponent implements OnInit {
 }
 
 getJobs(){
-this.serv.company.getJobPosition().subscribe(dat=>{
+this.serv.JobPosition.GetAll().subscribe(dat=>{
   
   this.jobs=<any>dat.body;
 })

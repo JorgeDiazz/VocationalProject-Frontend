@@ -14,7 +14,7 @@ export class PendingVacanciesComponent implements OnInit {
   pendingVacants: VacantI[];
   idRecruiter:string;
   constructor(public dialog: MatDialog,private serv:ServiceService ) {
-      this.idRecruiter=this.serv.getRecruiter().id;
+      this.idRecruiter=this.serv.Recruiter.GetLocal().id;
       this.getPendingVacants(this.idRecruiter);
      }
 

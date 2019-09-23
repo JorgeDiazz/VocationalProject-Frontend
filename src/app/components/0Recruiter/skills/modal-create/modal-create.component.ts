@@ -15,7 +15,7 @@ export class ModalCreateComponent implements OnInit {
   titularAlerta:string="";
   constructor(public dialogRef: MatDialogRef<ModalCreateComponent>,public serv:ServiceService,private fb:FormBuilder) { 
 
-    this.serv.company.getSkillsSoft().subscribe(dat=>{
+    this.serv.Skill.GetAll(1).subscribe(dat=>{
       this.softs=<SkillI[]>dat.body;
     });
 

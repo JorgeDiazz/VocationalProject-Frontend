@@ -18,7 +18,7 @@ export class SkillsComponent implements OnInit {
   nit:string;
   constructor(public dialog: MatDialog,
     public serv:ServiceService) {
-      this.nit=this.serv.getRecruiter().nitCompany;
+      this.nit=this.serv.Recruiter.GetLocal().nitCompany;
       this.verSkills();
       this.verGlobalSkills(this.nit);
      }
@@ -67,7 +67,7 @@ export class SkillsComponent implements OnInit {
 }
 
 verSkills(){
-  this.serv.company.getSkillsSoft().subscribe(dat=>{
+  this.serv.Skill.GetAll(1).subscribe(dat=>{
     this.softs=<SkillI[]>dat.body;
   });
  }

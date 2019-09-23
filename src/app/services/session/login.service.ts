@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 //import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { UserI, AuthI } from '../models/models.model';
-import { ServService } from './serv.service'; 
+ 
 import { HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { ServService } from '../serv.service';
+import { UserI } from 'src/app/models/models.model';
 
 
 @Injectable({

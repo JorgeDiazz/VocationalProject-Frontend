@@ -8,7 +8,7 @@ import { AreaI, CareerI, SkillI, RecruiterI, JobsI } from 'src/app/models/models
 import { ChartRenderProps } from 'chart.js';
 import { CompanyI } from '../../../../models/models.model';
 import swal, { SweetAlertType } from 'sweetalert2';
-import { ConsoleReporter } from 'jasmine';
+//import { ConsoleReporter } from 'jasmine';
 //import { ConsoleReporter } from 'jasmine';
 
 export interface ChipColor {
@@ -83,19 +83,19 @@ export class ModalJobComponent implements OnInit {
 
 
   ngOnInit() { 
-    this.serv.company.getAreas().subscribe(dat => {
+    this.serv.Area.GetAll().subscribe(dat => {
       this.areas = <AreaI[]>dat.body;     
-      this.serv.company.getSkillsHard().subscribe(dat => {
+      this.serv.Skill.GetAll(0).subscribe(dat => {
         this.skillsHard = <SkillI[]>dat.body;
-        this.serv.company.getCareers().subscribe(dat => {
+        this.serv.Career.GetAll().subscribe(dat => {
           this.careers = <CareerI[]>dat.body;
-          this.serv.company.getRecruiters().subscribe(dat => {
+          this.serv.Recruiter.GetAll().subscribe(dat => {
             this.recruiters = <RecruiterI[]>dat.body;
           })
         })
       });
     });
-    this.nameEmpresa= this.serv.getCompany();
+    this.nameEmpresa= this.serv.Company.GetLocal();
   }
 
   save() {
@@ -119,7 +119,7 @@ export class ModalJobComponent implements OnInit {
           }else{
             let jobPosition:JobsI=this.obJobI(this.form.value);
        
-            this.serv.company.postJobPosition(jobPosition).subscribe(dat=>{
+            this.serv.JobPosition.Post(jobPosition).subscribe(dat=>{
 
             })
              //this.dialogRef.close(this.form.value);
