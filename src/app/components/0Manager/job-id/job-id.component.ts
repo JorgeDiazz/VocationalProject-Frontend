@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalVacant1Component } from './modal-vacant1/modal-vacant1.component';
 import { ModalPostulantComponent } from './modal-postulant/modal-postulant.component';
-import { ActivatedRoute } from '@angular/router'; 
-import { ManagerService } from 'src/app/services/manager.service'; 
+import { ActivatedRoute } from '@angular/router';  
 
 @Component({
   selector: 'app-job-id',

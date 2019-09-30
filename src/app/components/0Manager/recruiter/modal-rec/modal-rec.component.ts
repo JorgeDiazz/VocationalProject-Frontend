@@ -34,7 +34,7 @@ export class ModalRecComponent implements OnInit {
     recruiter.nitCompany=""; 
     recruiter.id=recruiter.id+""; 
     if(this.form.valid){
-      this.serv.company.postRecruiter(recruiter).subscribe((dat)=>{
+      this.serv.Recruiter.Post(recruiter).subscribe((dat)=>{
         console.log(dat); 
         this.dialogRef.close(recruiter);
         //MANEJAR ERRORES

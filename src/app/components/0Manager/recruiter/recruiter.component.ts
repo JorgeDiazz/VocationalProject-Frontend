@@ -14,7 +14,7 @@ export class RecruiterComponent implements OnInit {
   recruiters:RecruiterI[];
   nitCompany:string;
   constructor(public dialog: MatDialog,private serv:ServiceService ) { 
-    this.nitCompany=this.serv.getCompany().nit;
+    this.nitCompany=this.serv.Company.GetLocal().nit;
     this.getRecruiters(this.nitCompany);
   }
 

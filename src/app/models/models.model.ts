@@ -35,7 +35,7 @@ export interface CompanyI{
     email?:string,
     address?:string
 }
-
+ 
 /**  */
 export interface AreaI{
 id?:string;
@@ -66,12 +66,19 @@ export interface JobsI{
     description?:string,
     idArea?:number,
     career?:CareerI[]
+    careersId?:number[];
     newCareer?:CareerI[],
+    newCareersName?:string[],
     hardSkill?:SkillI[],
+    hardSkillsId?:number[],
     newHardSkill?:SkillI[],
+    newHardSkillsName?:string[]
     process?:ProcessI[],
+    processesName?:string[],
     recruiter?:RecruiterI[],
-    placeNumber?:number 
+    recruitersId?:string[],
+    placeNumber?:number, 
+    placesNumber?:number
 
 }
 

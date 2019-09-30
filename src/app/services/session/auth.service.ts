@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AuthI } from '../models/models.model';
+import { AuthI } from '../../models/models.model';
 import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({

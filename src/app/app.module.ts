@@ -37,7 +37,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpErrorInterceptor } from './errors/http-error.interceptor';
 import { ModalPostulantsComponent } from './components/0Recruiter/job-process/modal-postulants/modal-postulants.component';
 import { PositiveNumberDirective } from './components/Validator/positive-number.directive';
-import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { AuthInterceptorService } from './services/interceptor/auth-interceptor.service';
  
 @NgModule({
   declarations: [

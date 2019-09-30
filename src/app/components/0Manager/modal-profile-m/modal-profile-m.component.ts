@@ -11,7 +11,7 @@ export class ModalProfileMComponent implements OnInit {
 
   companyProfile:CompanyI;
   constructor(private serv:ServiceService) { 
-    this.companyProfile=this.serv.getCompany();
+    this.companyProfile=this.serv.Company.GetLocal();
     console.log(this.companyProfile);
   }
 

@@ -12,7 +12,7 @@ export class InProcessComponent implements OnInit {
   processVacant:VacantI[];
   id:string;
   constructor(private serv:ServiceService) {
-    this.id=this.serv.getRecruiter().id;
+    this.id=this.serv.Recruiter.GetLocal().id;
    }
 
   ngOnInit() {

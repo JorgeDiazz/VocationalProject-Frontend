@@ -11,7 +11,7 @@ export class ModalProfileRComponent implements OnInit {
 
   recruiterProfile:RecruiterI;
   constructor(private serv:ServiceService) { 
-    this.recruiterProfile=this.serv.getRecruiter();
+    this.recruiterProfile=this.serv.Recruiter.GetLocal();
   }
 
   ngOnInit() {

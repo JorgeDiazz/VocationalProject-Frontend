@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
-import { AuthService } from './auth.service';
+import { AuthService } from '../session/auth.service';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -17,8 +17,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         Authorization: `${this.auth.getToken()}`,
         'Content-Type':"application/json"
       }
-    });
-    console.log(request);
+    }); 
     return next.handle(request);
   }
 }
