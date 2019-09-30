@@ -8,7 +8,6 @@ import { AreaI, CareerI, SkillI, RecruiterI, JobsI } from 'src/app/models/models
 import { ChartRenderProps } from 'chart.js';
 import { CompanyI } from '../../../../models/models.model';
 import swal, { SweetAlertType } from 'sweetalert2';
-import { ConsoleReporter } from 'jasmine';
 //import { ConsoleReporter } from 'jasmine';
 
 export interface ChipColor {
