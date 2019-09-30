@@ -271,8 +271,24 @@ export class ModalJobComponent implements OnInit,
       value.newCareer.splice(0, 1);
     if ( (value.newHardSkill).length!=0 &&  (<string> value.newHardSkill[0].name).trim() == "")
       value.newHardSkill.splice(0, 1);
-    let pos: JobsI = value;     
+    let pos: JobsI = value;    
+
+    pos.newCareersName=[]; pos.careersId=[]; pos.hardSkillsId=[];
+    pos.newHardSkillsName=[]; pos.recruitersId=[]; pos.processesName=[];
+    for(let a of pos.newCareer){pos.newCareersName.push(a.name); } delete pos.newCareer;
+    for(let a of pos.newHardSkill){pos.newHardSkillsName.push(a.name); } delete pos.newHardSkill;
+    for(let a of pos.career){pos.careersId.push(a.id); } delete pos.career;
+    for(let a of pos.hardSkill){pos.hardSkillsId.push(a.id); } delete pos.hardSkill;
+    for(let a of pos.recruiter){pos.recruitersId.push(a.id); } delete pos.recruiter;
+    for(let a of pos.process){pos.processesName.push(a.name); } delete pos.process;
+    
+
+    pos.placesNumber=pos.placeNumber;  delete pos.placeNumber;
+     
+    
     console.log(JSON.stringify(pos));
+
+
     return pos;
   }
 
