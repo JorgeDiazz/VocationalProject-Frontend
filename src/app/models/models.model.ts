@@ -35,7 +35,7 @@ export interface CompanyI{
     email?:string,
     address?:string
 }
-
+ 
 /**  */
 export interface AreaI{
 id?:string;

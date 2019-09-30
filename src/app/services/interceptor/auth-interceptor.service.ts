@@ -17,8 +17,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         Authorization: `${this.auth.getToken()}`,
         'Content-Type':"application/json"
       }
-    });
-    console.log(request);
+    }); 
     return next.handle(request);
   }
 }

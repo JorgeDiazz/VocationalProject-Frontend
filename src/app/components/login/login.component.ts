@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { UserI, AuthI, PostulantI } from 'src/app/models/models.model';
+import { UserI, AuthI, PostulantI, CompanyI } from 'src/app/models/models.model';
 import { ServService } from 'src/app/services/serv.service';
 import { ServiceService } from 'src/app/services/service.service';
 import { Router } from '@angular/router'; 
@@ -84,7 +84,19 @@ export class LoginComponent implements OnInit {
       let validNit=this.form.get("nit").valid;
       let validNumber=this.form.get("number").valid;
       if(validEmail && validName && validNit && validNumber){
+        let val=this.form.value;
         //ENVIAR EMPRESA A SERVIDOR
+        let comp:CompanyI={
+          name:val.name,
+          nit:val.nit,
+          email:val.email,
+          phone:val.number
+        };
+        
+       
+        this.serv.Company.Post(comp).subscribe(dat=>{
+          console.log(dat);
+        });
       }else{
         this.openSnackBar("Datos incompletos o erróneos", "Undo");
       }

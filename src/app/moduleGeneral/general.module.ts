@@ -7,7 +7,7 @@ import {MaterialModule} from '../moduleGeneral/material.module'
 import {HttpClientModule} from '@angular/common/http'
 import {FormsModule,ReactiveFormsModule} from '@angular/forms'
 import { ChartsModule } from 'ng2-charts';
-  
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search'; //Search Selection
  
 
 @NgModule({    
@@ -20,6 +20,7 @@ import { ChartsModule } from 'ng2-charts';
     HttpClientModule,
     ReactiveFormsModule,//Validación de formularios por Data
     ChartsModule , 
+    NgxMatSelectSearchModule
   ]
 })
 export class GeneralModule { }
