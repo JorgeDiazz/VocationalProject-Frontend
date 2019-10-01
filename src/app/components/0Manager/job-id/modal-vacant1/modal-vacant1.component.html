@@ -1,21 +1,26 @@
 <h3>Nombre del cargo</h3>
 
 <form [formGroup]="form">
-<mat-dialog-content class="mat-typography">
-    <mat-form-field class="recruiters">
-        <mat-label>Reclutadores</mat-label>
-        <mat-select [formControl]="states" multiple>
-            <mat-option *ngFor="let state of statesList" [value]="state">{{state}}</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <label>Número de personas para el cargo:</label>
-    <input type="number" class="inputLogIn" placeholder="" formControlName="number" [ngClass]=" {'is-invalid':  !form.get('number').valid && form.get('number').touched }"><br>
-    <div *ngIf="!form.get('number').valid && form.get('number').touched ">
-        <label class="invalid">Por favor, ingrese un número da vacantes válido</label>
-    </div><br>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-    <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>
-    <button class="buttonModalAccept" mat-button (click)="addVacant()" cdkFocusInitial>Pedir</button>
-</mat-dialog-actions>
+    <mat-dialog-content class="mat-typography">
+        <mat-form-field class="recruiters">
+            <mat-label>Reclutadores</mat-label>
+            <mat-select formControlName="recruiter" multiple (selectionChange)="selectChange($event.value,3)" #multiSelectRecruiter>
+                <mat-option>
+                    <ngx-mat-select-search [formControl]="searchRecruiter" [placeholderLabel]="'Buscar reclutador'" [noEntriesFoundLabel]="'No se encontró.'" [clearSearchInput]='false'>
+                        <mat-icon ngxMatSelectSearchClear>X</mat-icon>
+                    </ngx-mat-select-search>
+                </mat-option>
+                <mat-option *ngFor="let re of filteredRecruiterCtrl | async" [value]="re">{{re.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <label>Número de personas para el cargo:</label>
+        <input type="number" class="inputLogIn" placeholder="" formControlName="number" [ngClass]=" {'is-invalid':  !form.get('number').valid && form.get('number').touched }"><br>
+        <div *ngIf="!form.get('number').valid && form.get('number').touched ">
+            <label class="invalid">Por favor, ingrese un número da vacantes válido</label>
+        </div><br>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>
+        <button class="buttonModalAccept" mat-button (click)="addVacant()" cdkFocusInitial>Pedir</button>
+    </mat-dialog-actions>
 </form>

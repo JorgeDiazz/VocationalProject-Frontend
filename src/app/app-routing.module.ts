@@ -25,11 +25,10 @@ const routes: Routes = [
   {
     path: 'manager', component: AppManagerComponent, canActivate: [AuthManagerGuard],
     children: [
-      {path:'home',component:HomeComponent},
       {path:'job/:id',component:JobIdComponent},
       {path:'charge',component:ChargeComponent},
       {path:'recruit',component:RecruiterComponent},
-      {path:'**',redirectTo:'home'}
+      {path:'**',redirectTo:'charge'}
 
     ]
   },

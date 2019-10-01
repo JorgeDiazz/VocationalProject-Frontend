@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalVacant1Component } from './modal-vacant1/modal-vacant1.component';
 import { ModalPostulantComponent } from './modal-postulant/modal-postulant.component';
 import { ActivatedRoute } from '@angular/router';  
+import { JobsI } from 'src/app/models/models.model';
+import { ServiceService } from 'src/app/services/service.service';
 
 @Component({
   selector: 'app-job-id',
@@ -11,12 +13,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class JobIdComponent implements OnInit {
  
-
+  charge:JobsI;
   constructor(public dialog: MatDialog,
-    public routerA:ActivatedRoute, ) { 
+    public routerA:ActivatedRoute,private serv:ServiceService ) { 
       this.routerA.params.subscribe(r=>{
-         
-
+      })
+      this.serv.JobPosition.GetJob(this.routerA.snapshot.paramMap.get('id')).subscribe(dat=>{
+        this.charge=<any>dat.body;
       })
     }
 

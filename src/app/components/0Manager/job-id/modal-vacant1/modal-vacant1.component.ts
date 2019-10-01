@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material'
+import { RecruiterI } from 'src/app/models/models.model';
+import { ServiceService } from 'src/app/services/service.service';
 @Component({
   selector: 'app-modal-vacant1',
   templateUrl: './modal-vacant1.component.html',
   styleUrls: ['./modal-vacant1.component.css']
 })
 export class ModalVacant1Component implements OnInit {
+  recruiters: RecruiterI[];
   states = new FormControl();
   statesList: string[] = [
     'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
@@ -18,10 +21,15 @@ export class ModalVacant1Component implements OnInit {
     'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
   ];
   form: FormGroup;
-  constructor(public dialogRef: MatDialogRef<ModalVacant1Component>) { 
+  constructor(public dialogRef: MatDialogRef<ModalVacant1Component>,public serv: ServiceService) { 
     this.form = new FormGroup({
-      'number': new FormControl('', Validators.required)
+      'number': new FormControl('', Validators.required),
+      'recruiter': new FormControl('')
     });
+
+    this.serv.Recruiter.GetAll().subscribe(dat => {
+      this.recruiters = <RecruiterI[]>dat.body;
+    })
   }
 
   addVacant(){

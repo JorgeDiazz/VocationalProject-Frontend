@@ -26,4 +26,8 @@ export class JobPositionService {
   GetAll(){
     return this.serv.GET(this.URL+this.serv.getCompany().nit);
   }
+
+  GetJob(id:string){
+    return this.serv.GET(this.URL+"job/"+id);
+  }
 }
