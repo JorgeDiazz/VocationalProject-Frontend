@@ -309,9 +309,9 @@ body {
 .spacePlus {
     position: fixed;
     z-index: 5;
-    top: 80px;
+    bottom: 60px;
     border: none;
-    right: 30px;
+    right: 50px;
 }
 
 .spacePlus p {
