@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
+import swal from 'sweetalert2';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { UserI, AuthI, PostulantI, CompanyI } from 'src/app/models/models.model';
 import { ServService } from 'src/app/services/serv.service';
@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
       let user:UserI={user:this.form.value.userEmail,password:this.form.value.password}
      
       this.serv.login.login(user).subscribe( (d)=>{
-         
+         console.log(d);
         let type:string=(<any> d.body).type;
         this.navigate(type);
         this.serv.Auth.saveAuth(d.headers,<any>d.body);      
@@ -95,7 +95,9 @@ export class LoginComponent implements OnInit {
         
        
         this.serv.Company.Post(comp).subscribe(dat=>{
+          swal.fire('Registro Compañia',"El registro fue correcto, en los próximos días se le notificará.",'success');
           console.log(dat);
+          this.reset();
         });
       }else{
         this.openSnackBar("Datos incompletos o erróneos", "Undo");
@@ -109,7 +111,10 @@ export class LoginComponent implements OnInit {
         //ENVIAR POSTULANTE A SERVIDOR
         let post:PostulantI={email:this.form.get("email").value,
             name:this.form.get("name").value, id:this.form.get("id").value,  password:this.form.get("newPassword").value}
-        this.serv.Postulant.Post(post).subscribe(dat=>{
+        console.log(JSON.stringify(post));
+            this.serv.Postulant.Post(post).subscribe(dat=>{
+              this.reset();
+          swal.fire('Registro Postulante',"El registro ha sido éxitoso",'success');
           console.log(dat);
         })
       }else{
@@ -135,11 +140,13 @@ export class LoginComponent implements OnInit {
 
   change() {
     if (this.log) {
+      this.reset();
       this.form.get("userEmail").markAsUntouched();
       this.form.get("password").markAsUntouched();
       this.log = false;
       this.reg = "Register bg-colorGR-blue-medium movLeft";
     } else {
+      this.reset();
       this.form.get("userEmail").markAsUntouched();
       this.form.get("password").markAsUntouched();
       this.log = true;
@@ -148,6 +155,7 @@ export class LoginComponent implements OnInit {
   }
   changePM() {
     if (this.pos) {
+      this.reset();
       this.form.get("email").markAsUntouched();
       this.form.get("name").markAsUntouched();
       this.form.get("nit").markAsUntouched();
@@ -156,6 +164,7 @@ export class LoginComponent implements OnInit {
       this.bot1 = " buttonLogIn3 pos bg-colorGR-blue-light buttonLogIn3Select";
       this.bot2 = " buttonLogIn3 bg-colorGR-blue-light";
     } else {
+      this.reset();
       this.form.get("email").markAsUntouched();
       this.form.get("name").markAsUntouched();
       this.form.get("id").markAsUntouched();
@@ -170,6 +179,10 @@ export class LoginComponent implements OnInit {
     this._snackBar.open(message, action, {
       duration: 4000,
     });
+  }
+
+  reset(){
+    this.form.reset();
   }
 
 

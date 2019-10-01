@@ -13,8 +13,8 @@ export interface RecruiterI{
     image?:string,
     type?:string, 
     nitCompany:string;
-    vacants_number_to_care?:number;
-    postulants_number_to_care?:number;
+    vacantsNumber?:number;
+    postulantsNumber?:number;
 }
 /** Carreras */
 export interface CareerI{

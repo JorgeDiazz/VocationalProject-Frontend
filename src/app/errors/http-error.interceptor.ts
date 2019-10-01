@@ -35,7 +35,7 @@ import { LoginService } from '../services/session/login.service';
               console.log(error.error);
               errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
               console.log("Servidor"+errorMessage)
-           this.typeError(error.status);
+           this.typeError(error);
             }
            // window.alert(errorMessage);
             return throwError(errorMessage);
@@ -44,8 +44,12 @@ import { LoginService } from '../services/session/login.service';
     }
 
 
-    typeError(cod:number){
-      switch(cod){
+    typeError(error:HttpErrorResponse){
+      let title=error.error.error;
+      let mss= error.error.message+"\n"+"status: "+error.status;
+
+      swal.fire(title,mss,'error');
+      /*switch(cod){
       case 401:
         swal.fire('No Autorizado','No tienes los permisos para acceder','error');
        this.router.navigateByUrl("/login");
@@ -56,7 +60,12 @@ import { LoginService } from '../services/session/login.service';
         this.router.navigateByUrl("/login");
         this.login.logOut();
         break;
-      }
+        case 403:
+        swal.fire('No Autorizado','No tienes los permisos para acceder','error');
+        this.router.navigateByUrl("/login");
+        this.login.logOut();
+        break;
+      }*/
     }
 
    }

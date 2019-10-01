@@ -16,6 +16,10 @@ export class RecruiterComponent implements OnInit {
   constructor(public dialog: MatDialog,private serv:ServiceService ) { 
     this.nitCompany=this.serv.Company.GetLocal().nit;
     this.getRecruiters(this.nitCompany);
+    this.serv.Recruiter.GetAll().subscribe((dat)=>{
+      this.recruiters = <RecruiterI[]>dat.body;
+      console.log(dat.body);
+    })
   }
 
   ngOnInit() {
