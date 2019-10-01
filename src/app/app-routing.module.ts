@@ -8,7 +8,6 @@ import { AuthPostulantGuard } from './guard/auth-postulant.guard';
 import { AppRecruiterComponent } from './components/0Recruiter/app-recruiter.component';
 import { AuthRecruiterGuard } from './guard/auth-recruiter.guard';
 
-import { HomeComponent } from './components/0Manager/home/home.component';
 import { EmployeeComponent } from './components/0Manager/employee/employee.component';
 import { ChargeComponent } from './components/0Manager/charge/charge.component';
 import { RecruiterComponent } from './components/0Manager/recruiter/recruiter.component';
