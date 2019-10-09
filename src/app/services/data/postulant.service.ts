@@ -17,6 +17,8 @@ export class PostulantService {
     * @param postulante Object
     */
   Post(postulant:PostulantI){
+    postulant.id=String(postulant.id);
+    console.log(postulant);
     return this.serv.POST(postulant,"postulant/");
   }
 

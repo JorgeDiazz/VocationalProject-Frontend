@@ -34,7 +34,7 @@ import { ModalProfileMComponent } from './components/0Manager/modal-profile-m/mo
 import { ModalProfileRComponent } from './components/0Recruiter/modal-profile-r/modal-profile-r.component';
 import { ModalProfilePComponent } from './components/0Postulant/modal-profile-p/modal-profile-p.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpErrorInterceptor } from './errors/http-error.interceptor';
+import { HttpErrorInterceptor } from './services/interceptor/http-error.service';
 import { ModalPostulantsComponent } from './components/0Recruiter/job-process/modal-postulants/modal-postulants.component';
 import { PositiveNumberDirective } from './components/Validator/positive-number.directive';
 import { AuthInterceptorService } from './services/interceptor/auth-interceptor.service';

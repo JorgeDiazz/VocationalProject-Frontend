@@ -17,6 +17,7 @@ export class JobPositionService {
    */
   Post(job:JobsI){      
     job.nitCompany=this.serv.getCompany().nit; 
+    console.log("Lo que envio realmente",job);
     return this.serv.POST(job,this.URL);
   }
   /**

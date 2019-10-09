@@ -2,16 +2,21 @@
     <div class="col">
         <h1>Habilidades globales</h1>
         <h5>Habilidades blandas que todo colaborador dentro de la empresa debe tener sin importar el cargo</h5>
-        <mat-chip-list>
-            <mat-chip *ngFor="let soft of Globalsofts" class="bg-colorGR-blue-medium" (click)="verModalE(soft)">{{soft.name}}</mat-chip>
+       
+        <mat-chip-list cdkDropList #softsList="cdkDropList" [cdkDropListData]="Globalsofts"
+            [cdkDropListConnectedTo]="[globalSoftList]" class="example-list example-box " (cdkDropListDropped)="drop($event,'softGlobal')">
+            <mat-chip cdkDrag *ngFor="let soft of Globalsofts" class="bg-colorGR-blue-medium" (click)="verModalE(soft)">
+                {{soft.name}}</mat-chip>
         </mat-chip-list>
-
+     
     </div>
     <div class="col">
         <h1>Habilidades específicas</h1>
         <h5>Habilidades blandas que debe tener el colaborador según el cargo que desempeñe</h5>
-        <mat-chip-list>
-            <mat-chip *ngFor="let soft of softs" class="bg-colorGR-orange-light" (click)="verModalE(soft)">{{soft.name}}</mat-chip>
+        <mat-chip-list cdkDropList #globalSoftList="cdkDropList" [cdkDropListData]="softs"
+            [cdkDropListConnectedTo]="[softsList]" (cdkDropListDropped)="drop($event,'softEspecifica')" class="example-list example-box ">
+            <mat-chip cdkDrag *ngFor="let soft of softs" class="bg-colorGR-orange-light" (click)="verModalE(soft)">
+                {{soft.name}}</mat-chip>
         </mat-chip-list>
 
     </div>
@@ -26,7 +31,8 @@
             <p>Agregar nueva habilidad</p>
         </div>
         <div class="col-3">
-            <button (click)="verModalC()" class="button-plus bg-colorGR-orange-dark"> <img class="plus" src="assets/img/add (1).svg"  ></button>
+            <button (click)="verModalC()" class="button-plus bg-colorGR-orange-dark"> <img class="plus"
+                    src="assets/img/add (1).svg"></button>
         </div>
     </div>
 </div>
