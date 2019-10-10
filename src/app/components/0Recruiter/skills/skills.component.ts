@@ -4,7 +4,7 @@ import { ModalEditComponent } from './modal-edit/modal-edit.component';
 import { ModalCreateComponent } from './modal-create/modal-create.component'; 
 import { ServiceService } from '../../../services/service.service';
 import { SkillI } from '../../../models/models.model';
-
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 @Component({
   selector: 'app-skills',
   templateUrl: './skills.component.html',
@@ -13,14 +13,15 @@ import { SkillI } from '../../../models/models.model';
 export class SkillsComponent implements OnInit {
 
 
-  softs:SkillI[];
-  Globalsofts:SkillI[];
+  softs:SkillI[]=[];
+  Globalsofts:SkillI[]=[];
   nit:string;
   constructor(public dialog: MatDialog,
     public serv:ServiceService) {
       this.nit=this.serv.Recruiter.GetLocal().nitCompany;
       this.verSkills();
       this.verGlobalSkills(this.nit);
+      this.Globalsofts.push({id:2,name:"hola",type:"df"});
      }
 
   ngOnInit() {
@@ -75,4 +76,25 @@ verSkills(){
  verGlobalSkills(nit:string){
   //SERVICIO VER HABILIDADES GOBLALES DE LA EMPRESA
  }
+
+ /**
+  * Metodo para pasar de una habilidad a otra
+  * @param event 
+  *  
+ */
+
+ drop(event: CdkDragDrop<SkillI[]>,type:string):void { 
+   
+   event.previousContainer.data[event.previousIndex].type=type;
+  if (event.previousContainer === event.container) {
+    moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+  } else {
+    transferArrayItem(event.previousContainer.data,
+                      event.container.data,
+                      event.previousIndex,
+                      event.currentIndex);
+  }
+  console.log(this.Globalsofts);
+  console.log(this.softs);
+}
 }

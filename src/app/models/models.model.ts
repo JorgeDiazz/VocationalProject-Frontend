@@ -45,7 +45,7 @@ nit_company?:string;
 
 /** Skills HARD and SOFT */
 export interface SkillI{
-id:number,
+id? :number,
 name:string,
 type?:string
 }
@@ -60,7 +60,8 @@ export interface PostulantI{
 export interface JobsI{
     id?:number,
     name:string,
-    nitCompany?:string,    
+    nitCompany?:string,  
+    nit_company?:string,   
     salaryMin:number,
     salaryMax:number,
     description?:string,

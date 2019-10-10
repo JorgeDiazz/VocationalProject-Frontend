@@ -7,12 +7,14 @@ import { ServiceService } from 'src/app/services/service.service';
 import { AreaI, CareerI, SkillI, RecruiterI, JobsI } from 'src/app/models/models.model';
 import { MatSelect } from '@angular/material';
 import { CompanyI } from '../../../../models/models.model';
+ 
 import swal from 'sweetalert2';
 import { takeUntil, take } from 'rxjs/operators';
 import { Subject, ReplaySubject } from 'rxjs';
 import { CareerService } from 'src/app/services/data/career.service';
 import { noWhiteSpaceValidato } from 'src/app/components/Validator/validators.validators';
 import { isString } from 'util';
+ 
 //import { ConsoleReporter } from 'jasmine';
 
 

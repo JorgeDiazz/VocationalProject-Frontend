@@ -33,7 +33,9 @@ crear(){
   if(this.form.valid){
     if(this.form.get('GorE').value!=null){
       if(this.form.get('newSkill').value!=null && this.form.get('Skill').value==null){
-        this.dialogRef.close(this.form.value);
+        //this.dialogRef.close(this.form.value);
+        console.log(this.form.value);
+
       }else
       if(this.form.get('newSkill').value==null && this.form.get('Skill').value!=null){
         this.dialogRef.close(this.form.value);
