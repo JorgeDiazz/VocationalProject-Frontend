@@ -29,7 +29,22 @@ constructor(private serv:ServService) { }
     if(i==0)
     return this.serv.GET(this.URL_Hard);
     
-    return  this.serv.GET(this.URL_Soft); 
+    return  this.serv.GET( `${this.URL_Soft}/${this.serv.getCompany().nit}`); 
   } 
+
+  /**
+   * Get all globals skill
+   */
+  GetALLGlobalSkill(){
+    return this.serv.GET('skill/GlobalByCompany/'+this.serv.getCompany().nit);
+  }
+
+  PutGlobalSoft_Sof( newType:string,id:number){
+    return this.serv.PUT({
+      newType:newType,
+      id:id,
+      nitCompany: this.serv.getCompany().nit,
+    },'skill/');
+  }
  
 }
