@@ -10,7 +10,6 @@ import { AppPostulantComponent } from './components/0Postulant/app-postulant.com
 import { GeneralModule } from './moduleGeneral/general.module';
 import { ChargeComponent } from './components/0Manager/charge/charge.component';
 import { EmployeeComponent } from './components/0Manager/employee/employee.component';
-import { HomeComponent as homeManager } from './components/0Manager/home/home.component';
 import { RecruiterComponent } from './components/0Manager/recruiter/recruiter.component';
 import { AppRecruiterComponent } from './components/0Recruiter/app-recruiter.component';
 import { AppManagerComponent } from './components/0Manager/app-manager.component'; 
@@ -45,7 +44,6 @@ import { AuthInterceptorService } from './services/interceptor/auth-interceptor.
     LoginComponent,
     ChargeComponent,
     EmployeeComponent,
-    homeManager,
     RecruiterComponent,
     AppManagerComponent,
     AppRecruiterComponent,
