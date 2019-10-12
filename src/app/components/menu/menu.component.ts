@@ -36,7 +36,7 @@ export class MenuComponent implements OnInit {
   mostrarP(){
     if(this.type=="manager"){
       const dialogRef = this.dialog.open(ModalProfileMComponent, {
-        width: '450px'
+        width: '650px'
       });
     
     dialogRef.afterClosed().subscribe(result => {
@@ -45,7 +45,7 @@ export class MenuComponent implements OnInit {
     }
     if(this.type=="recruiter"){
       const dialogRef = this.dialog.open(ModalProfileRComponent, {
-        width: '450px'
+        width: '480px'
       });
     
     dialogRef.afterClosed().subscribe(result => {
@@ -55,7 +55,7 @@ export class MenuComponent implements OnInit {
 
     if(this.type=="postulant"){
       const dialogRef = this.dialog.open(ModalProfilePComponent, {
-        width: '450px'
+        width: '480px'
       });
     
     dialogRef.afterClosed().subscribe(result => {
