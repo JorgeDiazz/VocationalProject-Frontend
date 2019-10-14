@@ -7,7 +7,7 @@ import { AuthService } from '../session/auth.service';
   providedIn: 'root'
 })
 export class PostulantService {
-
+private URL="postulant/";
   constructor(private serv:ServService,
               private auth: AuthService) { }
  
@@ -19,9 +19,25 @@ export class PostulantService {
   Post(postulant:PostulantI){
     postulant.id=String(postulant.id);
     console.log(postulant);
-    return this.serv.POST(postulant,"postulant/");
+    return this.serv.POST(postulant,this.URL);
   }
 
+/**
+ * Update postulant
+ */
+  Put(postulant:PostulantI){
+    return this.serv.PUT(postulant,this.URL);
+  }
+
+  /**
+   * Update postulant to local
+   */
+  PutLocal(postualnt:PostulantI){
+    let dat: any = this.auth.getAuth();   
+    dat.name=postualnt.name; 
+    dat.email=postualnt.email;
+    localStorage.setItem("auth",JSON.stringify(dat));
+  }
   /**
    * Get postulant in the local Storage
    * @return object

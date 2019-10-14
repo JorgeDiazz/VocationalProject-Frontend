@@ -31,7 +31,7 @@ export interface AuthI{
 export interface CompanyI{
     nit:string,
     name:string,
-    phone?:number,
+    phone?:string,
     email?:string,
     address?:string
 }

@@ -59,14 +59,14 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 
         break;
       case 404:
-        swal.fire('No hay servicio para la ruta PATH: ' + error.error.path, 'Petición inválida\n' + mss, 'error');
+        swal.fire('Error de Ruta 404', 'Petición inválida\n', 'error');
 
 
         break;
       case 401:
         swal.fire(title, mss, 'error');
-        this.router.navigateByUrl("/login");
-        this.login.logOut();
+      //  this.router.navigateByUrl("/login");
+       // this.login.logOut();
         break;
       case 403:
         swal.fire('No Autorizado', 'No tienes los permisos para acceder', 'error');

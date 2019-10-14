@@ -12,7 +12,7 @@ import swal from 'sweetalert2';
 import { takeUntil, take } from 'rxjs/operators';
 import { Subject, ReplaySubject } from 'rxjs';
 import { CareerService } from 'src/app/services/data/career.service';
-import { noWhiteSpaceValidato } from 'src/app/components/Validator/validators.validators';
+import { noWhiteSpace } from 'src/app/components/Validator/validators.validators';
 import { isString } from 'util';
  
 //import { ConsoleReporter } from 'jasmine';
@@ -65,11 +65,11 @@ export class ModalJobComponent implements OnInit,
   constructor(public dialogRef: MatDialogRef<ModalJobComponent>,
     public serv: ServiceService) {
     this.form = new FormGroup({
-      'name': new FormControl('', [Validators.required, noWhiteSpaceValidato]),
+      'name': new FormControl('', [Validators.required, noWhiteSpace]),
       'salaryMin': new FormControl('', Validators.required),
       'salaryMax': new FormControl('', Validators.required),
       'idArea': new FormControl('', Validators.required),
-      'description': new FormControl('', [Validators.required, noWhiteSpaceValidato]),
+      'description': new FormControl('', [Validators.required, noWhiteSpace]),
       'career': new FormControl(''),
       'newCareer': new FormArray([
         new FormGroup({
@@ -314,12 +314,12 @@ export class ModalJobComponent implements OnInit,
     switch (type) {
       case 1:
         if ((<FormArray>this.form.get('newCareer')).length == 1) {
-          (<FormGroup>(<FormArray>this.form.get('newCareer')).at(0)).controls["name"].setValidators([Validators.required, noWhiteSpaceValidato]);
+          (<FormGroup>(<FormArray>this.form.get('newCareer')).at(0)).controls["name"].setValidators([Validators.required, noWhiteSpace]);
           (<FormGroup>(<FormArray>this.form.get('newCareer')).at(0)).controls["name"].updateValueAndValidity()
         }
         (<FormArray>this.form.get('newCareer')).push(
           new FormGroup({
-            'name': new FormControl('', [Validators.required, noWhiteSpaceValidato])
+            'name': new FormControl('', [Validators.required, noWhiteSpace])
           })
         );
 
@@ -328,20 +328,20 @@ export class ModalJobComponent implements OnInit,
       case 2:
 
         if ((<FormArray>this.form.get('newHardSkill')).length == 1) {
-          (<FormGroup>(<FormArray>this.form.get('newHardSkill')).at(0)).controls["name"].setValidators([Validators.required, noWhiteSpaceValidato]);
+          (<FormGroup>(<FormArray>this.form.get('newHardSkill')).at(0)).controls["name"].setValidators([Validators.required, noWhiteSpace]);
           (<FormGroup>(<FormArray>this.form.get('newHardSkill')).at(0)).controls["name"].updateValueAndValidity()
         }
 
         (<FormArray>this.form.get('newHardSkill')).push(
           new FormGroup({
-            'name': new FormControl('', [Validators.required, noWhiteSpaceValidato])
+            'name': new FormControl('', [Validators.required, noWhiteSpace])
           })
         );
         break;
       case 4:
         (<FormArray>this.form.get('process')).push(
           new FormGroup({
-            'name': new FormControl('', [Validators.required, noWhiteSpaceValidato])
+            'name': new FormControl('', [Validators.required, noWhiteSpace])
           })
         )
         break;
@@ -378,12 +378,12 @@ export class ModalJobComponent implements OnInit,
           (<FormArray>this.form.get('newCareer')).at(0).get('name').setValue(this.searchCareer.value);
         } else {
           if ((<FormArray>this.form.get('newCareer')).length == 1) {
-            (<FormGroup>(<FormArray>this.form.get('newCareer')).at(0)).controls["name"].setValidators([Validators.required, noWhiteSpaceValidato]);
+            (<FormGroup>(<FormArray>this.form.get('newCareer')).at(0)).controls["name"].setValidators([Validators.required, noWhiteSpace]);
             (<FormGroup>(<FormArray>this.form.get('newCareer')).at(0)).controls["name"].updateValueAndValidity()
           }
           (<FormArray>this.form.get('newCareer')).push(
             new FormGroup({
-              'name': new FormControl(this.searchCareer.value, [Validators.required, noWhiteSpaceValidato])
+              'name': new FormControl(this.searchCareer.value, [Validators.required, noWhiteSpace])
             })
           )
         }
@@ -395,12 +395,12 @@ export class ModalJobComponent implements OnInit,
           (<FormArray>this.form.get('newHardSkill')).at(0).get('name').setValue(this.searchSkillHard.value);
         } else {
           if ((<FormArray>this.form.get('newHardSkill')).length == 1) {
-            (<FormGroup>(<FormArray>this.form.get('newHardSkill')).at(0)).controls["name"].setValidators([Validators.required, noWhiteSpaceValidato]);
+            (<FormGroup>(<FormArray>this.form.get('newHardSkill')).at(0)).controls["name"].setValidators([Validators.required, noWhiteSpace]);
             (<FormGroup>(<FormArray>this.form.get('newHardSkill')).at(0)).controls["name"].updateValueAndValidity()
           }
           (<FormArray>this.form.get('newHardSkill')).push(
             new FormGroup({
-              'name': new FormControl(this.searchSkillHard.value, [Validators.required, noWhiteSpaceValidato])
+              'name': new FormControl(this.searchSkillHard.value, [Validators.required, noWhiteSpace])
             })
           )
         }

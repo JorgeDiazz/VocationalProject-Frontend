@@ -24,6 +24,28 @@ export class RecruiterService {
     recruiter.nitCompany = this.serv.getCompany().nit;
     return this.serv.POST(recruiter, this.URL);
   }
+
+/**
+ * Update recruiter
+ */
+  Put(recruiter:RecruiterI){
+    return this.serv.PUT(recruiter,this.URL);
+
+  }
+/**
+ * Update Local recruiter
+ */
+  PutLocal(recruiter:RecruiterI){
+    let dat: any = this.auth.getAuth();
+    dat.id=recruiter.id;
+    dat.name=recruiter.name;
+    dat.nitCompany=recruiter.nitCompany;
+    dat.email=recruiter.email;
+    localStorage.setItem("auth",JSON.stringify(dat));
+  }
+
+  
+
   /**
    * Get recuirter's of the Company
    */
