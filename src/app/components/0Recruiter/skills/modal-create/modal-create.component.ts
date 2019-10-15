@@ -30,6 +30,10 @@ crear(){
       if(dat.status==200){
         swal.fire('Habilidad blanda creada', "se creó correctamente", 'success');
         this.dialogRef.close();
+      }else if(dat.status==409){
+        swal.fire('Habilidad blanda no creada', "la habilidad ya existe en el sistema", 'error');
+      }else if(dat.status==417){
+        swal.fire('Habilidad blanda no creada', "los datos que ingresó no son correctos", 'error');
       }
       })
   }

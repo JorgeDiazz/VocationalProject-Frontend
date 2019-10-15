@@ -126,6 +126,10 @@ export class ModalVacant1Component implements OnInit {
             if(dat.status==200){
               swal.fire('Vacante creada', "se creó correctamente", 'success');
               this.dialogRef.close();
+            }else if(dat.status==409){
+              swal.fire('Vacante no creada', "conflictos en la base de datos", 'error');
+            }else if(dat.status==417){
+              swal.fire('Vacante no creada', "los datos que ingresó no son correctos", 'error');
             }
             })
             //this.dialogRef.close(this.form.value);
