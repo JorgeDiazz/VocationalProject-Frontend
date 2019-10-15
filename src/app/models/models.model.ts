@@ -14,7 +14,8 @@ export interface RecruiterI{
     type?:string, 
     nitCompany:string;
     vacantsNumber?:number;
-    postulantsNumber?:number;
+    postulantsNumber?:number,
+    postulants?:PostulantI[]
 }
 /** Carreras */
 export interface CareerI{
@@ -79,8 +80,8 @@ export interface JobsI{
     recruiter?:RecruiterI[],
     recruitersId?:string[],
     placeNumber?:number, 
-    placesNumber?:number
-
+    placesNumber?:number, 
+    vacants?:VacantI[]
 }
 
 export interface ProcessI{
@@ -92,12 +93,14 @@ export interface VacantI{
     id:number,
     places_number:number,
     start_date:Date,
-    id_job_position?:number,
+    idJobPosition?:number,
     nameJob?:string,
     recruiters_number:string,
     postulants_number:number,
     min_salary?:number,
-    max_salary?:number
+    max_salary?:number,
+    recruiters?:RecruiterI[],
+    recruitersId?:string[]
 }
 
 

@@ -4,53 +4,34 @@ import { MatDialogRef} from '@angular/material'
 import { ServiceService } from 'src/app/services/service.service';
 import { SkillI } from 'src/app/models/models.model';
 import swal, { SweetAlertType } from 'sweetalert2';
+import { noWhiteSpace } from 'src/app/components/Validator/validators.validators';
 @Component({
   selector: 'app-modal-create',
   templateUrl: './modal-create.component.html',
   styleUrls: ['./modal-create.component.css']
 })
 export class ModalCreateComponent implements OnInit {
-  softs:SkillI[];  
+   
   form: FormGroup;
   titularAlerta:string="";
   constructor(public dialogRef: MatDialogRef<ModalCreateComponent>,public serv:ServiceService,private fb:FormBuilder) { 
 
-    this.serv.Skill.GetAll(1).subscribe(dat=>{
-      this.softs=<SkillI[]>dat.body;
-    });
-
     this.form = new FormGroup({
-      'newSkill': new FormControl(),
-      'Skill': new FormControl(),
-      'GorE':  new FormControl()
+      'name': new FormControl('', [Validators.required, noWhiteSpace]),
     });
-
 
   }
 
 crear(){
-  this.form.markAsTouched();
   if(this.form.valid){
-    if(this.form.get('GorE').value!=null){
-      if(this.form.get('newSkill').value!=null && this.form.get('Skill').value==null){
-        //this.dialogRef.close(this.form.value);
-        console.log(this.form.value);
-
-      }else
-      if(this.form.get('newSkill').value==null && this.form.get('Skill').value!=null){
-        this.dialogRef.close(this.form.value);
-      }else if(this.form.get('newSkill').value!=null && this.form.get('Skill').value!=null){
-        swal.fire('Datos incompletos',"Puede ingresar solo una habilidad", 'error');
-      }else{
-        swal.fire('Datos erroneos',"Puede ingresar  una habilidad", 'error');
+    let soft:SkillI=this.form.value; 
+   soft.type="Soft";
+    this.serv.Skill.Post(soft).subscribe(dat => {
+      if(dat.status==200){
+        swal.fire('Habilidad blanda creada', "se creó correctamente", 'success');
+        this.dialogRef.close();
       }
-    }else{
-      swal.fire('Datos incompletos',"Tiene que ingresar el tipo de habilidad (Global o Específica)", 'error');
-
-
-    }
-    
-    
+      })
   }
   
 }

@@ -14,38 +14,34 @@
     <div class="row fadeInAnimated">
         <div class="col">
             <h2>Datos Generales</h2>
-            <p><b>Area:</b> {{charge.range}}<br><b>Salario:</b> {{charge.range}} <br>
-                <b>Descripción:</b> {{charge.desc}} <br>
+            <p><b>Area:</b> {{charge.range}}<br><b>Salario:</b> {{charge.salaryMin}}-{{charge.salaryMax}} <br>
+                <b>Descripción:</b> {{charge.description}} <br>
             </p>
 
             <div class="row">
                 <div class="col-6">
                     <p> <b>Carreras:</b></p>
                     <ul>
-                        <li *ngFor="let dt of charge.carrer"> {{dt.name}} </li>
+                        <li *ngFor="let dt of charge.carreers"> {{dt.name}} </li>
                     </ul>
                 </div>
                 <div class="col-6">
                     <p><b>Procesos:</b> </p>
                     <ul>
-                        <li>Habilidad1</li>
-                        <li>Habilidad2</li>
-                        <li>Habilidad3</li>
+                        <li *ngFor="let pr of charge.processes"> {{pr.name}} </li>
                     </ul>
                 </div>
                 <div class="col-6">
                     <p> <b>Habilidades fuertes:</b></p>
                     <ul>
-                        <li *ngFor="let dt of charge.strongSkill"> {{dt.name}} </li>
+                        <li *ngFor="let hs of charge.hardSkills"> {{hs.name}} </li>
                     </ul>
 
                 </div>
                 <div class="col-6">
                     <p><b>Habilidades blandas:</b> </p>
                     <ul>
-                        <li>Habilidad1</li>
-                        <li>Habilidad2</li>
-                        <li>Habilidad3</li>
+                        <li *ngFor="let ss of charge.softSkills"> {{ss.name}} </li>
                     </ul>
                 </div>
             </div>
@@ -56,41 +52,21 @@
         <div class="col">
             <h2>Vacantes en proceso</h2>
             <p>¡No hay vacantes para este cargo!</p>
-            <div class="recruiterVacant">
-                <p><b>Fecha de creación: </b> 03/08/2019<br>
-                    <b>Reclutador: </b> Nombre reclutador<br>
-                    <b>Puestos disponibles: </b> 4<br>
-                    <b>Postulantes a cargo:</b></p>
-                <div class="row">
-                    <div class="col">
-                        <img class="card-postulant bg-green-card" src="assets/img/perfil.jpeg" (click)="verModalP()">
+            <div *ngFor="let vacant of charge.vacants">
+                <div class="recruiterVacant">
+                    <p><b>Fecha de creación: </b> {{vacant.startDate.substring(0,10)}} <br>
+                        <b>Puestos disponibles: </b> {{vacant.placesNumber}}<br></p>
+                    <div *ngFor="let recruiter of vacant.recruiters">
+                        <p><b>Reclutador: </b>{{recruiter.name}}<br>
+                            <b>Postulantes a cargo: </b>{{recruiter.postulants.length}}</p>
+                        <div class="row" *ngFor="let postulant of recruiter.postulant">
+                            <div class="col">
+                                <img class="card-postulant bg-green-card" src="assets/img/perfil.jpeg" (click)="verModalP()">
+                            </div>
+                        </div><br>
                     </div>
-                    <div class="col">
-                        <img class="card-postulant bg-red-card" src="assets/img/perfil2.jpg" (click)="verModalP()">
-                    </div>
-                    <div class="col">
-                        <img class="card-postulant bg-yellow-card" src="assets/img/noPhoto.jpg" (click)="verModalP()">
-                    </div>
-                </div><br>
+                </div>
             </div>
-            <div class="recruiterVacant">
-                <p><b>Fecha de creación: </b> 03/08/2019<br>
-                    <b>Reclutador: </b> Nombre reclutador2<br>
-                    <b>Puestos disponibles: </b> 4<br>
-                    <b>Postulantes a cargo:</b></p>
-                <div class="row">
-                    <div class="col">
-                        <img class="card-postulant bg-green-card" src="assets/img/perfil.jpeg" (click)="verModalP()">
-                    </div>
-                    <div class="col">
-                        <img class="card-postulant bg-red-card" src="assets/img/perfil2.jpg" (click)="verModalP()">
-                    </div>
-                    <div class="col">
-                        <img class="card-postulant bg-yellow-card" src="assets/img/noPhoto.jpg" (click)="verModalP()">
-                    </div>
-                </div><br>
-            </div>
-
         </div>
     </div>
 </ng-container>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalVacant1Component } from './modal-vacant1/modal-vacant1.component';
 import { ModalPostulantComponent } from './modal-postulant/modal-postulant.component';
@@ -20,16 +20,20 @@ export class JobIdComponent implements OnInit {
       })
       this.serv.JobPosition.GetJob(this.routerA.snapshot.paramMap.get('id')).subscribe(dat=>{
         this.charge=<any>dat.body;
+        console.log(this.charge);
       })
     }
 
   ngOnInit() {
   }
 
+  
 
   verModalV() {
+    alert(this.charge.id);
     const dialogRef = this.dialog.open(ModalVacant1Component, {
-      width: '350px'
+      width: '350px',
+      data:{job:this.charge.id}
     });
 
   dialogRef.afterClosed().subscribe(result => {
@@ -39,8 +43,10 @@ export class JobIdComponent implements OnInit {
 }
 
 verModalP() {
+
   const dialogRef = this.dialog.open(ModalPostulantComponent, {
-    width: '450px'
+    width: '450px',
+    
   });
 
 dialogRef.afterClosed().subscribe(result => {

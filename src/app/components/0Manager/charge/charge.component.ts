@@ -38,6 +38,7 @@ getJobs(){
 this.serv.JobPosition.GetAll().subscribe(dat=>{
   
   this.jobs=<any>dat.body;
+  console.log(this.jobs);
 })
 }
 }

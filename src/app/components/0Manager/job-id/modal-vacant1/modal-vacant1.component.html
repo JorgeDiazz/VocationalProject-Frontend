@@ -4,7 +4,7 @@
     <mat-dialog-content class="mat-typography">
         <mat-form-field class="recruiters">
             <mat-label>Reclutadores</mat-label>
-            <mat-select formControlName="recruiter" multiple (selectionChange)="selectChange($event.value,3)" #multiSelectRecruiter>
+            <mat-select formControlName="recruiters" multiple (selectionChange)="selectChange($event.value,3)" #multiSelectRecruiter>
                 <mat-option>
                     <ngx-mat-select-search [formControl]="searchRecruiter" [placeholderLabel]="'Buscar reclutador'" [noEntriesFoundLabel]="'No se encontró.'" [clearSearchInput]='false'>
                         <mat-icon ngxMatSelectSearchClear>X</mat-icon>
@@ -13,14 +13,20 @@
                 <mat-option *ngFor="let re of filteredRecruiterCtrl | async" [value]="re">{{re.name}}</mat-option>
             </mat-select>
         </mat-form-field>
+        <!--Mostrar las que va seleccionando-->
+        <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+            <mat-chip class="selectChip" *ngFor="let selRecruiter of recruitersSelected">
+                {{selRecruiter.name}}
+            </mat-chip>
+        </mat-chip-list><br>
         <label>Número de personas para el cargo:</label>
-        <input type="number" class="inputLogIn" placeholder="" formControlName="number" [ngClass]=" {'is-invalid':  !form.get('number').valid && form.get('number').touched }"><br>
-        <div *ngIf="!form.get('number').valid && form.get('number').touched ">
+        <input type="number" class="inputLogIn" placeholder="" formControlName="placesNumber" [ngClass]=" {'is-invalid':  !form.get('placesNumber').valid && form.get('placesNumber').touched }"><br>
+        <div *ngIf="!form.get('placesNumber').valid && form.get('placesNumber').touched ">
             <label class="invalid">Por favor, ingrese un número da vacantes válido</label>
         </div><br>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
         <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>
-        <button class="buttonModalAccept" mat-button (click)="addVacant()" cdkFocusInitial>Pedir</button>
+        <button class="buttonModalAccept" mat-button (click)="save()" cdkFocusInitial>Pedir</button>
     </mat-dialog-actions>
 </form>
