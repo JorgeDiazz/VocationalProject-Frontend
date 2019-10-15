@@ -121,7 +121,6 @@ export class ModalVacant1Component implements OnInit {
           } else if ((this.form.get('recruiters').value != "" || this.form.get('recruiters').value.length == 0) && (this.form.get('placesNumber').value <=0)) {
             swal.fire('Datos imcompletos', "Debe ingresar un número válido", 'error');
           } else {
-            alert(this.data);
             let vacant: VacantI = this.obVacantI(this.form.value);
            this.serv.Vacant.Post(vacant,Number(this.data.job)).subscribe(dat => {
             if(dat.status==200){
