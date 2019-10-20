@@ -17,7 +17,7 @@ constructor(private serv:ServService) { }
    * @param Skill Object
    */
   Post(skill:SkillI){
-    this.serv.POST(skill,this.URL+"register");
+    this.serv.POST(skill,this.URL);
   }
 
  /**
