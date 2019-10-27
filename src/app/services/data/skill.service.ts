@@ -6,7 +6,7 @@ import { SkillI } from 'src/app/models/models.model';
   providedIn: 'root'
 })
 export class SkillService {
-private URL="skill"
+private URL="skill/"
 private URL_Hard="skill/Hard";
 private URL_Soft="skill/Soft"
 
@@ -18,7 +18,7 @@ constructor(private serv:ServService) { }
    */
   Post(skill:SkillI){
     console.log("Lo que envio realmente",skill);
-    return this.serv.POST(skill,this.URL+"/register");
+    return this.serv.POST(skill,this.URL);
   }
 
  /**
