@@ -16,9 +16,9 @@ constructor(private serv:ServService) { }
    * Register Skill.
    * @param Skill Object
    */
-  Post(skill:SkillI){
-    console.log("Lo que envio realmente",skill);
-    return this.serv.POST(skill,this.URL+"/register");
+  Post(skill:SkillI){ 
+    console.log("Lo que envio realmente",skill); 
+    this.serv.POST(skill,this.URL); 
   }
 
  /**
