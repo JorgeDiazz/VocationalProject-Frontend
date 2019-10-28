@@ -18,7 +18,7 @@ constructor(private serv:ServService) { }
    */
   Post(skill:SkillI){ 
     console.log("Lo que envio realmente",skill); 
-    this.serv.POST(skill,this.URL); 
+    return this.serv.POST(skill,this.URL); 
   }
 
  /**

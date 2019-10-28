@@ -103,6 +103,7 @@ export class ModalJobComponent implements OnInit,
         this.skillsHard = <SkillI[]>dat.body;
         this.serv.Career.GetAll().subscribe(dat => {
           this.careers = <CareerI[]>dat.body;
+          console.log(dat);
           this.serv.Recruiter.GetAll().subscribe(dat => {
             this.recruiters = <RecruiterI[]>dat.body;
 
@@ -276,7 +277,7 @@ export class ModalJobComponent implements OnInit,
       value.newCareer.splice(0, 1);}else{value.newCareer=[]}
     if (isArray(value.newHardSkill) && (value.newHardSkill).length != 0 && (<string>value.newHardSkill[0].name).trim() == ""){
       value.newHardSkill.splice(0, 1);}else{value.newHardSkill=[]}
-    let pos: JobsI = value;
+    let pos: JobsI =JSON.parse(JSON.stringify(value));
 
     pos.newCareersName = []; pos.careersId = []; pos.hardSkillsId = [];
     pos.newHardSkillsName = []; pos.recruitersId = []; pos.processesName = [];
@@ -289,9 +290,7 @@ export class ModalJobComponent implements OnInit,
 
 
     pos.placesNumber = pos.placeNumber; delete pos.placeNumber;
-
-
-    console.log(JSON.stringify(pos));
+ 
 
 
     return pos;
