@@ -18,6 +18,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         'Content-Type':"application/json"
       }
     }); 
+    
     return next.handle(request);
   }
 }

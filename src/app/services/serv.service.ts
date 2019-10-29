@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'; 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { AuthService } from './session/auth.service';
@@ -14,7 +14,12 @@ export class ServService {
   
   constructor(private httpCliente: HttpClient,public servAuth:AuthService) {
   }
- 
+ /**
+  * Post
+  * @param ob Object to post
+  * @param url Url
+  * @param login true in case if the usser login 
+  */
   POST(ob, url: string, login?: boolean) {
     
     if (login) {
@@ -24,14 +29,33 @@ export class ServService {
     }
 
   }
-
-  GET(url) {  
-    return this.httpCliente.get(this.apiURL + url,{  observe: 'response' });
+/**
+ * Petición Get
+ * @param url Url
+ * @param params Parametros 
+ */
+  GET(url:string,params?:HttpParams) {  
+    if(!params){
+      return this.httpCliente.get(this.apiURL + url,{  observe: 'response' });
+    }else{
+      return this.httpCliente.get(this.apiURL + url,{ params:params, observe: 'response' });
+    }
+   
   }
-
+/**
+ * Put=Update
+ * @param ob Object to update
+ * @param url  URL
+ */
   PUT(ob,url:string) {
     return this.httpCliente.put(this.apiURL+url,ob, {observe: 'response' });
   }
+
+  /**
+   * Delete
+   * @param id Id,
+   * @param url URL
+   */
   DELETE(id:string,url:string) {    
     return this.httpCliente.delete(this.apiURL+url+id, { observe: 'response' });
   }

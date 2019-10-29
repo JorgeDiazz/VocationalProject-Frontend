@@ -1,4 +1,29 @@
 <div class="row">
+    <div class="col"></div>
+    <div class="col-4">       
+            <mat-form-field class="recruiters">
+                <mat-label>Carreras existentes</mat-label>
+                <mat-select  multiple (selectionChange)="selectChange($event.value)"
+                    #multiSelectCareer>
+                    <mat-option>
+                        <ngx-mat-select-search [formControl]="searchCareer" [placeholderLabel]="'Buscar carrera'"
+                            [noEntriesFoundLabel]="'No se encontró.'" [clearSearchInput]='false'>
+                            <mat-icon ngxMatSelectSearchClear>X</mat-icon>
+                        </ngx-mat-select-search>
+                    </mat-option>
+                    <mat-option *ngFor="let career of filteredCareerCtrl | async" [value]="career">{{career.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>        
+    </div>
+    <div class="col-2">
+        <button (click)="filterVacant()" type="button" class="btn btn-primary">Consultar vacantes</button>
+    </div>
+    <div class="col"></div>
+</div>
+
+
+<div class="row">
     <div class="col-md-4" *ngFor="let vacant of vacants">
         <div class="vacancy1 fadeInAnimated">
             <img src="assets/img/placeholder-img.jpg" (click)="verModal(vacant.id)">
