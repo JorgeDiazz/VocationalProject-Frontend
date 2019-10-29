@@ -1034,3 +1034,8 @@ body.sidebar-toggled footer.sticky-footer {
 .mat-chip {
     color: white!important;
 }
+
+.startDate {
+    font-size: 13px;
+    padding-bottom: 10px;
+}
