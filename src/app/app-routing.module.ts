@@ -18,6 +18,7 @@ import { SkillsComponent } from './components/0Recruiter/skills/skills.component
 import { InProcessComponent } from './components/0Recruiter/in-process/in-process.component';
 import { JobIdComponent } from './components/0Manager/job-id/job-id.component';
 import { JobProcessComponent } from './components/0Recruiter/job-process/job-process.component';
+import { Skills1Component } from './components/0Manager/skills1/skills1.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
     children: [
       {path:'job/:id',component:JobIdComponent},
       {path:'charge',component:ChargeComponent},
+      {path:'skills1',component:Skills1Component},
       {path:'recruit',component:RecruiterComponent},
       {path:'**',redirectTo:'charge'}
 
