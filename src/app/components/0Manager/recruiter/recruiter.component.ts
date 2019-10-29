@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalRecComponent } from './modal-rec/modal-rec.component';
-import { MatDialog } from '@angular/material/dialog'; 
+import { MatDialog } from '@angular/material/dialog';
 import { RecruiterI } from '../../../models/models.model';
 import { ServiceService } from 'src/app/services/service.service';
 
@@ -11,18 +11,11 @@ import { ServiceService } from 'src/app/services/service.service';
 })
 export class RecruiterComponent implements OnInit {
 
-  recruiters:RecruiterI[];
-  nitCompany:string;
-  constructor(public dialog: MatDialog,private serv:ServiceService ) { 
-    this.nitCompany=this.serv.Company.GetLocal().nit;
-    this.getRecruiters(this.nitCompany);
-    this.serv.Recruiter.GetAllPlazas().subscribe((dat)=>{
-      this.recruiters = <RecruiterI[]>dat.body;
-      console.log(dat.body);
-    },
-    (error)=>{
-      console.log("no hacer nada");
-    })
+  recruiters: RecruiterI[];
+  nitCompany: string;
+  constructor(public dialog: MatDialog, private serv: ServiceService) {
+    this.nitCompany = this.serv.Company.GetLocal().nit;
+    this.getRecruiters();
   }
 
   ngOnInit() {
@@ -32,12 +25,21 @@ export class RecruiterComponent implements OnInit {
       width: '350px'
     });
 
-  dialogRef.afterClosed().subscribe(result => {
-    this.getRecruiters(this.nitCompany);
-  });
-}
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getRecruiters();
+      }
+    });
+  }
 
-getRecruiters(nit:string){
-//servicio para traer reclutadores por empresa
-}
+  getRecruiters() {
+    this.serv.Recruiter.GetAllPlazas().subscribe((dat) => {
+      this.recruiters = <RecruiterI[]>dat.body;
+      console.log(dat.body);
+    },
+      (error) => {
+        console.log("no hacer nada");
+      })
+  }
+
 }
