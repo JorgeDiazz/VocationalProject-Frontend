@@ -21,10 +21,11 @@ export class PendingVacanciesComponent implements OnInit {
   ngOnInit() {
   }
 
-  verModal(i:number,j:number) {
+  verModal(vacant:VacantI) {
       const dialogRef = this.dialog.open(ModalJob1Component, {
-        width: '350px',
-        data:{ charge:"other", vacant:"other"}
+        width: '500px',
+        data:{idJobPosition:vacant.idJobPosition,
+          placesNumber:vacant.placesNumber}
       });
 
     dialogRef.afterClosed().subscribe(result => {

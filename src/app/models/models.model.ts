@@ -12,6 +12,7 @@ export interface RecruiterI{
     email:string,
     image?:string,
     type?:string, 
+    nameCompany?:string;
     nitCompany:string;
     vacantsNumber?:number;
     postulantsNumber?:number,

@@ -1,8 +1,8 @@
-<ng-container>
+<ng-container *ngIf="pendingVacants && pendingVacants.length;else noVacant">
     <div class="row">
         <div class="col-md-4" *ngFor="let vacant of pendingVacants">
             <div class="vacancy1 fadeInAnimated">
-                <img src="assets/img/placeholder-img.jpg" (click)="verModal(vacant.id)">
+                <img src="assets/img/placeholder-img.jpg" (click)="verModal(vacant)">
                 <p>{{vacant.jobPositionName}}<br> Reclutadores a cargo: {{vacant.recruitersNumber}}
                 </p>
             </div>
@@ -22,3 +22,7 @@
         </div>
     </div>
 </ng-container>
+
+<template #noVacant>
+<h1>No hay vacantes pendientes</h1>
+</template>
