@@ -73,7 +73,8 @@ export class VacantComponent implements OnInit {
         });
     
         dialogRef.afterClosed().subscribe(result => {
-          this.verVacantes(this.careers);
+          if(result)
+          this.filterVacant();
         });
 
       }

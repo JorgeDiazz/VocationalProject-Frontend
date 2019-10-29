@@ -35,11 +35,11 @@
             </div>
             <div class="col-6">
                 <mat-form-field>
-                    <mat-label>Carreras existentes</mat-label>
+                    <mat-label>Habilidades existentes</mat-label>
                     <mat-select  multiple (selectionChange)="selectChange($event.value)"
                         #multiSelectSoft>
                         <mat-option>
-                            <ngx-mat-select-search [formControl]="searchSoft" [placeholderLabel]="'Buscar carrera'"
+                            <ngx-mat-select-search [formControl]="searchSoft" [placeholderLabel]="'Buscar habilidad'"
                                 [noEntriesFoundLabel]="'No se encontró.'" [clearSearchInput]='false'>
                                 <mat-icon ngxMatSelectSearchClear>X</mat-icon>
                             </ngx-mat-select-search>

@@ -19,6 +19,9 @@ export class RecruiterComponent implements OnInit {
     this.serv.Recruiter.GetAllPlazas().subscribe((dat)=>{
       this.recruiters = <RecruiterI[]>dat.body;
       console.log(dat.body);
+    },
+    (error)=>{
+      console.log("no hacer nada");
     })
   }
 
