@@ -95,12 +95,14 @@ export interface VacantI{
     startDate:Date,
     idJobPosition?:number,
     nameJob?:string,
+    jobPositionName?:string;
     recruiters_number:string,
     postulants_number:number,
     salaryMin?:number,
     salaryMax?:number,
     recruiters?:RecruiterI[],
     recruitersId?:string[]
+    state?:number
 }
 
 

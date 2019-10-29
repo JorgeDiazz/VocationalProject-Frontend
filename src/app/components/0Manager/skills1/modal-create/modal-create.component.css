@@ -1,0 +1,19 @@
+h3 {
+    text-align: center;
+}
+
+.areas {
+    margin-left: 40px;
+    width: 238px;
+    margin-bottom: 0px;
+}
+
+mat-radio-group {
+    margin-top: 10px!important;
+    text-align: center;
+    margin-left: 40px;
+}
+
+mat-radio-button {
+    margin-right: 50px;
+}

@@ -14,8 +14,8 @@ export class PendingVacanciesComponent implements OnInit {
   pendingVacants: VacantI[];
   idRecruiter:string;
   constructor(public dialog: MatDialog,private serv:ServiceService ) {
-      this.idRecruiter=this.serv.Recruiter.GetLocal().id;
-      this.getPendingVacants(this.idRecruiter);
+      
+      this.getPendingVacants();
      }
 
   ngOnInit() {
@@ -32,7 +32,11 @@ export class PendingVacanciesComponent implements OnInit {
     });
   }
 
-  getPendingVacants(id:string){
+  getPendingVacants(){
      //pedir vacantes por reclutador sin postulantes
+     this.serv.Vacant.GetPendingR().subscribe(dat=>{
+       this.pendingVacants=<VacantI[]>dat.body;
+       console.log(this.pendingVacants);
+     })
   }
 }

@@ -14,25 +14,28 @@
     <div class="row fadeInAnimated">
         <div class="col">
             <h2>Datos Generales</h2>
-            <p><b>Area:</b> {{charge.range}}<br><b>Salario:</b> {{charge.salaryMin}}-{{charge.salaryMax}} <br>
+            <p><b>Area:</b> {{charge.nameArea}}<br><b>Salario:</b> {{charge.salaryMin}}-{{charge.salaryMax}} <br>
                 <b>Descripción:</b> {{charge.description}} <br>
             </p>
 
             <div class="row">
                 <div class="col-6">
                     <p> <b>Carreras:</b></p>
+                    <p *ngIf="charge.careers.length==0">¡No hay carreras para este cargo!</p>
                     <ul>
-                        <li *ngFor="let dt of charge.carreers"> {{dt.name}} </li>
+                        <li *ngFor="let dt of charge.careers"> {{dt.name}} </li>
                     </ul>
                 </div>
                 <div class="col-6">
                     <p><b>Procesos:</b> </p>
+                    <p *ngIf="charge.processes.length==0">¡No hay procesos para este cargo!</p>
                     <ul>
                         <li *ngFor="let pr of charge.processes"> {{pr.name}} </li>
                     </ul>
                 </div>
                 <div class="col-6">
                     <p> <b>Habilidades fuertes:</b></p>
+                    <p *ngIf="charge.hardSkills.length==0">¡No hay habilidades para este cargo!</p>
                     <ul>
                         <li *ngFor="let hs of charge.hardSkills"> {{hs.name}} </li>
                     </ul>
@@ -40,6 +43,7 @@
                 </div>
                 <div class="col-6">
                     <p><b>Habilidades blandas:</b> </p>
+                    <p *ngIf="charge.softSkills.length==0">¡No hay habilidades para este cargo!</p>
                     <ul>
                         <li *ngFor="let ss of charge.softSkills"> {{ss.name}} </li>
                     </ul>
@@ -51,9 +55,10 @@
 
         <div class="col">
             <h2>Vacantes en proceso</h2>
-            <p>¡No hay vacantes para este cargo!</p>
+            <p *ngIf="charge.vacants.length==0">¡No hay vacantes para este cargo!</p>
             <div *ngFor="let vacant of charge.vacants">
                 <div class="recruiterVacant">
+                    <mat-divider></mat-divider><br>
                     <p><b>Fecha de creación: </b> {{vacant.startDate.substring(0,10)}} <br>
                         <b>Puestos disponibles: </b> {{vacant.placesNumber}}<br></p>
                     <div *ngFor="let recruiter of vacant.recruiters">
@@ -63,7 +68,7 @@
                             <div class="col">
                                 <img class="card-postulant bg-green-card" src="assets/img/perfil.jpeg" (click)="verModalP()">
                             </div>
-                        </div><br>
+                        </div>
                     </div>
                 </div>
             </div>

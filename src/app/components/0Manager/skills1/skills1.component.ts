@@ -4,12 +4,14 @@ import { ModalEditComponent } from './modal-edit/modal-edit.component';
 import { ModalCreateComponent } from './modal-create/modal-create.component';
 import { ServiceService } from '../../../services/service.service';
 import { SkillI } from '../../../models/models.model';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+
 @Component({
-  selector: 'app-skills',
-  templateUrl: './skills.component.html',
-  styleUrls: ['./skills.component.css']
+  selector: 'app-skills1',
+  templateUrl: './skills1.component.html',
+  styleUrls: ['./skills1.component.css']
 })
-export class SkillsComponent implements OnInit {
+export class Skills1Component implements OnInit {
 
 
   softs: SkillI[] = [];
@@ -77,6 +79,33 @@ export class SkillsComponent implements OnInit {
     this.serv.Skill.GetALLGlobalSkill().subscribe(data => {
       this.Globalsofts = <SkillI[]>data.body;
     })
+  }
+
+  /**
+   * Metodo para pasar de una habilidad a otra
+   * Falta quitar Error 417!!
+   * @param event 
+   *  
+  */
+
+  drop(event: CdkDragDrop<SkillI[]>, type: string): void {
+
+
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      console.log(event.previousContainer.data[event.previousIndex])
+      this.serv.Skill.PutGlobalSoft_Sof(type, event.previousContainer.data[event.previousIndex].id).subscribe(d => {
+        console.log(d);
+      });
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
+
+    //console.log(this.Globalsofts);
+    //console.log(this.softs);
   }
 
 }

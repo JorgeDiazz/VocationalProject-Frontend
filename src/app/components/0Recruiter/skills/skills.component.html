@@ -3,8 +3,8 @@
         <h1>Habilidades globales</h1>
         <h5>Habilidades blandas que todo colaborador dentro de la empresa debe tener sin importar el cargo</h5>
 
-        <mat-chip-list cdkDropList #softsList="cdkDropList" [cdkDropListData]="Globalsofts" [cdkDropListConnectedTo]="[globalSoftList]" class="example-list example-box " (cdkDropListDropped)="drop($event,'global')">
-            <mat-chip cdkDrag *ngFor="let soft of Globalsofts" class="bg-colorGR-blue-medium">
+        <mat-chip-list class="example-list example-box ">
+            <mat-chip *ngFor="let soft of Globalsofts" class="bg-colorGR-blue-medium">
                 {{soft.name}}</mat-chip>
         </mat-chip-list>
 
@@ -12,8 +12,8 @@
     <div class="col">
         <h1>Habilidades específicas</h1>
         <h5>Habilidades blandas que debe tener el colaborador según el cargo que desempeñe</h5>
-        <mat-chip-list cdkDropList #globalSoftList="cdkDropList" [cdkDropListData]="softs" [cdkDropListConnectedTo]="[softsList]" (cdkDropListDropped)="drop($event,'specific')" class="example-list example-box ">
-            <mat-chip cdkDrag *ngFor="let soft of softs" class="bg-colorGR-orange-light">
+        <mat-chip-list class="example-list example-box ">
+            <mat-chip *ngFor="let soft of softs" class="bg-colorGR-orange-light">
                 {{soft.name}}</mat-chip>
         </mat-chip-list>
 

@@ -1,0 +1,13 @@
+<h3>Nueva habilidad</h3>
+<form [formGroup]="form">
+    <mat-dialog-content class="mat-typography">
+        <input type="text" class="inputLogIn" placeholder="Nombre del cargo" formControlName="name" [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched } "><br>
+        <div *ngIf="form.get('name').touched ">
+            <label *ngIf="!form.get('name').valid" class="invalid">Ingresar nombre </label>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>
+        <button class="buttonModalAccept" mat-button (click)="crear()" cdkFocusInitial>Crear</button>
+    </mat-dialog-actions>
+</form>

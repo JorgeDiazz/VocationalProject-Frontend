@@ -9,6 +9,7 @@ export class AppManagerComponent implements OnInit {
 
   data=[
     {name:"Cargos", icon:"fas fa-tasks", route:"charge"},
+    {name:"Habilidades", icon:"fas fa-address-book", route:"skills1"},
     {name:"Reclutadores", icon:"fas fa-address-book icons", route:"recruit"}
   ]
   constructor() { 
