@@ -25,7 +25,8 @@ export class PendingVacanciesComponent implements OnInit {
       const dialogRef = this.dialog.open(ModalJob1Component, {
         width: '500px',
         data:{idJobPosition:vacant.idJobPosition,
-          placesNumber:vacant.placesNumber}
+          placesNumber:vacant.placesNumber,
+          idVacant:vacant.id}
       });
 
     dialogRef.afterClosed().subscribe(result => {

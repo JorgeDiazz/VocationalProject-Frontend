@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { VacantI } from 'src/app/models/models.model';
+import { VacantI, JobsI } from 'src/app/models/models.model';
 import { ServiceService } from '../../../services/service.service';
 import { CareerI } from '../../../models/models.model';
 
@@ -61,15 +61,25 @@ export class VacantComponent implements OnInit {
     );
   }
 
-  verModal(id: string) {
-    const dialogRef = this.dialog.open(ModalVacantComponent, {
-      width: '450px',
-      data: id
-    });
+  verModal(vacant:VacantI) {
 
-    dialogRef.afterClosed().subscribe(result => {
-      this.verVacantes(this.careers);
-    });
+    let job:JobsI;
+    this.serv.JobPosition.GetJob(vacant.idJobPosition+"").subscribe(
+      (dat)=>{
+        job=<JobsI>dat.body;
+        const dialogRef = this.dialog.open(ModalVacantComponent, {
+          width: '450px',
+          data: {Job:job,vacant:vacant}
+        });
+    
+        dialogRef.afterClosed().subscribe(result => {
+          this.verVacantes(this.careers);
+        });
+
+      }
+    )
+
+    
   }
 
 

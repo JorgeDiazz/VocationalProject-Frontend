@@ -24,21 +24,40 @@
             </div>
         </div>
 
-        <label><b>Habilidades Blandas:</b></label>
-        <mat-form-field class="recruiters">
-            <mat-label>Carreras existentes</mat-label>
-            <mat-select  multiple (selectionChange)="selectChange($event.value)"
-                #multiSelectSoft>
-                <mat-option>
-                    <ngx-mat-select-search [formControl]="searchSoft" [placeholderLabel]="'Buscar carrera'"
-                        [noEntriesFoundLabel]="'No se encontró.'" [clearSearchInput]='false'>
-                        <mat-icon ngxMatSelectSearchClear>X</mat-icon>
-                    </ngx-mat-select-search>
-                </mat-option>
-                <mat-option *ngFor="let soft of filteredSoftCtrl | async" [value]="soft.id">{{soft.name}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>  
+        
+
+        <div class="row">
+            <div class="col-6">
+                    <label><b>Habilidades Blandas:</b></label>
+            </div>
+            <div class="col-6">
+                    <label><b>Habilidades Blandas Seleccionadas</b></label>
+            </div>
+            <div class="col-6">
+                <mat-form-field>
+                    <mat-label>Carreras existentes</mat-label>
+                    <mat-select  multiple (selectionChange)="selectChange($event.value)"
+                        #multiSelectSoft>
+                        <mat-option>
+                            <ngx-mat-select-search [formControl]="searchSoft" [placeholderLabel]="'Buscar carrera'"
+                                [noEntriesFoundLabel]="'No se encontró.'" [clearSearchInput]='false'>
+                                <mat-icon ngxMatSelectSearchClear>X</mat-icon>
+                            </ngx-mat-select-search>
+                        </mat-option>
+                        <mat-option *ngFor="let soft of filteredSoftCtrl | async" [value]="soft">{{soft.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field> 
+            </div>
+            <div class="col-6">
+                    <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+                            <mat-chip   class="selectChip" *ngFor="let dat of selectSkill">
+                                {{dat.name}}
+                            </mat-chip>
+                        </mat-chip-list><br>
+            </div>
+        </div>
+      
 
     </mat-dialog-content>
     <mat-dialog-actions align="end">

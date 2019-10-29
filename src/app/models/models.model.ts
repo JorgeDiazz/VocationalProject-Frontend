@@ -61,11 +61,11 @@ export interface PostulantI{
 
 export interface JobsI{
     id?:number,
-    name:string,
+    name?:string,
     nitCompany?:string,  
     nit_company?:string,   
-    salaryMin:number,
-    salaryMax:number,
+    salaryMin?:number,
+    salaryMax?:number,
     description?:string,
     idArea?:number,
     career?:CareerI[]
@@ -74,6 +74,7 @@ export interface JobsI{
     newCareersName?:string[],
     hardSkill?:SkillI[],
     hardSkillsId?:number[],
+    softSkillsId?:number[];
     newHardSkill?:SkillI[],
     newHardSkillsName?:string[]
     process?:ProcessI[],
@@ -91,9 +92,9 @@ export interface ProcessI{
 }
 
 export interface VacantI{
-    id:number,
-    placesNumber:number,
-    startDate:Date,
+    id?:number,
+    placesNumber?:number,
+    startDate?:Date,
     idJobPosition?:number,
     nameJob?:string,
     jobPositionName?:string;

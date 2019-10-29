@@ -5,6 +5,7 @@ import { ServiceService } from 'src/app/services/service.service';
 import { JobsI, SkillI } from 'src/app/models/models.model';
 import { Subject, ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-modal-job1',
   templateUrl: './modal-job1.component.html',
@@ -16,6 +17,8 @@ export class ModalJob1Component implements OnInit {
   JobPosition: JobsI;
 
   softSkill: SkillI[];
+
+  selectSkill:SkillI[]=[];
  //<-- Mat Select Career-->
  protected _onDestroy = new Subject<void>();
  filteredSoftCtrl: ReplaySubject<SkillI[]> = new ReplaySubject<SkillI[]>(1);
@@ -25,7 +28,7 @@ export class ModalJob1Component implements OnInit {
 
 
   constructor(public dialogRef: MatDialogRef<ModalJob1Component>,
-    @Inject(MAT_DIALOG_DATA) public data: { idJobPosition: number, placesNumber: number },
+    @Inject(MAT_DIALOG_DATA) public data: { idJobPosition: number, placesNumber: number,idVacant:number },
     public serv: ServiceService) {
 
     console.log("El id", data.idJobPosition);
@@ -52,11 +55,20 @@ export class ModalJob1Component implements OnInit {
   }
 
   difundir() {
-   
-    if (true) {
-      console.log("Difundir");
-     // this.dialogRef.close();
+    if(this.selectSkill.length>0){
+      let jobSoftSkill:JobsI={};
+      jobSoftSkill.softSkillsId=[];        
+      for(let ob of this.selectSkill){
+        jobSoftSkill.softSkillsId.push(ob.id);
+      }      
+      this.serv.JobPosition.PostSoft(this.JobPosition.id,jobSoftSkill).subscribe((dat)=>{
+        console.log("Muy bien XD");
+        this.dialogRef.close();
+        Swal.fire('Proceso compleatado','','success');
+      })
     }
+    
+    
   }
   ngOnInit() {
   }
@@ -81,11 +93,12 @@ export class ModalJob1Component implements OnInit {
   }
 
   /**
-   * 
+   * Cambio en el matselect
    * @param e 
    */
   selectChange(e){
-  console.log(e);
+  this.selectSkill=e;
+  console.log(this.selectSkill);
   }
    
 }
