@@ -91,16 +91,17 @@ export interface ProcessI{
 
 export interface VacantI{
     id:number,
-    places_number:number,
-    start_date:Date,
+    placesNumber:number,
+    startDate:Date,
     idJobPosition?:number,
     nameJob?:string,
     recruiters_number:string,
     postulants_number:number,
-    min_salary?:number,
-    max_salary?:number,
+    salaryMin?:number,
+    salaryMax?:number,
     recruiters?:RecruiterI[],
     recruitersId?:string[]
+    state?:number
 }
 
 

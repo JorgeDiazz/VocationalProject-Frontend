@@ -9,22 +9,22 @@
 </div>
 
 <div class="row fadeInAnimated">
-    <div class="col-md-3">
-        <div class="vacancy1">
+    <div class="col-md-3" *ngFor="let vacant of vacants">
+        <div class="vacancy1" *ngIf="vacant.state==0">
             <img src="assets/img/placeholder-img.jpg" (click)="verModal()">
-            <p>Nombre del cargo<br> Salario:30.000-40.000
+            <p>{{vacant.nameJob}}<br> Salario:{{salaryMin}}-{{salaryMax}}
             </p>
         </div>
         <div class="postulants1 bg-success-card">
             <div class="row">
                 <div class="col-6">
-                    <p>01/06/2018</p>
+                    <p>{{vacant.startDate.substring(0,10)}} </p>
                 </div>
                 <div class="col-3">
                     <img src="assets/img/employee.svg">
                 </div>
                 <div class="col-3">
-                    <P id="number">6</P>
+                    <P id="number">{{vacant.placesNumber}}</P>
                 </div>
             </div>
         </div>
@@ -43,22 +43,22 @@
 </div>
 <div class="row fadeInAnimated">
 
-    <div class="col-md-3">
-        <div class="vacancy1">
+    <div class="col-md-3" *ngFor="let vacant of vacants">
+        <div class="vacancy1" *ngIf="vacant.state==0">
             <img src="assets/img/placeholder-img.jpg" (click)="verModal()">
-            <p>Nombre del cargo<br> Salario:30.000-40.000
+            <p>{{vacant.nameJob}}<br> Salario:{{salaryMin}}-{{salaryMax}}
             </p>
         </div>
         <div class="postulants1 bg-process-card">
             <div class="row">
                 <div class="col-6">
-                    <p>01/06/2018</p>
+                    <p>{{vacant.startDate.substring(0,10)}} </p>
                 </div>
                 <div class="col-3">
                     <img src="assets/img/employee.svg">
                 </div>
                 <div class="col-3">
-                    <P id="number">6</P>
+                    <P id="number">{{vacant.placesNumber}}</P>
                 </div>
             </div>
         </div>
@@ -75,22 +75,22 @@
     </div>
 </div>
 <div class="row fadeInAnimated">
-    <div class="col-md-3">
-        <div class="vacancy1">
+    <div class="col-md-3" *ngFor="let vacant of vacants">
+        <div class="vacancy1" *ngIf="vacant.state==2">
             <img src="assets/img/placeholder-img.jpg" (click)="verModal()">
-            <p>Nombre del cargo<br> Salario:30.000-40.000
+            <p>{{vacant.nameJob}}<br> Salario:{{salaryMin}}-{{salaryMax}}
             </p>
         </div>
         <div class="postulants1 bg-fail-card">
             <div class="row">
                 <div class="col-6">
-                    <p>01/06/2018</p>
+                    <p>{{vacant.startDate.substring(0,10)}} </p>
                 </div>
                 <div class="col-3">
                     <img src="assets/img/employee.svg">
                 </div>
                 <div class="col-3">
-                    <P id="number">6</P>
+                    <P id="number">{{vacant.placesNumber}}</P>
                 </div>
             </div>
         </div>
