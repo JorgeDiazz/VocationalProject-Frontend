@@ -3,7 +3,7 @@
         <div class="card-job fadeInAnimated">
             <img src="assets/img/edit.svg" [routerLink]="['/manager/job',job.idJobPosition]">
             <h6> <b>{{job.name}}</b> </h6>
-            <p>{{job.salaryMin}}-{{job.salaryMax}} <br> Vacantes activas: {{job.placesNumber}} <br></p>
+            <p>{{job.salaryMin}}-{{job.salaryMax}} <br> Vacantes activas: {{job.vacants.length}} <br></p>
         </div>
     </div>
 </div>
