@@ -31,6 +31,9 @@ export class PendingVacanciesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+      if(result){
+        this.getPendingVacants();
+      }
     });
   }
 

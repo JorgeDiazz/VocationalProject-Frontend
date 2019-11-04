@@ -63,7 +63,7 @@ export class ModalJob1Component implements OnInit {
       }      
       this.serv.JobPosition.PostSoft(this.JobPosition.id,jobSoftSkill).subscribe((dat)=>{
         console.log("Muy bien XD");
-        this.dialogRef.close();
+        this.dialogRef.close(true);
         Swal.fire('Proceso compleatado','','success');
       })
     }
