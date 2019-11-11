@@ -60,24 +60,23 @@ export class RecruiterService {
     return this.serv.GET(this.URL + "recruiter/" + this.serv.getCompany().nit);
   }
 
+/**
+ * Post relation recruiter-vacant
+ * @param idVacant id
+ */
+  PostVacant(idVacant:number){
+    console.log(this.GetLocal().id);
+    return this.serv.POST({idPerson:this.GetLocal().id,idVacant:idVacant} , `${this.URL}vacant/`);
+  }
+
   /**
  * Get Recruiter in the local Storage
  * @return object
  */
   GetLocal() {
-
-    let dat: any = this.auth.getAuth();
-    let id: string = dat.id;
-    let name: string = dat.name;
-    let nitCompany: string = dat.nitCompany;
-    let email: string = dat.email;
-    let recruiter: RecruiterI = {
-      id: id,
-      name: name,
-      nitCompany: nitCompany,
-      email: email
-    }
-
-    return recruiter;
+    let dat: RecruiterI = this.auth.getAuth();
+    delete dat['token'];
+    delete dat['type'];
+     return dat;
   }
 }

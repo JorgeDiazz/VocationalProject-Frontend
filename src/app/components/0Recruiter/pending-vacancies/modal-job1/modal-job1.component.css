@@ -17,4 +17,7 @@
     color:rgb(245, 22, 22);
     font-size:2.5em;
 }
-
+.selectChip { 
+    background-color: #01879357 ;
+    color:black !important;
+}

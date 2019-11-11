@@ -3,28 +3,24 @@
 
     <div class="row">
         <div class="col">
-            <p><b>Cargo:</b> Nombre del cargo<br> <b>Salario:</b> Rango del salario<br> <b>Descripción:</b><br>Descripción breve del cargo<br></p>
-            <p><b>Número de vacantes:</b> 6
+            <p><b>Cargo:</b> {{data.Job.name}}  <br> <b>Salario:</b> {{data.vacant.salaryMin | currency:'COP':true }}-{{data.vacant.salaryMax | currency:'COP':true }}   <br> <b>Descripción:</b><br> {{data.Job.description}}<br></p>
+            <p><b>Número de vacantes:</b> {{data.vacant.placesNumber}} 
             </p>
             <p> <b>Carreras:</b></p>
             <ul>
-                <li>Carrera1</li>
-                <li>Carrera2</li>
-                <li>Carrera3</li>
+                <li *ngFor="let ob of data.Job.careers" > {{ob.name}} </li> 
             </ul>
         </div>
         <div class="col">
             <p> <b>Habilidades fuertes:</b></p>
             <ul>
-                <li>Habilidad1</li>
-                <li>Habilidad2</li>
-                <li>Habilidad3</li>
+                <li *ngFor="let ob of data.Job.hardSkills" > {{ob.name}} </li> 
+                 
             </ul>
             <p><b>Habilidades blandas:</b> </p>
             <ul>
-                <li>Habilidad1</li>
-                <li>Habilidad2</li>
-                <li>Habilidad3</li>
+                <li *ngFor="let ob of data.Job.softSkills" > {{ob.name}} </li> 
+                 
             </ul>
         </div>
     </div>
@@ -32,5 +28,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>
-    <button class="buttonModalAccept" mat-button [mat-dialog-close]="true" cdkFocusInitial>Aplicar</button>
+    <button class="buttonModalAccept" mat-button [mat-dialog-close]="true" (click)="aplicarVacante()" cdkFocusInitial>Aplicar</button>
 </mat-dialog-actions>

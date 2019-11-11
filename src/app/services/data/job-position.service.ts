@@ -31,6 +31,13 @@ export class JobPositionService {
     return this.serv.GET(this.URL+this.serv.getCompany().nit);
   }
 
+  /**
+   * Post soft skills.
+   */
+  PostSoft(idJob:number,job:JobsI){
+    return this.serv.POST(job,`${this.URL}job/${idJob}/soft/`);
+  }
+
   GetJob(id:string){
     return this.serv.GET(this.URL+"job/"+id);
   }

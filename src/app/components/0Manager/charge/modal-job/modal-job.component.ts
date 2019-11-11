@@ -63,6 +63,11 @@ export class ModalJobComponent implements OnInit,
   searchSkillHard: FormControl = new FormControl('');
   searchRecruiter: FormControl = new FormControl('');
 
+
+  //Solucion problema
+  newcareers: CareerI[];
+  newHardSkills: SkillI[];
+
   constructor(public dialogRef: MatDialogRef<ModalJobComponent>,
     public serv: ServiceService) {
     this.form = new FormGroup({
@@ -80,7 +85,7 @@ export class ModalJobComponent implements OnInit,
       'hardSkill': new FormControl(''),
       'newHardSkill': new FormArray([
         new FormGroup({
-          'name': new FormControl( { value: '', disabled: true })
+          'name': new FormControl({ value: '', disabled: true })
         })
       ]),
       'process': new FormArray([
@@ -227,11 +232,12 @@ export class ModalJobComponent implements OnInit,
   }
 
   save() {
-    this.form.markAllAsTouched();
-    console.log(this.form);
-    console.log(this.form.value);
+    this.newHardSkills = JSON.parse(JSON.stringify(this.form.controls['newHardSkill'].value));
+    this.newcareers = JSON.parse(JSON.stringify(this.form.controls['newCareer'].value));
+    console.log(this.newHardSkills,this.newcareers);
+    this.form.markAllAsTouched(); 
     if (this.form.valid) {
-      //alert(parseInt(this.form.get('salaryMin').value)<=parseInt(this.form.get('salaryMax').value));
+      
       if (parseInt(this.form.get('salaryMin').value) >= parseInt(this.form.get('salaryMax').value)) {
         swal.fire('Datos erroneos', "El rango de salario es incorrecto", 'error');
       } else {
@@ -245,7 +251,7 @@ export class ModalJobComponent implements OnInit,
           } else if ((this.form.get('recruiter').value == "" || this.form.get('recruiter').value.length == 0)) {
             swal.fire('Datos imcompletos', "Debe ingresar al menos un reclutador", 'error');
           } else {
-            let jobPosition: JobsI = this.obJobI(this.form.value);
+            let jobPosition: JobsI = this.obJobI(JSON.parse(JSON.stringify(this.form.value)));
 
             this.serv.JobPosition.Post(jobPosition).subscribe(dat => {
               swal.fire('Registro', 'Registro correctamente de Cargo', 'success');
@@ -265,7 +271,8 @@ export class ModalJobComponent implements OnInit,
   }
 
   obJobI(value: any) {
-    console.log(value);
+    console.log(this.newcareers,this.newHardSkills);
+    
     if (isString(value.career))
       value.career = [];
     if (isString(value.hardSkill))
@@ -273,16 +280,18 @@ export class ModalJobComponent implements OnInit,
     if (isString(value.recruiter))
       value.recruiter = [];
 
-    if ( isArray(value.newCareer) && (value.newCareer).length != 0 && (<string>value.newCareer[0].name).trim() == ""){
-      value.newCareer.splice(0, 1);}else{value.newCareer=[]}
-    if (isArray(value.newHardSkill) && (value.newHardSkill).length != 0 && (<string>value.newHardSkill[0].name).trim() == ""){
-      value.newHardSkill.splice(0, 1);}else{value.newHardSkill=[]}
-    let pos: JobsI =JSON.parse(JSON.stringify(value));
-
+    if (isArray(value.newCareer) && (value.newCareer).length != 0 && (<string>value.newCareer[0].name).trim() == "") {
+      value.newCareer.splice(0, 1);
+    } else { value.newCareer = [] }
+    if (isArray(value.newHardSkill) && (value.newHardSkill).length != 0 && (<string>value.newHardSkill[0].name).trim() == "") {
+      value.newHardSkill.splice(0, 1);
+    } else { value.newHardSkill = [] }
+    let pos: JobsI = JSON.parse(JSON.stringify(value));
+   
     pos.newCareersName = []; pos.careersId = []; pos.hardSkillsId = [];
     pos.newHardSkillsName = []; pos.recruitersId = []; pos.processesName = [];
-    for (let a of pos.newCareer) { pos.newCareersName.push(a.name); } delete pos.newCareer;
-    for (let a of pos.newHardSkill) { pos.newHardSkillsName.push(a.name); } delete pos.newHardSkill;
+    for (let a of this.newcareers) { if(a.name.trim()!="") pos.newCareersName.push(a.name.toLocaleUpperCase()); } delete pos.newCareer;
+    for (let a of this.newHardSkills) { if(a.name.trim()!="") pos.newHardSkillsName.push(a.name.toLocaleUpperCase()); } delete pos.newHardSkill;
     for (let a of pos.career) { pos.careersId.push(a.id); } delete pos.career;
     for (let a of pos.hardSkill) { pos.hardSkillsId.push(a.id); } delete pos.hardSkill;
     for (let a of pos.recruiter) { pos.recruitersId.push(a.id); } delete pos.recruiter;
@@ -290,7 +299,7 @@ export class ModalJobComponent implements OnInit,
 
 
     pos.placesNumber = pos.placeNumber; delete pos.placeNumber;
- 
+    console.log(pos);
 
 
     return pos;
@@ -352,24 +361,18 @@ export class ModalJobComponent implements OnInit,
   removeOption(type: number, i: number) {
     switch (type) {
       case 1:
-        if(i==0){
-          (<FormArray>this.form.get('newCareer')).at(0).setValue({name: ''});
-        }else{
-        (<FormArray>this.form.get('newCareer')).removeAt(i);
-        if ((<FormArray>this.form.get('newCareer')).length == 1) {
-          (<FormGroup>(<FormArray>this.form.get('newCareer')).at(0)).controls["name"].clearValidators();
-          (<FormGroup>(<FormArray>this.form.get('newCareer')).at(0)).controls["name"].updateValueAndValidity();
-        }}
+        if ((<FormArray>this.form.get('newCareer')).length > 1) {
+          (<FormArray>this.form.get('newCareer')).removeAt(i);
+        } else {
+          (<FormArray>this.form.get('newCareer')).at(0).setValue({ name: '' });
+        }
         break;
       case 2:
-        if(i==0){
-          (<FormArray>this.form.get('newHardSkill')).at(0).setValue({name: ''});
-        }else{
-        (<FormArray>this.form.get('newHardSkill')).removeAt(i);
-        if ((<FormArray>this.form.get('newHardSkill')).length == 1) {
-          (<FormGroup>(<FormArray>this.form.get('newHardSkill')).at(0)).controls["name"].clearValidators();
-          (<FormGroup>(<FormArray>this.form.get('newHardSkill')).at(0)).controls["name"].updateValueAndValidity();
-        }}
+        if ((<FormArray>this.form.get('newHardSkill')).length > 1) {
+          (<FormArray>this.form.get('newHardSkill')).removeAt(i);
+        } else {
+          (<FormArray>this.form.get('newHardSkill')).at(0).setValue({ name: '' });
+        }
 
         break;
       case 4:

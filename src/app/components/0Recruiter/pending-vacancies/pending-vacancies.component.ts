@@ -14,25 +14,34 @@ export class PendingVacanciesComponent implements OnInit {
   pendingVacants: VacantI[];
   idRecruiter:string;
   constructor(public dialog: MatDialog,private serv:ServiceService ) {
-      this.idRecruiter=this.serv.Recruiter.GetLocal().id;
-      this.getPendingVacants(this.idRecruiter);
+      
+      this.getPendingVacants();
      }
 
   ngOnInit() {
   }
 
-  verModal(i:number,j:number) {
+  verModal(vacant:VacantI) {
       const dialogRef = this.dialog.open(ModalJob1Component, {
-        width: '350px',
-        data:{ charge:"other", vacant:"other"}
+        width: '500px',
+        data:{idJobPosition:vacant.idJobPosition,
+          placesNumber:vacant.placesNumber,
+          idVacant:vacant.id}
       });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+      if(result){
+        this.getPendingVacants();
+      }
     });
   }
 
-  getPendingVacants(id:string){
+  getPendingVacants(){
      //pedir vacantes por reclutador sin postulantes
+     this.serv.Vacant.GetPendingR().subscribe(dat=>{
+       this.pendingVacants=<VacantI[]>dat.body;
+       console.log(this.pendingVacants);
+     })
   }
 }

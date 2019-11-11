@@ -62,15 +62,8 @@
                 <div class="row">
                     <ng-container *ngFor="let cr of form.controls['newCareer'].controls;let i=index;">
                         <div class="col-8" [formGroup]="cr">
-                            <input type="" class="form-control input1" placeholder="Nueva carrera" formControlName="name" [ngClass]=" {'is-invalid':  !cr.get('name').valid && cr.get('name').touched && i!=0  }">
-                            <div *ngIf="cr.get('name').touched && i!=0">
-                                    <label *ngIf="!cr.get('name').valid" class="invalid">Ingresar nombre </label>                     
-                                </div>
-                        </div>
-
-                        <!-- <div class="col-2" *ngIf="(i+1)== form.controls['newCareer'].controls.length">
-                            <i (click)="addOption(1)" class="fas fa-plus-circle"></i>
-                        </div> -->
+                            <input type="" class="form-control input1" placeholder="Nueva carrera" formControlName="name" >                             
+                        </div>                        
                         <div class="col-2" >
                             <i (click)="removeOption(1,i) && cr.get('name').value!=='' " class="fas fa-times-circle"></i>
                         </div>
@@ -128,15 +121,8 @@
                 <div class="row">
                     <ng-container *ngFor="let cr of form.controls['newHardSkill'].controls;let i=index;">
                         <div class="col-8" [formGroup]="cr">
-                            <input type="" class="form-control input1" placeholder="Nueva habilidad" formControlName="name" [ngClass]=" {'is-invalid':  !cr.get('name').valid && cr.get('name').touched && i!=0  }">
-                            <div *ngIf="cr.get('name').touched && i!=0 ">
-                                    <label *ngIf="!cr.get('name').valid" class="invalid">Ingresar nombre </label>                     
-                                </div>
-                        </div>
-
-                        <!-- <div class="col-2" *ngIf="(i+1)== form.controls['newHardSkill'].controls.length">
-                            <i (click)="addOption(2)" class="fas fa-plus-circle"></i>
-                        </div> -->
+                            <input type="" class="form-control input1" placeholder="Nueva habilidad" formControlName="name">
+                         </div> 
                         <div class="col-2">
                             <i (click)="removeOption(2,i) && cr.get('name').value!=='' " class="fas fa-times-circle"></i>
                         </div>
