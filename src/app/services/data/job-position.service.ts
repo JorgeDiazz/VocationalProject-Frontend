@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core'; 
 import { ServService } from '../serv.service';
 import { JobsI } from 'src/app/models/models.model';
+import { RecruiterService } from './recruiter.service';
+import { JobProcI } from '../../models/models.model';
 @Injectable({
   providedIn: 'root'
 })
 export class JobPositionService {
   private URL="jobPosition/";
 
-  constructor(private serv:ServService) { }
+  jobP: JobProcI;
+  constructor(private serv:ServService, private serv1:RecruiterService) { }
 
   /**
    * Register JobPosition
@@ -30,5 +33,11 @@ export class JobPositionService {
 
   GetJob(id:string){
     return this.serv.GET(this.URL+"job/"+id);
+  }
+
+  GetJobProcess(id:string){
+   this.jobP.idJob=Number(id);
+this.jobP.idRecruiter= this.serv1.GetLocal().id;
+    return this.serv.POST(this.jobP,this.URL+"inprocess/");
   }
 }

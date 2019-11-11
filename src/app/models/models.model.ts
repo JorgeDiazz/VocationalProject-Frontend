@@ -104,6 +104,11 @@ export interface VacantI{
     state?:number
 }
 
+export interface JobProcI{
+    idJob:number,
+    idRecruiter:string
+}
+
 
 
 
