@@ -56,7 +56,7 @@
                         <b>Carreras:</b><br>
                         <mat-form-field class="recruiters">
                             <mat-label>Carreras existentes</mat-label>
-                            <mat-select formControlName="career" multiple (selectionChange)="selectChange($event.value,1)" #multiSelectCareer>
+                            <mat-select formControlName="careers" multiple (selectionChange)="selectChange($event.value,1)" #multiSelectCareer>
                                 <mat-option>
                                     <ngx-mat-select-search [formControl]="searchCareer" [placeholderLabel]="'Buscar carrera'" [noEntriesFoundLabel]="'No se encontró.'" [clearSearchInput]='false'>
                                         <mat-icon ngxMatSelectSearchClear>X</mat-icon>

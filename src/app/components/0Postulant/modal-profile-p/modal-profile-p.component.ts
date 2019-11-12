@@ -8,6 +8,7 @@ import { MatSelect } from '@angular/material';
 import { Subject, ReplaySubject } from 'rxjs';
 import { takeUntil, take } from 'rxjs/operators';
 import { isArray, isString } from 'util';
+import { JobsI } from 'src/app/models/models.model';
 @Component({
   selector: 'app-modal-profile-p',
   templateUrl: './modal-profile-p.component.html',
@@ -52,10 +53,10 @@ export class ModalProfilePComponent implements OnInit {
 
   initForm(){
     this.form = new FormGroup({
-      'id':new FormControl({ value: this.postulantProfile.id, disabled: true }, Validators.required),
+      'id':new FormControl({ value: this.postulantProfile.id, disabled: true }),
       'name': new FormControl(this.postulantProfile.name,[Validators.required, noWhiteSpace]),
       'email': new FormControl(this.postulantProfile.email, [Validators.required,noWhiteSpace, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]),
-      'career': new FormControl('')
+      'careers': new FormControl('')
     });
   }
 
@@ -105,7 +106,6 @@ export class ModalProfilePComponent implements OnInit {
       }
 
       save() {
-        this.newcareers = JSON.parse(JSON.stringify(this.form.controls['newCareer'].value));
         this.form.markAllAsTouched(); 
         if (this.form.valid) {
             if ((this.form.get('career').value == "" || this.form.get('career').value.length == 0) && (this.form.get('newCareer').value.length == 0 || this.form.get('newCareer').value[0].name.trim() == "")) {
@@ -117,7 +117,6 @@ export class ModalProfilePComponent implements OnInit {
       }
 
       obJobI(value: any) {
-        console.log(this.newcareers,this.newHardSkills);
         
         if (isString(value.career))
           value.career = [];
@@ -130,7 +129,6 @@ export class ModalProfilePComponent implements OnInit {
        
         pos.newCareersName = []; pos.careersId = []; pos.hardSkillsId = [];
         pos.newHardSkillsName = []; pos.recruitersId = []; pos.processesName = [];
-        for (let a of this.newcareers) { if(a.name.trim()!="") pos.newCareersName.push(a.name.toLocaleUpperCase()); } delete pos.newCareer;
         for (let a of pos.career) { pos.careersId.push(a.id); } delete pos.career;
     
     
@@ -190,7 +188,6 @@ export class ModalProfilePComponent implements OnInit {
       }
 
   updatePostulant(rec:PostulantI){
-
     let ob:any={};    
     ob.id=this.postulantProfile.id;
     
@@ -200,6 +197,12 @@ export class ModalProfilePComponent implements OnInit {
     if(rec.email!==this.postulantProfile.email){
       ob.email=rec.email.trim();
     }
+    if(rec.careers.length!=0){
+      ob.careers=rec.careers;
+    }
+    
+
+     console.log(rec.careers);
     this.serv.Recruiter.Put(ob).subscribe(dat=>{
       swal.fire('Actualización', 'Los datos fueron actualizados correctamente', 'success');      
       console.log(dat);
