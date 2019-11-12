@@ -99,8 +99,8 @@ export interface VacantI{
     idJobPosition?:number,
     nameJob?:string,
     jobPositionName?:string;
-    recruiters_number:string,
-    postulants_number:number,
+    recruitersNumber:string,
+    postulantsNumber:number,
     salaryMin?:number,
     salaryMax?:number,
     recruiters?:RecruiterI[],

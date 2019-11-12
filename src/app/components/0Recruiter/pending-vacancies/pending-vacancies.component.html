@@ -1,4 +1,4 @@
-<ng-container *ngIf="pendingVacants && pendingVacants.length;else noVacant">
+<ng-container *ngIf="pendingVacants && pendingVacants.length>1;else noVacant">
     <div class="row">
         <div class="col-md-4" *ngFor="let vacant of pendingVacants">
             <div class="vacancy1 fadeInAnimated">
