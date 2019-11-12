@@ -2,7 +2,8 @@
 <div class="row">
     <div class="col">
         <h2>Datos Generales</h2>
-        <p><b>Salario:</b>{{charge.salatyMin}}-{{charge.salaryMax}}<br>
+        <p><b>Area:</b> {{charge.area}}<br>
+            <b>Salario:</b> {{charge.salaryMin}}-{{charge.salaryMax}}<br>
             <b>Descripción:</b> Descripción del puesto<br>
             <b>Nro. de vacantes:</b> {{charge.placesNumber}}<br>
             <b>Fecha de creación:</b> 08/10/2017<br>
@@ -11,37 +12,29 @@
         <div class="row">
             <div class="col">
                 <p> <b>Carreras:</b></p>
-                <ul>
-                    <li>Carrera1</li>
-                    <li>Carrera2</li>
-                    <li>Carrera3</li>
+                <ul *ngFor="let career of charge.careers">
+                    <li>{{career}}</li>
                 </ul>
             </div>
             <div class="col">
                 <p><b>Procesos:</b> </p>
-                <ul>
-                    <li>proceso1</li>
-                    <li>proceso2</li>
-                    <li>proceso3</li>
+                <ul *ngFor="let process of charge.processes">
+                    <li>{{process}}</li>
                 </ul>
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <p> <b>Habilidades fuertes:</b></p>
-                <ul>
-                    <li>Habilidad1</li>
-                    <li>Habilidad2</li>
-                    <li>Habilidad3</li>
+                <ul *ngFor="let hardS of charge.hardSkills">
+                    <li>{{hardS}}</li>
                 </ul>
 
             </div>
             <div class="col">
                 <p><b>Habilidades blandas:</b> </p>
-                <ul>
-                    <li>Habilidad1</li>
-                    <li>Habilidad2</li>
-                    <li>Habilidad3</li>
+                <ul *ngFor="let softS of charge.softSkills">
+                    <li>{{softS}}</li>
                 </ul>
             </div>
         </div>
@@ -50,8 +43,8 @@
 
     <div class="col">
         <h2>Postulantes para el cargo</h2>
-        <p>¡No hay postulantes para este cargo!</p>
-        <div class="row">
+        <p *ngIf="charge.postulants.length==0">¡No hay postulantes para este cargo!</p>
+        <div class="row" *ngIf="charge.postulants.length!=0">
             <div class="col">
                 <img class="card-postulant bg-green-card" src="assets/img/perfil.jpeg" (click)="verModal()">
             </div>

@@ -10,7 +10,9 @@ export class JobPositionService {
   private URL="jobPosition/";
 
   jobP: JobProcI;
-  constructor(private serv:ServService, private serv1:RecruiterService) { }
+  constructor(private serv:ServService, private serv1:RecruiterService) { 
+    this.jobP={ idVacant: 0, idRecruiter: '',idJob:0 }
+  }
 
   /**
    * Register JobPosition
@@ -42,10 +44,10 @@ export class JobPositionService {
     return this.serv.GET(this.URL+"job/"+id);
   }
 
-  GetJobProcess(id:string){
-    console.log(id)
-   this.jobP.idJob=Number(id);
-this.jobP.idRecruiter= this.serv1.GetLocal().id;
+  GetJobProcess(id:string,id2:string){
+   this.jobP.idVacant=Number(id);
+   this.jobP.idJob=Number(id2);
+   this.jobP.idRecruiter= this.serv1.GetLocal().id;
     return this.serv.POST(this.jobP,this.URL+"inprocess/");
   }
 }

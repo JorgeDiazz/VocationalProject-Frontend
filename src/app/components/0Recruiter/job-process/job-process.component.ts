@@ -19,7 +19,7 @@ export class JobProcessComponent implements OnInit {
     this.routerA.params.subscribe(r=>{
     })
     console.log("id "+this.routerA.snapshot.paramMap.get('id'))
-    this.serv.JobPosition.GetJobProcess(this.routerA.snapshot.paramMap.get('id')).subscribe(dat=>{
+    this.serv.JobPosition.GetJobProcess(this.routerA.snapshot.paramMap.get('id').split(":")[0],this.routerA.snapshot.paramMap.get('id').split(":")[1]).subscribe(dat=>{
       this.charge=<any>dat.body;
       console.log(this.charge);
     })

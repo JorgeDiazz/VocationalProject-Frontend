@@ -84,7 +84,8 @@ export interface JobsI{
     recruitersId?:string[],
     placeNumber?:number, 
     placesNumber?:number, 
-    vacants?:VacantI[]
+    vacants?:VacantI[],
+    area?:string
 }
 
 export interface ProcessI{
@@ -110,6 +111,7 @@ export interface VacantI{
 
 export interface JobProcI{
     idJob:number,
+    idVacant:number,
     idRecruiter:string
 }
 

@@ -1,33 +1,33 @@
 <ng-container *ngIf="processVacant && processVacant.length>1;else noVacant">
 
-<div class="row">
-    <div class="col-md-4" *ngFor="let vacant of processVacant">
-        <div class="vacancy">
-            <img src="assets/img/see.svg" [routerLink]="['/recruiter/job',vacant.id]">
-            <h5>{{vacant.jobPositionName}}</h5>
-            <p><b>Puestos disponibles:</b>{{vacant.placesNumber}}<br>
-                <b>Reclutadores a cargo:</b>{{vacant.recruitersNumber}}</p>
-        </div>
-        <div class="postulants bg-colorGR-blue-medium">
-            <div class="row">
-                <div class="col-6">
-                    <p>{{vacant.startDate | date:'shortDate'}}</p>
-                </div>
-                <div class="col-3">
-                    <img src="assets/img/employee.svg">
-                </div>
-                <div class="col-3">
-                    <P id="number">{{vacant.postulantsNumber}}</P>
-                </div>
+    <div class="row">
+        <div class="col-md-4" *ngFor="let vacant of processVacant">
+            <div class="vacancy">
+                <img src="assets/img/see.svg" [routerLink]="['/recruiter/job',vacant.id+':'+vacant.idJobPosition]">
+                <h5>{{vacant.jobPositionName}}</h5>
+                <p><b>Puestos disponibles:</b>{{vacant.placesNumber}}<br>
+                    <b>Reclutadores a cargo:</b>{{vacant.recruitersNumber}}</p>
             </div>
+            <div class="postulants bg-colorGR-blue-medium">
+                <div class="row">
+                    <div class="col-6">
+                        <p>{{vacant.startDate | date:'shortDate'}}</p>
+                    </div>
+                    <div class="col-3">
+                        <img src="assets/img/employee.svg">
+                    </div>
+                    <div class="col-3">
+                        <P id="number">{{vacant.postulantsNumber}}</P>
+                    </div>
+                </div>
 
+            </div>
         </div>
     </div>
-</div>
 </ng-container>
 <ng-template #noVacant>
     <h1>No tienes ninguna vacante asignada</h1>
-    </ng-template>
+</ng-template>
 <!-- <div class="row">
     <div class="col-md-4">
         <div class="vacancy">
