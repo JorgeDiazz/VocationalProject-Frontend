@@ -43,6 +43,7 @@ export class JobPositionService {
   }
 
   GetJobProcess(id:string){
+    console.log(id)
    this.jobP.idJob=Number(id);
 this.jobP.idRecruiter= this.serv1.GetLocal().id;
     return this.serv.POST(this.jobP,this.URL+"inprocess/");

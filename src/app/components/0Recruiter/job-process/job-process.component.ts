@@ -18,6 +18,7 @@ export class JobProcessComponent implements OnInit {
   constructor(public dialog: MatDialog,public routerA:ActivatedRoute,private serv:ServiceService) {
     this.routerA.params.subscribe(r=>{
     })
+    console.log("id "+this.routerA.snapshot.paramMap.get('id'))
     this.serv.JobPosition.GetJobProcess(this.routerA.snapshot.paramMap.get('id')).subscribe(dat=>{
       this.charge=<any>dat.body;
       console.log(this.charge);
