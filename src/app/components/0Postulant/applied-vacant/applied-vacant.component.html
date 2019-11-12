@@ -10,12 +10,12 @@
 
 <div class="row fadeInAnimated" *ngFor="let vacant of vacants">
     <div class="col-md-3">
-        <div class="vacancy1" *ngIf="vacant.state==0">
+        <div class="vacancy1" *ngIf="vacant.state==1">
             <img src="assets/img/placeholder-img.jpg" (click)="verModal()">
             <p>{{vacant.nameJob}}<br> Salario:{{vacant.salaryMin}}-{{vacant.salaryMax}}
             </p>
         </div>
-        <div class="postulants1 bg-success-card" *ngIf="vacant.state==0">
+        <div class="postulants1 bg-success-card" *ngIf="vacant.state==1">
             <div class="row">
                 <div class="col-6">
                     <p class="startDate">{{vacant.startDate.substring(0,10)}} </p>

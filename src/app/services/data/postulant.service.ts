@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ServService } from '../serv.service';
 import { PostulantI } from 'src/app/models/models.model';
 import { AuthService } from '../session/auth.service';
+import { CareerI } from '../../models/models.model';
 
 @Injectable({
   providedIn: 'root'
@@ -48,10 +49,12 @@ export class PostulantService {
     let id: string = dat.id;
     let name: string = dat.name;
     let email: string = dat.email;
+    let careers:CareerI[] = dat.careers;
     let postulant: PostulantI = {
       id: id,
       name: name,
-      email: email
+      email: email,
+      careers:careers
     }
     return postulant;
   }

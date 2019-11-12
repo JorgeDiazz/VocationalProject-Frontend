@@ -8,7 +8,12 @@
             <p> <b>ID:</b><br>{{postulantProfile.id}}<br>
                 <b>Nombre:</b><br>{{postulantProfile.name}}<br>
                 <b>Correo:</b><br>{{postulantProfile.email}}<br>
+                <b>Carreras:</b>
             </p>
+            <p *ngIf="postulantProfile.careers.length==0">¡No hay carreras para este cargo!</p>
+            <ul>
+                <li *ngFor="let dt of postulantProfile.careers"> {{dt.name}} </li>
+            </ul>
         </div>
     </div>
     <form [formGroup]="form" novalidate="novalidate" *ngIf=update>
@@ -21,14 +26,12 @@
                 <div class="row">
                     <div class="col-12">
                         <b>ID:</b><br>
-                        <input type="text" class="inputLogIn" placeholder="Nombre de la compañía" formControlName="id"
-                            [ngClass]=" {'is-invalid':  !form.get('id').valid && form.get('id').touched } "><br>
+                        <input type="text" class="inputLogIn" placeholder="Nombre de la compañía" formControlName="id" [ngClass]=" {'is-invalid':  !form.get('id').valid && form.get('id').touched } "><br>
 
                     </div>
                     <div class="col-12">
                         <b>Nombre:</b><br>
-                        <input type="text" class="inputLogIn" placeholder="Nombre de la compañía" formControlName="name"
-                            [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched } "><br>
+                        <input type="text" class="inputLogIn" placeholder="Nombre de la compañía" formControlName="name" [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched } "><br>
 
                         <ng-container *ngIf="form.get('name').touched">
                             <label style="margin-left: 40px" *ngIf="!form.get('name').valid" class="invalid">Ingrese
@@ -37,19 +40,40 @@
                     </div>
                     <div class="col-12">
                         <b>Correo:</b><br>
-                        <input type="email" class="inputLogIn" placeholder="Correo electrónico" formControlName="email"
-                            [ngClass]=" {'is-invalid':  !form.get('email').valid && form.get('email').touched } "><br>
+                        <input type="email" class="inputLogIn" placeholder="Correo electrónico" formControlName="email" [ngClass]=" {'is-invalid':  !form.get('email').valid && form.get('email').touched } "><br>
 
                         <ng-container *ngIf="form.get('email').touched">
-                            <label style="margin-left: 40px" *ngIf="form.get('email').errors?.pattern;else validEmail"
-                                class="invalid">Formato de correo incorrecto.</label>
+                            <label style="margin-left: 40px" *ngIf="form.get('email').errors?.pattern;else validEmail" class="invalid">Formato de correo incorrecto.</label>
                             <ng-template #validEmail>
-                                <label style="margin-left: 40px" *ngIf="!form.get('email').valid"
-                                    class="invalid">Ingrese
+                                <label style="margin-left: 40px" *ngIf="!form.get('email').valid" class="invalid">Ingrese
                                     email, sin espacio inicial.</label>
                             </ng-template>
                         </ng-container>
 
+                    </div>
+
+                    <div class="col-12">
+                        <b>Carreras:</b><br>
+                        <mat-form-field class="recruiters">
+                            <mat-label>Carreras existentes</mat-label>
+                            <mat-select formControlName="career" multiple (selectionChange)="selectChange($event.value,1)" #multiSelectCareer>
+                                <mat-option>
+                                    <ngx-mat-select-search [formControl]="searchCareer" [placeholderLabel]="'Buscar carrera'" [noEntriesFoundLabel]="'No se encontró.'" [clearSearchInput]='false'>
+                                        <mat-icon ngxMatSelectSearchClear>X</mat-icon>
+                                    </ngx-mat-select-search>
+                                </mat-option>
+
+                                <button class="buttonModalAccept form-control" mat-button (click)="addOption_2(1)" cdkFocusInitial *ngIf="emptySearchCareer && (searchCareer.value.trim().length!=0) ">Crear </button>
+
+                                <mat-option *ngFor="let career of filteredCareerCtrl | async" [value]="career">{{career.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <!--Mostrar las que va seleccionando-->
+                        <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+                            <mat-chip class="selectChip" *ngFor="let careerSelec of careersSelected">
+                                {{careerSelec.name}}
+                            </mat-chip>
+                        </mat-chip-list><br>
                     </div>
 
                 </div>
