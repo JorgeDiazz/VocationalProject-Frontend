@@ -9,16 +9,23 @@ import { ServiceService } from 'src/app/services/service.service';
 })
 export class InProcessComponent implements OnInit {
 
-  processVacant:VacantI[];
-  id:string;
-  constructor(private serv:ServiceService) {
-    this.id=this.serv.Recruiter.GetLocal().id;
-   }
+  processVacant: VacantI[]; 
+  constructor(private serv: ServiceService) { 
+    this.getProcessVacant();
+  }
 
   ngOnInit() {
   }
 
-  getProcessVacant(id:string){
-   //SERVICIO DE VACANTES POR RECLUTADOR CON POSTULANTES 
+  /**
+   * //SERVICIO DE VACANTES POR RECLUTADOR CON POSTULANTES 
+   * @param id 
+   */
+  getProcessVacant() {
+    this.serv.Vacant.GetInProcessR().subscribe(dat => {
+      this.processVacant = <VacantI[]>dat.body;
+      console.log(this.processVacant);
+    });
+
   }
 }

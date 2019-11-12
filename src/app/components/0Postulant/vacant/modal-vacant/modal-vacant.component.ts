@@ -21,9 +21,8 @@ export class ModalVacantComponent implements OnInit {
   }
   aplicarVacante(){
     this.serv.Vacant.PostVacantByPostulant(this.data.vacant.id).subscribe((dat)=>{
-      Swal.fire('Aplicar vacante','Correcto','success');
-      let bol:boolean=true;       
-      this.dialogRef.close(bol);
+      Swal.fire('Aplicar vacante','Correcto','success');       
+      this.dialogRef.close(true);
     })
   }
   
