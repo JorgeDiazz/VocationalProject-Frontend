@@ -55,6 +55,10 @@ export class VacantService {
   Getvacants() {
     return this.serv.GET('vacant/applied/' + this.serv1.GetLocal().id);
   }
+
+  GetPostulants(id:string) {
+    return this.serv.GET('vacant/inProcess/postulants' + id);
+  }
 /**
  * Get vacants in process for the recruiter 
  */

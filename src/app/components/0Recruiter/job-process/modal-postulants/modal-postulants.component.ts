@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material';
+import { ServiceService } from 'src/app/services/service.service';
+import { PostulantI } from '../../../../models/models.model';
 
 @Component({
   selector: 'app-modal-postulants',
@@ -7,7 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalPostulantsComponent implements OnInit {
 
-  constructor() { }
+  postulants:PostulantI[];
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private serv:ServiceService) { 
+   this.serv.Vacant.GetPostulants(data.id).subscribe(data => {
+    this.postulants = <PostulantI[]>data.body;
+  })
+  }
 
   ngOnInit() {
   }

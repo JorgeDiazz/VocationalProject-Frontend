@@ -10,7 +10,7 @@
                 <b>Correo:</b><br>{{postulantProfile.email}}<br>
                 <b>Carreras:</b>
             </p>
-            <p *ngIf="postulantProfile.careers.length==0">¡No hay carreras para este cargo!</p>
+            <p *ngIf="postulantProfile.careers.length==0">¡No hay carreras!</p>
             <ul>
                 <li *ngFor="let dt of postulantProfile.careers"> {{dt.name}} </li>
             </ul>

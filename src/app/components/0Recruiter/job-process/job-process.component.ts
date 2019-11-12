@@ -37,9 +37,11 @@ export class JobProcessComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+
   verPostulants(){
     const dialogRef = this.dialog.open(ModalPostulantsComponent, {
-      width: '750px'
+      width: '750px',
+      data:{ id: this.routerA.snapshot.paramMap.get('id').split(":")[0] }
     });
 
   dialogRef.afterClosed().subscribe(result => {
