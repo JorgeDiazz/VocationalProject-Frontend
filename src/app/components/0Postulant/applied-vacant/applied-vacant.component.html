@@ -8,8 +8,8 @@
     </div>
 </div>
 
-<div class="row fadeInAnimated" *ngFor="let vacant of vacants">
-    <div class="col-md-3">
+<div class="row fadeInAnimated">
+    <div class="col-md-3" *ngFor="let vacant of vacants">
         <div class="vacancy1" *ngIf="vacant.state==1">
             <img src="assets/img/placeholder-img.jpg" (click)="verModal()">
             <p>{{vacant.nameJob}}<br> Salario:{{vacant.salaryMin}}-{{vacant.salaryMax}}
@@ -41,9 +41,9 @@
         <div class="circle bg-process-card"></div>
     </div>
 </div>
-<div class="row fadeInAnimated" *ngFor="let vacant of vacants">
+<div class="row fadeInAnimated">
 
-    <div class="col-md-3">
+    <div class="col-md-3" *ngFor="let vacant of vacants">
         <div class="vacancy1" *ngIf="vacant.state==0">
             <img src="assets/img/placeholder-img.jpg" (click)="verModal()">
             <p>{{vacant.nameJob}}<br> Salario:{{vacant.salaryMin}}-{{vacant.salaryMax}}
@@ -74,8 +74,8 @@
         <div class="circle bg-fail-card"></div>
     </div>
 </div>
-<div class="row fadeInAnimated" *ngFor="let vacant of vacants">
-    <div class="col-md-3">
+<div class="row fadeInAnimated">
+    <div class="col-md-3" *ngFor="let vacant of vacants">
         <div class="vacancy1" *ngIf="vacant.state==2">
             <img src="assets/img/placeholder-img.jpg" (click)="verModal()">
             <p>{{vacant.nameJob}}<br> Salario:{{vacant.salaryMin}}-{{vacant.salaryMax}}
