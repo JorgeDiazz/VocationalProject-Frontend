@@ -1,4 +1,4 @@
-<ng-container *ngIf="processVacant && processVacant.length>1;else noVacant">
+<ng-container *ngIf="processVacant && processVacant.length>0;else noVacant">
 
     <div class="row">
         <div class="col-md-4" *ngFor="let vacant of processVacant">
