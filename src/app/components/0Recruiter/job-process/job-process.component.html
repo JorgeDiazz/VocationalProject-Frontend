@@ -1,11 +1,11 @@
-<h1>Nombre del Cargo</h1><br>
+<h1>{{charge.name}}</h1><br>
 <div class="row">
     <div class="col">
         <h2>Datos Generales</h2>
-        <p><b>Area:</b> {{charge.area}}<br>
+        <p><b>Area:</b> {{charge.nameArea}}<br>
             <b>Salario:</b> {{charge.salaryMin}}-{{charge.salaryMax}}<br>
-            <b>Descripción:</b> Descripción del puesto<br>
-            <b>Nro. de vacantes:</b> {{charge.placesNumber}}<br>
+            <b>Descripción:</b> {{charge.description}}<br>
+            <b>Nro. de vacantes:</b> {{charge.vacant.placesNumber}}<br>
             <b>Fecha de creación:</b> 08/10/2017<br>
         </p>
 
@@ -33,7 +33,7 @@
             </div>
             <div class="col">
                 <p><b>Habilidades blandas:</b> </p>
-                <ul *ngFor="let softS of charge.softSkills">
+                <ul *ngFor="let softS of charge.softSkill">
                     <li>{{softS}}</li>
                 </ul>
             </div>
@@ -45,14 +45,8 @@
         <h2>Postulantes para el cargo</h2>
         <p *ngIf="charge.postulants.length==0">¡No hay postulantes para este cargo!</p>
         <div class="row" *ngIf="charge.postulants.length!=0">
-            <div class="col">
-                <img class="card-postulant bg-green-card" src="assets/img/perfil.jpeg" (click)="verModal()">
-            </div>
-            <div class="col">
-                <img class="card-postulant bg-red-card" src="assets/img/perfil2.jpg" (click)="verModal()">
-            </div>
-            <div class="col">
-                <img class="card-postulant bg-yellow-card" src="assets/img/noPhoto.jpg" (click)="verModal()">
+            <div class="col" *ngFor="let postulant of charge.postulants">
+                <img class="card-postulant bg-green-card" src="assets/img/noPhoto.jpg" (click)="verModal(postulant)">
             </div>
         </div>
     </div>

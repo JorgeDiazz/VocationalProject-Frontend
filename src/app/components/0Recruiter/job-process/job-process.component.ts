@@ -6,6 +6,7 @@ import { JobsI } from '../../../models/models.model';
 import { ActivatedRoute } from '@angular/router';
 import { ServiceService } from 'src/app/services/service.service';
 import { RecruiterService } from '../../../services/data/recruiter.service';
+import { PostulantI } from 'src/app/models/models.model';
 
 @Component({
   selector: 'app-job-process',
@@ -16,6 +17,13 @@ export class JobProcessComponent implements OnInit {
 
   charge:JobsI;
   constructor(public dialog: MatDialog,public routerA:ActivatedRoute,private serv:ServiceService) {
+    this.getJobProcess()
+   }
+
+  ngOnInit() {
+  }
+
+  getJobProcess(){
     this.routerA.params.subscribe(r=>{
     })
     console.log("id "+this.routerA.snapshot.paramMap.get('id'))
@@ -23,14 +31,12 @@ export class JobProcessComponent implements OnInit {
       this.charge=<any>dat.body;
       console.log(this.charge);
     })
-   }
-
-  ngOnInit() {
   }
 
-  verModal() {
+  verModal(postulant:PostulantI) {
       const dialogRef = this.dialog.open(ModalPostulantComponent, {
-        width: '350px'
+        width: '350px',
+        data: {id: postulant.id,name:postulant.name,recruiter:this.serv.Recruiter.GetLocal().name}
       });
 
     dialogRef.afterClosed().subscribe(result => {
