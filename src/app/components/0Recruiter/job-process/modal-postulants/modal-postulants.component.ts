@@ -18,6 +18,8 @@ export class ModalPostulantsComponent implements OnInit {
     this.form = new FormGroup({
       postulants: new FormControl()
    });
+
+   this.getPostulants()
   }
 
   ngOnInit() {
