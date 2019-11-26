@@ -2,12 +2,12 @@
     <div class="col-4">
         <i class="fas fa-arrow-left fa-3x colorGr-Blue_-medium" routerLink='/recruiter/inProcess'></i>
     </div>
-    <div class="col-4">
+    <div class="col-4" *ngIf="charge">
         <h1> {{charge.name}} </h1><br>
     </div>
     <div class="col-4"></div>
 </div>
-<div class="row fadeInAnimated">
+<div class="row fadeInAnimated" *ngIf="charge">
     <div class="col">
         <h2>Datos Generales</h2>
         <p><b>Area:</b> {{charge.nameArea}}<br>
@@ -17,7 +17,7 @@
             <b>Fecha de creación:</b> 08/10/2017<br>
         </p>
 
-        <div class="row">
+        <div class="row" *ngIf="charge">
             <div class="col">
                 <p> <b>Carreras:</b></p>
                 <ul *ngFor="let career of charge.careers">
@@ -31,7 +31,7 @@
                 </ul>
             </div>
         </div>
-        <div class="row">
+        <div class="row" *ngIf="charge">
             <div class="col">
                 <p> <b>Habilidades fuertes:</b></p>
                 <ul *ngFor="let hardS of charge.hardSkills">
@@ -49,7 +49,7 @@
     </div>
 
 
-    <div class="col">
+    <div class="col" *ngIf="charge">
         <h2>Postulantes para el cargo</h2>
         <p *ngIf="charge.postulants.length==0">¡No hay postulantes para este cargo!</p>
         <div class="row" *ngIf="charge.postulants.length!=0">

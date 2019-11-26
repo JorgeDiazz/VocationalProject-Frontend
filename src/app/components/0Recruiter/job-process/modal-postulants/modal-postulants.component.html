@@ -1,21 +1,27 @@
 <h3>Postulantes que aplicaron</h3>
+<h6>Seleccione los postulantes que siguen con el proceso</h6>
 <mat-dialog-content class="mat-typography fadeInAnimated">
     <form [formGroup]="form">
-        <div class="NoData2 fadeInAnimated" *ngIf="postulants || postulants.lenght==0">
+        <div class="NoData2 fadeInAnimated" *ngIf="!postulants">
             <p>¡No hay postulantes para el cargo!</p>
         </div>
         <div class="row" *ngIf="postulants">
             <div class="col-6" *ngFor="let postulant of postulants">
                 <div class="row">
                     <div class="col-4">
-                        <img class="card-postulant" src="assets/img/perfil2.jpg">
+                        <img class="card-postulant" [ngClass]="{
+                            'card-postulant bg-success-card':postulants1[postulant.id] === 'yes',
+                            'text-primary':postulants1[postulant.id] === 'no'
+                          }" src="assets/img/noPhoto.jpg" (click)="listaPostulantes(postulant.id)">
                     </div>
                     <div class="col-8">
-                        <p>{{postulant.name}}<br></p>
+                        <p> <b>Nombre:</b><br> {{postulant.name}}
+                            <br>
+                            <b>Carreras:</b><br>
+                            <i *ngIf="postulant.careers.length==0">No tiene carreras</i></p>
                         <ul *ngFor="let career of postulant.careers">
                             <li>{{career}}</li>
                         </ul>
-                        <button class="buttonModalAccept">Aceptar</button>
                     </div>
                 </div>
             </div>
@@ -24,5 +30,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>
-    <button class="buttonModalAccept" mat-button (click)="seleccionar()" cdkFocusInitial *ngIf="!postulants">Seleccionar postulantes</button>
+    <button class="buttonModalAccept" mat-button (click)="seleccionar()" cdkFocusInitial *ngIf="postulants">Seleccionar postulantes</button>
 </mat-dialog-actions>
