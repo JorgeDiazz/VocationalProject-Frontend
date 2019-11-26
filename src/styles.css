@@ -1047,3 +1047,13 @@ body.sidebar-toggled footer.sticky-footer {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.buttonSearch {
+    background-color: #018793b2;
+    color: white;
+    margin-left: 8px;
+}
+
+.SearchVacants {
+    width: 300px!important;
+}

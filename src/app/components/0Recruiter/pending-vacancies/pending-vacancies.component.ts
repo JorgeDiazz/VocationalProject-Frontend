@@ -13,8 +13,9 @@ export class PendingVacanciesComponent implements OnInit {
  
   pendingVacants: VacantI[];
   idRecruiter:string;
+  loading:boolean;
   constructor(public dialog: MatDialog,private serv:ServiceService ) {
-      
+      this.loading=true;
       this.getPendingVacants();
      }
 
@@ -40,8 +41,14 @@ export class PendingVacanciesComponent implements OnInit {
   getPendingVacants(){
      //pedir vacantes por reclutador sin postulantes
      this.serv.Vacant.GetPendingR().subscribe(dat=>{
+       
        this.pendingVacants=<VacantI[]>dat.body;
        console.log(this.pendingVacants);
+       this.loading=false;
      })
+     if(!this.pendingVacants){
+      this.loading=false;
+     }
+     console.log("alerta "+this.loading)
   }
 }

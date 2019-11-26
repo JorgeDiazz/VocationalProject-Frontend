@@ -1,25 +1,27 @@
 <div class="row">
-    <div class="col"></div>
-    <div class="col-3">       
-            <mat-form-field class="recruiters">
-                <mat-label>Carreras existentes</mat-label>
-                <mat-select   multiple (selectionChange)="selectChange($event.value)"
-                    #multiSelectCareer>
-                    <mat-option>
-                        <ngx-mat-select-search [formControl]="searchCareer" [placeholderLabel]="'Buscar carrera'"
-                            [noEntriesFoundLabel]="'No se encontró.'" [clearSearchInput]='false'>
-                            <mat-icon ngxMatSelectSearchClear>X</mat-icon>
-                        </ngx-mat-select-search>
-                    </mat-option>
-                    <mat-option *ngFor="let career of filteredCareerCtrl | async" [value]="career">{{career.name}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>   
-            <button (click)="filterVacant()" type="button" class=" btn btn-primary">Consultar vacantes</button>
-         
+    <div class="col-1"></div>
+    <div class="col-5">
+        <mat-form-field class="recruiters SearchVacants">
+            <mat-label>Carreras existentes</mat-label>
+            <mat-select multiple (selectionChange)="selectChange($event.value)" #multiSelectCareer>
+                <mat-option>
+                    <ngx-mat-select-search [formControl]="searchCareer" [placeholderLabel]="'Buscar carrera'" [noEntriesFoundLabel]="'No se encontró.'" [clearSearchInput]='false'>
+                        <mat-icon ngxMatSelectSearchClear>X</mat-icon>
+                    </ngx-mat-select-search>
+                </mat-option>
+                <mat-option *ngFor="let career of filteredCareerCtrl | async" [value]="career">{{career.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button (click)="filterVacant()" type="button" class=" btn buttonSearch">Consultar vacantes</button>
     </div>
-  
-    <div class="col"></div>
+    <div class="col-6">
+        <mat-chip-list class="example-list example-box ">
+            <mat-chip class="bg-colorGR-orange-light" *ngFor="let careerSelec of careersSelected">
+                {{careerSelec.name}}
+            </mat-chip>
+        </mat-chip-list><br>
+    </div>
 </div>
 
 
@@ -27,7 +29,7 @@
     <div class="col-md-4" *ngFor="let vacant of vacants">
         <div class="vacancy1 fadeInAnimated">
             <img src="assets/img/placeholder-img.jpg" (click)="verModal(vacant)">
-            <p>{{vacant.name}}<br> Salario: {{vacant.salaryMin | currency:'COP':true }}-{{vacant.salaryMax | currency:'COP':true }}     </p>
+            <p>{{vacant.name}}<br> Salario: {{vacant.salaryMin | currency:'COP':true }}-{{vacant.salaryMax | currency:'COP':true }} </p>
         </div>
         <div class="postulants1 bg-colorGR-blue-dark fadeInAnimated">
             <div class="row">
