@@ -13,9 +13,10 @@ export class ChargeComponent implements OnInit {
    
   jobs:JobsI[]=[];
   nitCompany:string;
+  loading:boolean;
   constructor(public dialog: MatDialog,private serv:ServiceService) {
     this.nitCompany=this.serv.Company.GetLocal().nit;
-   
+    this.loading=true;
    }
 
   ngOnInit() {
@@ -33,12 +34,12 @@ export class ChargeComponent implements OnInit {
     this.getJobs();
   });
 }
-
 getJobs(){
 this.serv.JobPosition.GetAll().subscribe(dat=>{
   
   this.jobs=<any>dat.body;
   console.log(this.jobs);
+  this.loading=false;
 })
 }
 }

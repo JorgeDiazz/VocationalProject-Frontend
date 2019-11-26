@@ -1039,3 +1039,11 @@ body.sidebar-toggled footer.sticky-footer {
     font-size: 13px;
     padding-bottom: 10px;
 }
+
+.fa-spinner {
+    position: absolute;
+    color: #3AB6A6!important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

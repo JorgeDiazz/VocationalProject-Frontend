@@ -1,3 +1,4 @@
+<i class="fas fa-spinner fa-9x fadeInAnimated" *ngIf="loading"></i>
 <div class="row">
     <div class="col-sm-4" *ngFor="let recruiter of recruiters">
         <div class="card-recruiter fadeInAnimated">
@@ -15,7 +16,7 @@
     </div>
 
 </div>
-<h1 *ngIf="recruiters==null || recruiters.length==0" >No hay reclutadores registrados</h1>
+<h1 *ngIf="(recruiters==null || recruiters.length==0) && loading==false">No hay reclutadores registrados</h1>
 
 <div class="spacePlus fadeInAnimated">
     <div class="row">

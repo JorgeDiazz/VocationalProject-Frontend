@@ -1,3 +1,4 @@
+<i class="fas fa-spinner fa-9x fadeInAnimated" *ngIf="loading"></i>
 <div class="row">
     <div class="col-sm-4" *ngFor="let job of jobs;let i=index">
         <div class="card-job fadeInAnimated">
@@ -7,7 +8,7 @@
         </div>
     </div>
 </div>
-<h1 *ngIf="jobs==null || jobs.length==0" >No hay cargos registrados</h1>
+<h1 *ngIf="(jobs==null || jobs.length==0) && loading==false">No hay cargos registrados</h1>
 
 <div class="spacePlus fadeInAnimated">
     <div class="row">

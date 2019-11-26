@@ -16,17 +16,20 @@ export class JobIdComponent implements OnInit {
   charge:JobsI;
   constructor(public dialog: MatDialog,
     public routerA:ActivatedRoute,private serv:ServiceService ) { 
-      this.routerA.params.subscribe(r=>{
-      })
-      this.serv.JobPosition.GetJob(this.routerA.snapshot.paramMap.get('id')).subscribe(dat=>{
-        this.charge=<any>dat.body;
-        console.log(this.charge);
-      })
+      this.getJob()
     }
 
   ngOnInit() {
   }
 
+  getJob(){
+    this.routerA.params.subscribe(r=>{
+    })
+    this.serv.JobPosition.GetJob(this.routerA.snapshot.paramMap.get('id')).subscribe(dat=>{
+      this.charge=<any>dat.body;
+      console.log(this.charge);
+    })
+  }
   
 
   verModalV() {
@@ -36,8 +39,7 @@ export class JobIdComponent implements OnInit {
     });
 
   dialogRef.afterClosed().subscribe(result => {
-    if(result.number){ 
-    } 
+    this.getJob()
   });
 }
 

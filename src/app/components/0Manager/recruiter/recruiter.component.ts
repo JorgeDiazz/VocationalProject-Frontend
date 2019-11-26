@@ -13,9 +13,12 @@ export class RecruiterComponent implements OnInit {
 
   recruiters: RecruiterI[];
   nitCompany: string;
+  loading:boolean;
   constructor(public dialog: MatDialog, private serv: ServiceService) {
     this.nitCompany = this.serv.Company.GetLocal().nit;
+    this.loading=true;
     this.getRecruiters();
+
   }
 
   ngOnInit() {
@@ -34,6 +37,7 @@ export class RecruiterComponent implements OnInit {
 
   getRecruiters() {
     this.serv.Recruiter.GetAllPlazas().subscribe((dat) => {
+      this.loading=false
       this.recruiters = <RecruiterI[]>dat.body;
       console.log(dat.body);
     },
