@@ -1,4 +1,4 @@
-<div class="row vacan fadeInAnimated">
+<div class="row vacan fadeInAnimated" *ngIf="InProcess>0">
     <div class="col-8"></div>
     <div class="col-3">
         <p>Vacantes en proceso</p>
@@ -8,9 +8,9 @@
     </div>
 </div>
 
-<div class="row fadeInAnimated">
-    <div class="col-md-3" *ngFor="let vacant of vacants">
-        <div class="vacancy1" *ngIf="vacant.state==1">
+<div class="row fadeInAnimated" *ngIf="InProcess>0">
+    <div class="col-md-3" *ngFor="let vacant of vacantsInProcess">
+        <div class="vacancy1">
             <img src="assets/img/placeholder-img.jpg" (click)="verModal()">
             <p>{{vacant.nameJob}}<br> Salario:{{vacant.salaryMin}}-{{vacant.salaryMax}}
             </p>
@@ -34,7 +34,7 @@
 
 </div>
 
-<div class="row fadeInAnimated">
+<div class="row fadeInAnimated" *ngIf="Wait>0">
     <div class="col-8"></div>
     <div class="col-3">
         <p>Vacantes en espera</p>
@@ -43,10 +43,10 @@
         <div class="circle bg-process-card"></div>
     </div>
 </div>
-<div class="row fadeInAnimated">
+<div class="row fadeInAnimated" *ngIf="Wait>0">
 
-    <div class="col-md-3" *ngFor="let vacant of vacants">
-        <div class="vacancy1" *ngIf="vacant.state==0">
+    <div class="col-md-3" *ngFor="let vacant of vacantsWait">
+        <div class="vacancy1">
             <img src="assets/img/placeholder-img.jpg" (click)="verModal()">
             <p>{{vacant.nameJob}}<br> Salario:{{vacant.salaryMin}}-{{vacant.salaryMax}}
             </p>
@@ -69,7 +69,7 @@
 
 </div>
 
-<div class="row fadeInAnimated">
+<div class="row fadeInAnimated" *ngIf="Fail>0">
     <div class="col-8"></div>
     <div class="col-3">
         <p>Vacantes en finalizadas</p>
@@ -78,9 +78,9 @@
         <div class="circle bg-fail-card"></div>
     </div>
 </div>
-<div class="row fadeInAnimated">
-    <div class="col-md-3" *ngFor="let vacant of vacants">
-        <div class="vacancy1" *ngIf="vacant.state==2">
+<div class="row fadeInAnimated" *ngIf="Fail>0">
+    <div class="col-md-3" *ngFor="let vacant of vacantsFail">
+        <div class="vacancy1">
             <img src="assets/img/placeholder-img.jpg" (click)="verModal()">
             <p>{{vacant.nameJob}}<br> Salario:{{vacant.salaryMin}}-{{vacant.salaryMax}}
             </p>

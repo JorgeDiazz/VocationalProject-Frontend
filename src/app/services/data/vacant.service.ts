@@ -39,7 +39,7 @@ export class VacantService {
     }
     console.log(str);
     //let params=new HttpParams().set('careers',str.toString());    
-    return this.serv.GET(`${this.URL}forPostulant/?careers=${str}`);
+    return this.serv.GET(`${this.URL}forPostulant/${this.serv1.GetLocal().id}/?careers=${str}`);
   }
 
   /**
