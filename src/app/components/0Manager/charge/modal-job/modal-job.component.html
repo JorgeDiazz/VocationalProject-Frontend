@@ -14,7 +14,7 @@
                 </mat-form-field>
                 <input type="text" class="inputLogIn" placeholder="Nombre del cargo" formControlName="name" [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched } "><br>
                 <div *ngIf="form.get('name').touched ">
-                    <label *ngIf="!form.get('name').valid" class="invalid">Ingresar nombre </label>                     
+                    <label *ngIf="!form.get('name').valid" class="invalid">Ingresar nombre </label>
                 </div>
             </div>
             <div class="col">
@@ -28,9 +28,9 @@
                     <label class="invalid">Ingrese valores positivos</label>
                 </div>
                 <textarea class="inputLogIn" placeholder="Descripción del Cargo" formControlName="description" [ngClass]=" {'is-invalid':  !form.get('description').valid && form.get('description').touched } "></textarea><br>
-                    <div *ngIf="form.get('description').touched ">
-                        <label *ngIf="!form.get('description').valid" class="invalid">Ingrese descripción del cargo</label>                     
-                    </div>
+                <div *ngIf="form.get('description').touched ">
+                    <label *ngIf="!form.get('description').valid" class="invalid">Ingrese descripción del cargo</label>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -38,18 +38,15 @@
                 <label>Carreras:</label>
                 <mat-form-field class="recruiters">
                     <mat-label>Carreras existentes</mat-label>
-                    <mat-select formControlName="career" multiple (selectionChange)="selectChange($event.value,1)" #multiSelectCareer >
+                    <mat-select formControlName="career" multiple (selectionChange)="selectChange($event.value,1)" #multiSelectCareer>
                         <mat-option>
-                            <ngx-mat-select-search [formControl]="searchCareer"
-                             [placeholderLabel]="'Buscar carrera'"
-                              [noEntriesFoundLabel]="'No se encontró.'"
-                              [clearSearchInput]='false' >
-                              <mat-icon ngxMatSelectSearchClear>X</mat-icon>
+                            <ngx-mat-select-search [formControl]="searchCareer" [placeholderLabel]="'Buscar carrera'" [noEntriesFoundLabel]="'No se encontró.'" [clearSearchInput]='false'>
+                                <mat-icon ngxMatSelectSearchClear>X</mat-icon>
                             </ngx-mat-select-search>
                         </mat-option>
-                        
+
                         <button class="buttonModalAccept form-control" mat-button (click)="addOption_2(1)" cdkFocusInitial *ngIf="emptySearchCareer && (searchCareer.value.trim().length!=0) ">Crear </button>
-                          
+
                         <mat-option *ngFor="let career of filteredCareerCtrl | async" [value]="career">{{career.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -59,12 +56,12 @@
                         {{careerSelec.name}}
                     </mat-chip>
                 </mat-chip-list><br>
-                <div class="row">
+                <div class="row" *ngIf="form.controls['newCareer'].controls[0].get('name').value!=''">
                     <ng-container *ngFor="let cr of form.controls['newCareer'].controls;let i=index;">
                         <div class="col-8" [formGroup]="cr">
-                            <input type="" class="form-control input1" placeholder="Nueva carrera" formControlName="name" >                             
-                        </div>                        
-                        <div class="col-2" >
+                            <input type="" class="form-control input1" placeholder="Nueva carrera" formControlName="name">
+                        </div>
+                        <div class="col-2">
                             <i (click)="removeOption(1,i) && cr.get('name').value!=='' " class="fas fa-times-circle"></i>
                         </div>
                         <br>
@@ -77,14 +74,14 @@
                         <div class="col-8" [formGroup]="cr">
                             <input type="" class="form-control input1" placeholder="Nuevo proceso" formControlName="name" [ngClass]=" {'is-invalid':  !cr.get('name').valid && cr.get('name').touched }">
                             <div *ngIf="cr.get('name').touched ">
-                                    <label *ngIf="!cr.get('name').valid" class="invalid">Ingresar nombre </label>                     
-                                </div>
+                                <label *ngIf="!cr.get('name').valid" class="invalid">Ingresar nombre </label>
+                            </div>
                         </div>
 
                         <div class="col-2" *ngIf="(i+1)== form.controls['process'].controls.length">
                             <i (click)="addOption(4)" class="fas fa-plus-circle"></i>
                         </div>
-                        <div class="col-2" *ngIf="i!=0"> 
+                        <div class="col-2" *ngIf="i!=0">
                             <i (click)="removeOption(4,i)" class="fas fa-times-circle"></i>
                         </div>
                         <br>
@@ -98,17 +95,14 @@
                 <mat-form-field class="recruiters">
                     <mat-label>Habilidades existentes</mat-label>
                     <mat-select formControlName="hardSkill" multiple (selectionChange)="selectChange($event.value,2)" #multiSelectSkillHard>
-                            <mat-option>
-                                    <ngx-mat-select-search [formControl]="searchSkillHard"
-                                     [placeholderLabel]="'Buscar habilidad'"
-                                      [noEntriesFoundLabel]="'No se encontró.'"
-                                      [clearSearchInput]='false' >
-                                      <mat-icon ngxMatSelectSearchClear>X</mat-icon>
-                                    </ngx-mat-select-search>
-                                </mat-option>
-                                
-                                <button class="buttonModalAccept form-control" mat-button (click)="addOption_2(2)" cdkFocusInitial *ngIf="emptySearchSkillHard && searchSkillHard.value.trim().length!=0">Crear </button>
-                                 
+                        <mat-option>
+                            <ngx-mat-select-search [formControl]="searchSkillHard" [placeholderLabel]="'Buscar habilidad'" [noEntriesFoundLabel]="'No se encontró.'" [clearSearchInput]='false'>
+                                <mat-icon ngxMatSelectSearchClear>X</mat-icon>
+                            </ngx-mat-select-search>
+                        </mat-option>
+
+                        <button class="buttonModalAccept form-control" mat-button (click)="addOption_2(2)" cdkFocusInitial *ngIf="emptySearchSkillHard && searchSkillHard.value.trim().length!=0">Crear </button>
+
                         <mat-option *ngFor="let hard of filteredSkillHardCtrl | async" [value]="hard">{{hard.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -118,11 +112,11 @@
                         {{skill.name}}
                     </mat-chip>
                 </mat-chip-list><br>
-                <div class="row">
+                <div class="row" *ngIf="form.controls['newHardSkill'].controls[0].get('name').value!=''">
                     <ng-container *ngFor="let cr of form.controls['newHardSkill'].controls;let i=index;">
                         <div class="col-8" [formGroup]="cr">
                             <input type="" class="form-control input1" placeholder="Nueva habilidad" formControlName="name">
-                         </div> 
+                        </div>
                         <div class="col-2">
                             <i (click)="removeOption(2,i) && cr.get('name').value!=='' " class="fas fa-times-circle"></i>
                         </div>
@@ -139,14 +133,11 @@
                 <mat-form-field class="recruiters">
                     <mat-label>Reclutadores</mat-label>
                     <mat-select formControlName="recruiter" multiple (selectionChange)="selectChange($event.value,3)" #multiSelectRecruiter>
-                            <mat-option>
-                                    <ngx-mat-select-search [formControl]="searchRecruiter"
-                                     [placeholderLabel]="'Buscar reclutador'"
-                                      [noEntriesFoundLabel]="'No se encontró.'"
-                                      [clearSearchInput]='false' >
-                                      <mat-icon ngxMatSelectSearchClear>X</mat-icon>
-                                    </ngx-mat-select-search>
-                                </mat-option>
+                        <mat-option>
+                            <ngx-mat-select-search [formControl]="searchRecruiter" [placeholderLabel]="'Buscar reclutador'" [noEntriesFoundLabel]="'No se encontró.'" [clearSearchInput]='false'>
+                                <mat-icon ngxMatSelectSearchClear>X</mat-icon>
+                            </ngx-mat-select-search>
+                        </mat-option>
                         <mat-option *ngFor="let re of filteredRecruiterCtrl | async" [value]="re">{{re.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
