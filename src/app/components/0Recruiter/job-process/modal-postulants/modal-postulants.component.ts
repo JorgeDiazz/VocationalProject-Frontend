@@ -14,6 +14,7 @@ export class ModalPostulantsComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private serv:ServiceService) { 
    this.serv.Vacant.GetPostulants(data.id).subscribe(data => {
     this.postulants = <PostulantI[]>data.body;
+    console.log(this.postulants)
   })
   }
 

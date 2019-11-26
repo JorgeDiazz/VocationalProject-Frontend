@@ -1071,3 +1071,17 @@ body.sidebar-toggled footer.sticky-footer {
     padding-top: 20px;
     border-radius: 0.40rem;
 }
+
+.NoData2 {
+    background-color: rgba(139, 4, 27, 0.212);
+    color: #343a40;
+    font-size: 18px;
+    width: 530px;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 0.40rem;
+    margin-top: 30px;
+    margin-left: 80px;
+    margin-bottom: 20px;
+}

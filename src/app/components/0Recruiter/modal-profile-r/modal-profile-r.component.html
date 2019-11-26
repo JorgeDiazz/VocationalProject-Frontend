@@ -16,38 +16,33 @@
     <form [formGroup]="form" novalidate="novalidate" *ngIf=update>
         <div class="row">
             <div class="col-4">
-                <img class="card-postulant" src="assets/img/perfil.jpeg">
+                <img class="card-postulant" src="assets/img/noPhoto.jpg">
 
             </div>
             <div class="col-8">
                 <div class="row">
                     <div class="col-12">
                         <b>ID:</b><br>
-                        <input type="text" class="inputLogIn" placeholder="Nombre de la compañía" formControlName="id"
-                            [ngClass]=" {'is-invalid':  !form.get('id').valid && form.get('id').touched } "><br>
+                        <input type="text" class="inputLogIn" placeholder="Nombre de la compañía" formControlName="id" [ngClass]=" {'is-invalid':  !form.get('id').valid && form.get('id').touched } "><br>
 
                     </div>
                     <div class="col-12">
                         <b>Nombre:</b><br>
-                        <input type="text" class="inputLogIn" placeholder="Nombre de la compañía" formControlName="name"
-                            [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched } "><br>
-                   
-                            <ng-container *ngIf="form.get('name').touched">
-                                    <label style="margin-left: 40px" *ngIf="!form.get('name').valid" class="invalid">Ingrese
+                        <input type="text" class="inputLogIn" placeholder="Nombre de la compañía" formControlName="name" [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched } "><br>
+
+                        <ng-container *ngIf="form.get('name').touched">
+                            <label style="margin-left: 40px" *ngIf="!form.get('name').valid" class="invalid">Ingrese
                                         nombre, sin espacio inicial.</label>
-                                </ng-container>
-                        </div>
+                        </ng-container>
+                    </div>
                     <div class="col-12">
                         <b>Correo:</b><br>
-                        <input type="email" class="inputLogIn" placeholder="Correo electrónico" formControlName="email"
-                            [ngClass]=" {'is-invalid':  !form.get('email').valid && form.get('email').touched } "><br>
-                       
-                            <ng-container *ngIf="form.get('email').touched">
-                            <label style="margin-left: 40px" *ngIf="form.get('email').errors?.pattern;else validEmail"
-                                class="invalid">Formato de correo incorrecto.</label>
+                        <input type="email" class="inputLogIn" placeholder="Correo electrónico" formControlName="email" [ngClass]=" {'is-invalid':  !form.get('email').valid && form.get('email').touched } "><br>
+
+                        <ng-container *ngIf="form.get('email').touched">
+                            <label style="margin-left: 40px" *ngIf="form.get('email').errors?.pattern;else validEmail" class="invalid">Formato de correo incorrecto.</label>
                             <ng-template #validEmail>
-                                <label style="margin-left: 40px" *ngIf="!form.get('email').valid"
-                                    class="invalid">Ingrese
+                                <label style="margin-left: 40px" *ngIf="!form.get('email').valid" class="invalid">Ingrese
                                     email, sin espacio inicial.</label>
                             </ng-template>
                         </ng-container>

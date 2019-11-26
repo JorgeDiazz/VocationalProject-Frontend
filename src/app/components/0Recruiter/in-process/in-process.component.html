@@ -2,7 +2,7 @@
 <ng-container *ngIf="processVacant && processVacant.length>0">
 
     <div class="row">
-        <div class="col-md-4" *ngFor="let vacant of processVacant">
+        <div class="col-md-4 fadeInAnimated" *ngFor="let vacant of processVacant">
             <div class="vacancy">
                 <img src="assets/img/see.svg" [routerLink]="['/recruiter/job',vacant.id+':'+vacant.idJobPosition]">
                 <h5>{{vacant.jobPositionName}}</h5>

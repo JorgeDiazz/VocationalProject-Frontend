@@ -1,8 +1,10 @@
 <h3>Postulantes que aplicaron</h3>
 <mat-dialog-content class="mat-typography fadeInAnimated">
     <form [formGroup]="form">
-        <div class="row">
-            <div *ngIf="postulants.lenght==0">¡No hay postulantes para el cargo! </div>
+        <div class="NoData2 fadeInAnimated" *ngIf="postulants || postulants.lenght==0">
+            <p>¡No hay postulantes para el cargo!</p>
+        </div>
+        <div class="row" *ngIf="postulants">
             <div class="col-6" *ngFor="let postulant of postulants">
                 <div class="row">
                     <div class="col-4">
@@ -22,4 +24,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>
+    <button class="buttonModalAccept" mat-button (click)="seleccionar()" cdkFocusInitial *ngIf="!postulants">Seleccionar postulantes</button>
 </mat-dialog-actions>
