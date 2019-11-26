@@ -46,4 +46,6 @@
         </div>
     </div>
 </div>
-<h1 *ngIf="!vacants || vacants.length==0">No hay vacantes disponibles</h1>
+<div class="NoData fadeInAnimated" *ngIf="!vacants || vacants.length==0">
+    <p>¡No hay vacantes disponibles!</p>
+</div>

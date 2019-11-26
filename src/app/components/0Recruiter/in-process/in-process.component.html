@@ -27,7 +27,9 @@
     </div>
 </ng-container>
 
-<h1 *ngIf="processVacant && processVacant.length==0 && loading==false">No hay ninguna vacante asignada</h1>
+<div class="NoData fadeInAnimated" *ngIf="processVacant && processVacant.length==0 && loading==false">
+    <p>¡No hay ninguna vacante asignada!</p>
+</div>
 
 <!-- <div class="row">
     <div class="col-md-4">

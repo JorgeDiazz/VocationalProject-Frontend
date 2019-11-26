@@ -23,5 +23,6 @@
         </div>
     </div>
 </ng-container>
-
-<h1 *ngIf="pendingVacants && pendingVacants.length==0 && loading==false">No hay vacantes pendientes</h1>
+<div class="NoData fadeInAnimated" *ngIf="pendingVacants && pendingVacants.length==0 && loading==false">
+    <p>¡No hay vacantes pendientes!</p>
+</div>

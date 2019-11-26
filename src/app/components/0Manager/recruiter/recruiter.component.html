@@ -16,7 +16,9 @@
     </div>
 
 </div>
-<h1 *ngIf="(recruiters==null || recruiters.length==0) && loading==false">No hay reclutadores registrados</h1>
+<div class="NoData fadeInAnimated" *ngIf="(recruiters==null || recruiters.length==0) && loading==false">
+    <p>¡No hay reclutadores registrados!</p>
+</div>
 
 <div class="spacePlus fadeInAnimated">
     <div class="row">

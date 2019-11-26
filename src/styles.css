@@ -1057,3 +1057,17 @@ body.sidebar-toggled footer.sticky-footer {
 .SearchVacants {
     width: 300px!important;
 }
+
+.NoData {
+    background-color: rgba(139, 4, 27, 0.212);
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    color: #343a40;
+    font-size: 30px;
+    width: 530px;
+    text-align: center;
+    padding-top: 20px;
+    border-radius: 0.40rem;
+}

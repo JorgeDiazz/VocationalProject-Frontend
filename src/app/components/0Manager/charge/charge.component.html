@@ -8,7 +8,9 @@
         </div>
     </div>
 </div>
-<h1 *ngIf="(jobs==null || jobs.length==0) && loading==false">No hay cargos registrados</h1>
+<div class="NoData fadeInAnimated" *ngIf="(jobs==null || jobs.length==0) && loading==false">
+    <p>¡No hay cargos registrados!</p>
+</div>
 
 <div class="spacePlus fadeInAnimated">
     <div class="row">
