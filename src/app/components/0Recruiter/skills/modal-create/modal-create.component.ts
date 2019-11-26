@@ -36,6 +36,8 @@ crear(){
         swal.fire('Habilidad blanda no creada', "los datos que ingresó no son correctos", 'error');
       }
       })
+  }else{
+    swal.fire('Habilidad blanda no creada', "Debe ingresar nombre de la habilidad", 'error');
   }
   
 }

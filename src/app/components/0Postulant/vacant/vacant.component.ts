@@ -89,6 +89,7 @@ export class VacantComponent implements OnInit {
     this.serv.Vacant.GetByCarrers(this.careersSelected).subscribe(dat=>{
       this.vacants=<VacantI[]>dat.body;
       console.log(dat.body);
+      console.log("vacants "+this.vacants.length)
     });
   }
 

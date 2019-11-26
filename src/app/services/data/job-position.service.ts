@@ -48,6 +48,6 @@ export class JobPositionService {
    this.jobP.idVacant=Number(id);
    this.jobP.idJob=Number(id2);
    this.jobP.idRecruiter= this.serv1.GetLocal().id;
-    return this.serv.POST(this.jobP,this.URL+"inprocess/");
+    return this.serv.GET(this.URL+"inprocess/${this.jobP}/${this.jobP.idRecruiter}");
   }
 }
