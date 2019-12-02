@@ -1,7 +1,7 @@
 <h3>Nueva habilidad</h3>
 <form [formGroup]="form">
     <mat-dialog-content class="mat-typography">
-        <input type="text" class="inputLogIn" placeholder="Nombre del cargo" formControlName="name" [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched } "><br>
+        <input type="text" class="inputLogIn" placeholder="Nombre de la habilidad" formControlName="name" [ngClass]=" {'is-invalid':  !form.get('name').valid && form.get('name').touched } "><br>
         <div *ngIf="form.get('name').touched ">
             <label *ngIf="!form.get('name').valid" class="invalid">Ingresar nombre </label>
         </div>
