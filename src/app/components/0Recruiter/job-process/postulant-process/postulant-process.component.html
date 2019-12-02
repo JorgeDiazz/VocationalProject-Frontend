@@ -1,0 +1,47 @@
+<mat-dialog-content>
+    <h1>Carlos Rodriguez</h1>
+    <div class="row">
+        <div class="col-6">
+            <h5><b>Procesos del postulante</b></h5>
+            <mat-vertical-stepper [linear]="isLinear" #stepper>
+                <ng-template matStepperIcon="number" let-index="index">
+                    {{index+1}}
+                </ng-template>
+                <mat-step class="hol" *ngFor="let item of pos.process; let i=index" label="{{item.name}}" state="number">
+
+                    <p>{{item.description}}</p>
+                    <p *ngIf="status[item.id]==0" class="calif"><b>Sin calificación</b></p>
+                    <p *ngIf="status[item.id]==1" class="calif"><b>Aprobado</b></p>
+                    <p *ngIf="status[item.id]==2" class="calif"><b>Sin aprobar</b></p>
+                    <button class="buttonModalAccept1" (click)="calificar(item.id,1,process)"><i class="fas fa-check"></i></button>
+                    <button class="buttonModalNone1" (click)="calificar(item.id,0,process)"><i class="fas fa-minus"></i></button>
+                    <button class="buttonModalCancel1" (click)="calificar(item.id,2,process)"><i class="fas fa-times"></i></button>
+                    <div>
+                        <button mat-button matStepperPrevious *ngIf="i!=0" class="buttonModalAccept">Back</button>
+                        <button mat-button matStepperNext *ngIf="i+1!=pos.process.length" class="buttonModalAccept">Next</button>
+                    </div>
+                </mat-step>
+
+
+            </mat-vertical-stepper>
+        </div>
+        <div class="col-6">
+            <h5><b>Habilidades del postulante</b></h5><br>
+            <h6><b>Habilidades blandas del cargo</b></h6>
+            <mat-chip-list cdkDropList #skillsyList="cdkDropList" [cdkDropListData]="skillsN" [cdkDropListConnectedTo]="[skillsnList]" class="example-list example-box " (cdkDropListDropped)="drop($event,1)">
+                <mat-chip cdkDrag *ngFor="let soft of skillsN" class="bg-colorGR-blue-medium">
+                    {{soft.name}}</mat-chip>
+            </mat-chip-list><br>
+            <h6><b>Habilidades blandas del postulante</b></h6>
+            <p>Habilidades que demuestra el postulante durante su proceso de contratación</p>
+            <mat-chip-list cdkDropList #skillsnList="cdkDropList" [cdkDropListData]="skillsY" [cdkDropListConnectedTo]="[skillsyList]" class="example-list example-box " (cdkDropListDropped)="drop($event,0)">
+                <mat-chip cdkDrag *ngFor="let soft of skillsY" class="bg-colorGR-orange-light">
+                    {{soft.name}}</mat-chip>
+            </mat-chip-list>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>
+    <button class="buttonModalAccept" mat-button (click)="seleccionar()" cdkFocusInitial>Guardar</button>
+</mat-dialog-actions>

@@ -35,7 +35,7 @@ export class JobIdComponent implements OnInit {
   verModalV() {
     const dialogRef = this.dialog.open(ModalVacant1Component, {
       width: '350px',
-      data:{job:this.charge.id}
+      data:{job:this.charge.id,name:this.charge.name}
     });
 
   dialogRef.afterClosed().subscribe(result => {

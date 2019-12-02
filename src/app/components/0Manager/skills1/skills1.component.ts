@@ -90,6 +90,7 @@ export class Skills1Component implements OnInit {
 
   drop(event: CdkDragDrop<SkillI[]>, type: string): void {
 
+    console.log(event)
 
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);

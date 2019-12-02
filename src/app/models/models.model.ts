@@ -49,7 +49,8 @@ nit_company?:string;
 export interface SkillI{
 id? :number,
 name:string,
-type?:string
+type?:string,
+status?:number
 }
 
 export interface PostulantI{
@@ -57,7 +58,9 @@ export interface PostulantI{
     name:string,
     email:string,
     password?:string,
-    careers?:CareerI[]
+    careers?:CareerI[],
+    process?:ProcessI[],
+    skills?:SkillI[]
 }
 
 export interface JobsI{
@@ -91,6 +94,8 @@ export interface JobsI{
 export interface ProcessI{
     id?:string,
     name:string,
+    description?:string,
+    status?:number
 }
 
 export interface VacantI{
@@ -114,6 +119,7 @@ export interface JobProcI{
     idVacant:number,
     idRecruiter:string
 }
+
 
 
 

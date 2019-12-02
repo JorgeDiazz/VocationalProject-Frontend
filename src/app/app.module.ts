@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
+import {MatIconModule} from '@angular/material/icon';
 
 //Modulos 
 import { AppPostulantComponent } from './components/0Postulant/app-postulant.component';
@@ -38,6 +39,7 @@ import { ModalPostulantsComponent } from './components/0Recruiter/job-process/mo
 import { PositiveNumberDirective } from './components/Validator/positive-number.directive';
 import { AuthInterceptorService } from './services/interceptor/auth-interceptor.service';
 import { Skills1Component } from './components/0Manager/skills1/skills1.component';
+import { PostulantProcessComponent } from './components/0Recruiter/job-process/postulant-process/postulant-process.component';
  
 @NgModule({
   declarations: [
@@ -70,12 +72,14 @@ import { Skills1Component } from './components/0Manager/skills1/skills1.componen
     ModalProfilePComponent,
     ModalPostulantsComponent,
     PositiveNumberDirective,
-    Skills1Component
+    Skills1Component,
+    PostulantProcessComponent
   ],
   imports: [
     BrowserModule,  
     AppRoutingModule,
-    GeneralModule
+    GeneralModule,
+    MatIconModule
   ],
   providers: [
     {
@@ -91,6 +95,6 @@ import { Skills1Component } from './components/0Manager/skills1/skills1.componen
   ],
   bootstrap: [AppComponent],
   entryComponents: [ModalVacantComponent,ModalJob1Component,ModalJobComponent,ModalEditComponent,ModalCreateComponent,ModalRecComponent,ModalVacant1Component,ModalPostulantComponent,ModalPostulantsComponent,
-  ModalProfileMComponent,ModalProfileRComponent,ModalProfilePComponent],
+  ModalProfileMComponent,ModalProfileRComponent,ModalProfilePComponent,PostulantProcessComponent],
 })
 export class AppModule { }

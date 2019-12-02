@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ServiceService } from 'src/app/services/service.service';
 import { RecruiterService } from '../../../services/data/recruiter.service';
 import { PostulantI } from 'src/app/models/models.model';
+import { PostulantProcessComponent } from './postulant-process/postulant-process.component';
 
 @Component({
   selector: 'app-job-process',
@@ -43,6 +44,16 @@ export class JobProcessComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+
+  verModalPrueba() {
+    const dialogRef = this.dialog.open(PostulantProcessComponent, {
+      width: '750px'
+    });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log(`Dialog result: ${result}`);
+  });
+}
 
   verPostulants(){
     const dialogRef = this.dialog.open(ModalPostulantsComponent, {

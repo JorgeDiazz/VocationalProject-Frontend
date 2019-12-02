@@ -1,0 +1,44 @@
+h1 {
+    text-align: center
+}
+
+h5 {
+    text-align: center
+}
+
+.buttonModalAccept1 {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    font-size: 15px;
+    color: white;
+    margin-left: 50%;
+    background-color: rgb(86, 136, 103);
+}
+
+.buttonModalCancel1 {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    font-size: 15px;
+    color: white;
+    margin-left: 5%;
+    background-color: rgba(139, 4, 27, 0.712);
+}
+
+.calif {
+    font-size: 12px;
+}
+
+.buttonModalNone1 {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    font-size: 15px;
+    color: white;
+    margin-left: 5%;
+    background-color: rgba(247, 217, 83, 0.712);
+}
