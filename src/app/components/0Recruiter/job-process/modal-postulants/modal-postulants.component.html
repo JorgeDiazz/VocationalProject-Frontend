@@ -1,18 +1,23 @@
 <h3>Postulantes que aplicaron</h3>
 <h6>Seleccione los postulantes que siguen con el proceso</h6>
 <mat-dialog-content class="mat-typography fadeInAnimated">
-    <form [formGroup]="form">
+    <form >
         <div class="NoData2 fadeInAnimated" *ngIf="!postulants">
             <p>¡No hay postulantes para el cargo!</p>
         </div>
         <div class="row" *ngIf="postulants">
-            <div class="col-6" *ngFor="let postulant of postulants">
+            <div class="col-6" *ngFor="let postulant of postulants;let i=index">
                 <div class="row">
-                    <div class="col-4">
-                        <img class="card-postulant" src="assets/img/noPhoto.jpg" (click)="listaPostulantes(postulant.id)">
+
+                    <div class="col-4" (click)="listaPostulantes(i)">
+                        <i *ngIf="!listChecked[i]" class="far fa-square fa-lg"></i>
+                        <i *ngIf="listChecked[i]" class="far fa-check-square fa-lg" style="color:#28a745" ></i>
+                        <br>
+                        <img class="card-postulant" src="assets/img/noPhoto.jpg">
                     </div>
-                    <div class="col-8">
-                        <p> <b>Nombre:</b><br> {{postulant.name}}
+                    <div class="col-6">
+                        <p>
+                            <b>Nombre:</b><br> {{postulant.name}}
                             <br>
                             <b>Carreras:</b><br>
                             <i *ngIf="postulant.careers.length==0">No tiene carreras</i></p>
@@ -27,5 +32,6 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button class="buttonModalCancel" mat-button mat-dialog-close>Cancelar</button>
-    <button class="buttonModalAccept" mat-button (click)="seleccionar()" cdkFocusInitial *ngIf="postulants">Seleccionar postulantes</button>
+    <button class="buttonModalAccept" mat-button (click)="seleccionar()" cdkFocusInitial *ngIf="cantidadSel>0">Seleccionar
+        postulantes</button>
 </mat-dialog-actions>

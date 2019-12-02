@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ServService } from 'src/app/services/serv.service';
 
-import { VacantI, CareerI } from '../../models/models.model';
+import { VacantI, CareerI, selPostulantI } from '../../models/models.model';
 import { HttpParams } from '@angular/common/http';
 
 import { PostulantService } from './postulant.service';
@@ -56,13 +56,13 @@ export class VacantService {
     return this.serv.GET('vacant/applied/' + this.serv1.GetLocal().id);
   }
 
-  GetPostulants(id:string) {
-    return this.serv.GET('vacant/getPostulants/'+id);
+  GetPostulants(id: string) {
+    return this.serv.GET('vacant/getPostulants/' + id);
   }
-/**
- * Get vacants in process for the recruiter 
- */
-  GetInProcessR(){
+  /**
+   * Get vacants in process for the recruiter 
+   */
+  GetInProcessR() {
     return this.serv.GET(`vacant/process/${this.servR.GetLocal().id}`);
   }
 
@@ -77,8 +77,17 @@ export class VacantService {
   /**
    * Get vacants in process by Recruiter
    */
-  GetProcessRecruiter(){
+  GetProcessRecruiter() {
     return this.serv.GET(`${this.URL}\process`)
+  }
+
+  /**
+   * Reclutador selecciona a postulante
+   * Tal vez haya problemas
+   * @param dat 
+   */
+  PutSelPostulants(dat: selPostulantI) {
+    return this.serv.PUT(dat, `${this.URL}\selectPostulants`)
   }
 }
 

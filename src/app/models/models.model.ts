@@ -1,123 +1,130 @@
 /**     Para logearse             */
-export interface UserI{
-    user:string;
-    password:string;
+export interface UserI {
+    user: string;
+    password: string;
 }
 
 /** Para crear Reclutador */
-export interface RecruiterI{
-   
-    id:string;
-    name?:string,
-    email:string,
-    image?:string,
-    type?:string, 
-    nameCompany?:string;
-    nitCompany:string;
-    vacantsNumber?:number;
-    postulantsNumber?:number,
-    postulants?:PostulantI[]
+export interface RecruiterI {
+
+    id: string;
+    name?: string,
+    email: string,
+    image?: string,
+    type?: string,
+    nameCompany?: string;
+    nitCompany: string;
+    vacantsNumber?: number;
+    postulantsNumber?: number,
+    postulants?: PostulantI[]
 }
 /** Carreras */
-export interface CareerI{
-    id:number,
-    name:string;
+export interface CareerI {
+    id: number,
+    name: string;
 }
- /** Autenticacion */
-export interface AuthI{
-    token:string,
-    type:string,
-    user?:any
+/** Autenticacion */
+export interface AuthI {
+    token: string,
+    type: string,
+    user?: any
 }
 
-export interface CompanyI{
-    nit:string,
-    name:string,
-    phone?:string,
-    email?:string,
-    address?:string
+export interface CompanyI {
+    nit: string,
+    name: string,
+    phone?: string,
+    email?: string,
+    address?: string
 }
- 
+
 /**  */
-export interface AreaI{
-id?:string;
-name:string;
-nit_company?:string;
+export interface AreaI {
+    id?: string;
+    name: string;
+    nit_company?: string;
 }
 
 /** Skills HARD and SOFT */
-export interface SkillI{
-id? :number,
-name:string,
-type?:string,
-status?:number
+export interface SkillI {
+    id?: number,
+    name: string,
+    type?: string,
+    status?: number
 }
 
-export interface PostulantI{
-    id:string,
-    name:string,
-    email:string,
-    password?:string,
-    careers?:CareerI[],
-    process?:ProcessI[],
-    skills?:SkillI[]
+export interface PostulantI {
+    id: string,
+    name: string,
+    email: string,
+    password?: string,
+    careers?: CareerI[],
+    process?: ProcessI[],
+    skills?: SkillI[],
 }
 
-export interface JobsI{
-    id?:number,
-    name?:string,
-    nitCompany?:string,  
-    nit_company?:string,   
-    salaryMin?:number,
-    salaryMax?:number,
-    description?:string,
-    idArea?:number,
-    career?:CareerI[]
-    careersId?:number[];
-    newCareer?:CareerI[],
-    newCareersName?:string[],
-    hardSkill?:SkillI[],
-    hardSkillsId?:number[],
-    softSkillsId?:number[];
-    newHardSkill?:SkillI[],
-    newHardSkillsName?:string[]
-    process?:ProcessI[],
-    processesName?:string[],
-    recruiter?:RecruiterI[],
-    recruitersId?:string[],
-    placeNumber?:number, 
-    placesNumber?:number, 
-    vacants?:VacantI[],
-    area?:string
+export interface JobsI {
+    id?: number,
+    name?: string,
+    nitCompany?: string,
+    nit_company?: string,
+    salaryMin?: number,
+    salaryMax?: number,
+    description?: string,
+    idArea?: number,
+    career?: CareerI[]
+    careersId?: number[];
+    newCareer?: CareerI[],
+    newCareersName?: string[],
+    hardSkill?: SkillI[],
+    hardSkillsId?: number[],
+    softSkillsId?: number[];
+    newHardSkill?: SkillI[],
+    newHardSkillsName?: string[]
+    process?: ProcessI[],
+    processesName?: string[],
+    recruiter?: RecruiterI[],
+    recruitersId?: string[],
+    placeNumber?: number,
+    placesNumber?: number,
+    vacants?: VacantI[],
+    area?: string
 }
 
-export interface ProcessI{
-    id?:string,
-    name:string,
-    description?:string,
-    status?:number
+export interface ProcessI {
+    id?: string,
+    name: string,
+    description?: string,
+    status?: number
 }
 
-export interface VacantI{
-    id?:number,
-    placesNumber?:number,
-    startDate?:Date,
-    idJobPosition?:number,
-    nameJob?:string,
-    jobPositionName?:string;
-    recruitersNumber:string,
-    postulantsNumber:number,
-    salaryMin?:number,
-    salaryMax?:number,
-    recruiters?:RecruiterI[],
-    recruitersId?:string[]
-    state?:number
+export interface VacantI {
+    id?: number,
+    placesNumber?: number,
+    startDate?: Date,
+    idJobPosition?: number,
+    nameJob?: string,
+    jobPositionName?: string;
+    recruitersNumber: string,
+    postulantsNumber: number,
+    salaryMin?: number,
+    salaryMax?: number,
+    recruiters?: RecruiterI[],
+    recruitersId?: string[]
+    state?: number
 }
 
-export interface JobProcI{
-    idJob:number,
-    idVacant:number,
-    idRecruiter:string
+export interface JobProcI {
+    idJob: number,
+    idVacant: number,
+    idRecruiter: string
+}
+
+
+export interface selPostulantI {
+    idVacant: number,
+    postulants: string[],
+    idRv: number
 }
 
 
@@ -138,5 +145,3 @@ export interface JobProcI{
 
 
 
-
- 

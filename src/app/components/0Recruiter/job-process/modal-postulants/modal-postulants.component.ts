@@ -1,8 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { ServiceService } from 'src/app/services/service.service';
-import { PostulantI } from '../../../../models/models.model';
+import { PostulantI, selPostulantI } from '../../../../models/models.model';
 import { FormGroup, FormControl } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-modal-postulants',
@@ -11,36 +12,55 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class ModalPostulantsComponent implements OnInit {
 
-  postulants:PostulantI[];
-  form:FormGroup;
-  postulans1={};
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private serv:ServiceService) { 
-    this.form = new FormGroup({
-      postulants: new FormControl()
-   });
+  listChecked: boolean[];
+  postulants: PostulantI[];
+  form: FormGroup;
+  selPostulants: selPostulantI;
 
-   this.getPostulants()
+  cantidadSel: number = 0;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private serv: ServiceService,
+    public dialogRef: MatDialogRef<ModalPostulantsComponent>) {
+    console.log(data);
+    this.selPostulants = <selPostulantI>data;
+
+    this.getPostulants()
+
   }
 
   ngOnInit() {
   }
 
-  getPostulants(){
+  getPostulants() {
     this.serv.Vacant.GetPostulants(this.data.id).subscribe(data => {
       this.postulants = <PostulantI[]>data.body;
-      for (let i = 0; i < this.postulants.length; i++) {
-        this.postulans1[this.postulans1[i].id]="no";
-      }
-      console.log(this.postulants)
+      this.listChecked = new Array<boolean>(this.postulants.length);
+
     })
   }
-  listaPostulantes(id:number){
-    if(this.postulans1[id]=="no"){
-      this.postulans1[id]="yes";
+  listaPostulantes(index: number) {
+    if (!this.listChecked[index]) {
+      this.cantidadSel++;
+    } else {
+      this.cantidadSel--;
     }
-    if(this.postulans1[id]=="yes"){
-      this.postulans1[id]="no";
+    this.listChecked[index] = !this.listChecked[index];
+    console.log(this.listChecked[index], index);
+  }
+
+  seleccionar() {
+    this.selPostulants.postulants = [];
+    for (let i = 0; i < this.postulants.length; i++) {
+
+      if (this.listChecked[i]) {
+        this.selPostulants.postulants.push(this.postulants[i].id);
+      }
     }
+    console.log(this.selPostulants);
+    this.serv.Vacant.PutSelPostulants(this.selPostulants).subscribe(dat => {
+      Swal.fire('', 'Postulantes seleccionados correctamente', 'success');
+      this.dialogRef.close(true);
+    })
   }
 
 }

@@ -16,29 +16,29 @@ import { PostulantProcessComponent } from './postulant-process/postulant-process
 })
 export class JobProcessComponent implements OnInit {
 
-  charge:JobsI;
-  constructor(public dialog: MatDialog,public routerA:ActivatedRoute,private serv:ServiceService) {
+  charge: any;
+  constructor(public dialog: MatDialog, public routerA: ActivatedRoute, private serv: ServiceService) {
     this.getJobProcess()
-   }
+  }
 
   ngOnInit() {
   }
 
-  getJobProcess(){
-    this.routerA.params.subscribe(r=>{
+  getJobProcess() {
+    this.routerA.params.subscribe(r => {
     })
-    console.log("id "+this.routerA.snapshot.paramMap.get('id'))
-    this.serv.JobPosition.GetJobProcess(this.routerA.snapshot.paramMap.get('id').split(":")[0],this.routerA.snapshot.paramMap.get('id').split(":")[1]).subscribe(dat=>{
-      this.charge=<any>dat.body;
+    console.log("id " + this.routerA.snapshot.paramMap.get('id'))
+    this.serv.JobPosition.GetJobProcess(this.routerA.snapshot.paramMap.get('id').split(":")[0], this.routerA.snapshot.paramMap.get('id').split(":")[1]).subscribe(dat => {
+      this.charge = <any>dat.body;
       console.log(this.charge);
     })
   }
 
-  verModal(postulant:PostulantI) {
-      const dialogRef = this.dialog.open(ModalPostulantComponent, {
-        width: '350px',
-        data: {id: postulant.id,name:postulant.name,recruiter:this.serv.Recruiter.GetLocal().name}
-      });
+  verModal(postulant: PostulantI) {
+    const dialogRef = this.dialog.open(ModalPostulantComponent, {
+      width: '350px',
+      data: { id: postulant.id, name: postulant.name, recruiter: this.serv.Recruiter.GetLocal().name }
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -50,19 +50,26 @@ export class JobProcessComponent implements OnInit {
       width: '750px'
     });
 
-  dialogRef.afterClosed().subscribe(result => {
-    console.log(`Dialog result: ${result}`);
-  });
-}
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
-  verPostulants(){
+  verPostulants() {
     const dialogRef = this.dialog.open(ModalPostulantsComponent, {
       width: '750px',
-      data:{ id: this.routerA.snapshot.paramMap.get('id').split(":")[0] }
+      data: {
+        id: this.routerA.snapshot.paramMap.get('id').split(":")[0],
+        idVacant: this.charge.vacant.id,
+        postulants: [],
+        idRv: this.charge.id_rv
+      }
     });
 
-  dialogRef.afterClosed().subscribe(result => {
-    console.log(`Dialog result: ${result}`);
-  });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getJobProcess();
+      }
+    });
   }
 }
