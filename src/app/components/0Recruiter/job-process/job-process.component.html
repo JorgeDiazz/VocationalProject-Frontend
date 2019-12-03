@@ -53,12 +53,28 @@
         <h2>Postulantes para el cargo</h2>
         <p *ngIf="charge.postulants.length==0">¡No hay postulantes para este cargo!</p>
         <div class="row" *ngIf="charge.postulants.length!=0">
-            <div class="col" *ngFor="let postulant of charge.postulants">
-                <img class="card-postulant bg-green-card" src="assets/img/noPhoto.jpg" (click)="verModal(postulant)">
+            <div class="col-6" *ngFor=" let postulant of charge.postulants">
+                <!-- <img class="card-postulant bg-green-card" src="assets/img/noPhoto.jpg" (click)="verModal(postulant)"> -->
+                 
+                <div class="row">
+                    <div class="col-4">
+                        <img class="card-postulant1 bg-green-card" src="assets/img/noPhoto.jpg"
+                            (click)="verModalPrueba()">
+                    </div>
+                    <div class="col-8">
+                        <p><b> {{postulant.name}} </b><br> {{postulant.email}}
+                            <li>Carrera1</li>
+                            <li>Carrera2</li>
+                        </p>
+                    </div>
+                </div>
+
+
+
             </div>
         </div>
         <!--PARA  PRUEBAAAA------------------------------------------------------------------------------------------------>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-6">
                 <div class="row">
                     <div class="col-4">
@@ -100,7 +116,7 @@
 
             </div>
             <!--FIN PRUEBAAAAA------------------------------------------------------------------------------------------------>
-        </div>
+        <!-- </div> -->
     </div>
 </div>
 
@@ -110,7 +126,8 @@
             <p>Elegir nuevo postulante</p>
         </div>
         <div class="col-3">
-            <button (click)="verPostulants()" class="button-plus bg-colorGR-orange-dark"> <img class="plus" src="assets/img/add (1).svg" ></button>
+            <button (click)="verPostulants()" class="button-plus bg-colorGR-orange-dark"> <img class="plus"
+                    src="assets/img/add (1).svg"></button>
         </div>
     </div>
 </div>
